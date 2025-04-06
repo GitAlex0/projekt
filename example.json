@@ -8,5 +8,20 @@
     "name": "Jane Smith",
     "age": 25,
     "email": "janesmith@example.com"
+  },
+  "user3": {
+    "name": "Alice Johnson",
+    "age": 28,
+    "email": "alicejohnson@example.com"
+  },
+  "user4": {
+    "name": "Bob Brown",
+    "age": 35,
+    "email": "bobbrown@example.com"
+  },
+  "user5": {
+    "name": "Charlie Davis",
+    "age": 22,
+    "email": "charliedavis@example.com"
   }
 }

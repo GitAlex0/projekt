@@ -6,7 +6,7 @@ var index = 0;
 
 async function fetchData() {
     try {
-        const response = await fetch('output.json');
+        const response = await fetch('example.json');
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
         }
@@ -18,7 +18,7 @@ async function fetchData() {
 }
 
 fetchData();
-document.cookie = "username=John Doe"; 
+
 
 fu();
 function fu() {
@@ -32,5 +32,6 @@ function next() {
     console.log(sortedKeys);
     document.getElementById("here").innerHTML = jsonData[sortedKeys[0]].name;
     delete jsonData[sortedKeys[0]];
+    document.cookie = "username="+jsonData[sortedKeys[0]].name; 
     alert(document.cookie);
 }
