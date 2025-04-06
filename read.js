@@ -20,7 +20,7 @@ async function fetchData() {
 fetchData();
 
 
-fu();
+// fu();
 function fu() {
     console.log(jsonData.user1.name);
     console.log(Object.keys(jsonData).length);
@@ -28,10 +28,14 @@ function fu() {
 
 
 function next() {
+    if(Object.keys(jsonData).length != 0){
     var sortedKeys = Object.keys(jsonData).sort();
     console.log(sortedKeys);
-    document.getElementById("here").innerHTML = jsonData[sortedKeys[0]].name;
+    document.getElementById("name").innerHTML = jsonData[sortedKeys[0]].name;
+    document.getElementById("age").innerHTML = jsonData[sortedKeys[0]].age;
+    document.getElementById("email").innerHTML = jsonData[sortedKeys[0]].email;
+    document.cookie = "username="+jsonData[sortedKeys[0]].name+"; expires= 18 Dec 2025 UTC"; 
+    // alert(document.cookie);
     delete jsonData[sortedKeys[0]];
-    document.cookie = "username="+jsonData[sortedKeys[0]].name; 
-    alert(document.cookie);
+}
 }
