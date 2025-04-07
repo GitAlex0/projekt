@@ -28,14 +28,17 @@ function fu() {
 
 
 function next() {
-    if(Object.keys(jsonData).length != 0){
+    
     var sortedKeys = Object.keys(jsonData).sort();
     console.log(sortedKeys);
-    document.getElementById("name").innerHTML = jsonData[sortedKeys[0]].name;
-    document.getElementById("age").innerHTML = jsonData[sortedKeys[0]].age;
-    document.getElementById("email").innerHTML = jsonData[sortedKeys[0]].email;
-    document.cookie = "username="+jsonData[sortedKeys[0]].name+"; expires= 18 Dec 2025 UTC"; 
+    document.getElementById("name").innerHTML = jsonData[sortedKeys[index]].name;
+    document.getElementById("age").innerHTML = jsonData[sortedKeys[index]].age;
+    document.getElementById("email").innerHTML = jsonData[sortedKeys[index]].email;
+    document.cookie = "username="+jsonData[sortedKeys[index]].name+"; expires= 18 Dec 2025 UTC"; 
     // alert(document.cookie);
-    delete jsonData[sortedKeys[0]];
-}
+    index++;
+    console.log(index + 'index');
+    if (index >= Object.keys(jsonData).length) {
+        index = 0;
+    }
 }
