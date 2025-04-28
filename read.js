@@ -6,7 +6,7 @@ var index = 0;
 
 async function fetchData() {
     try {
-        const response = await fetch('example.json');
+        const response = await fetch('quiz.json');
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
         }
@@ -22,7 +22,7 @@ fetchData();
 
 // fu();
 function fu() {
-    console.log(jsonData.user1.name);
+    console.log(jsonData);
     console.log(Object.keys(jsonData).length);
 }
 
@@ -31,11 +31,17 @@ function next() {
     
     var sortedKeys = Object.keys(jsonData).sort();
     console.log(sortedKeys);
-    document.getElementById("name").innerHTML = jsonData[sortedKeys[index]].name;
-    document.getElementById("age").innerHTML = jsonData[sortedKeys[index]].age;
-    document.getElementById("email").innerHTML = jsonData[sortedKeys[index]].email;
-    document.cookie = "username="+jsonData[sortedKeys[index]].name+"; expires= 18 Dec 2025 UTC"; 
+    document.getElementById("name").innerHTML = "question " + jsonData[sortedKeys[index]].q;
+    document.getElementById("age").innerHTML =  "type " + jsonData[sortedKeys[index]].type;
+    if (jsonData[sortedKeys[index]].type == "mc"){
+        document.getElementById("email").innerHTML = "answers " + jsonData[sortedKeys[index]].a;
+    }else{
+        document.getElementById("slider").style.display = "flex";
+        document.getElementById("email").innerHTML = "r";
+    }
+    // document.cookie = "username="+jsonData[sortedKeys[index]].name+"; expires= 18 Dec 2025 UTC"; 
     // alert(document.cookie);
+    
     index++;
     console.log(index + 'index');
     if (index >= Object.keys(jsonData).length) {

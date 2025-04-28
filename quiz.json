@@ -31,5 +31,14 @@
       "4": "Winter"
     },
     "s": "season"
+  },
+  "4": {
+    "q": "How much do you agree?",
+    "type": "r",
+    "r": {
+      "min": 0,
+      "max": 100
+    },
+    "s": "rate"
   }
 }
