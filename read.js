@@ -24,17 +24,24 @@ fetchData();
 function fu() {
     console.log(jsonData);
     console.log(Object.keys(jsonData).length);
+    console.log('Successfully loaded data');
+    // console.log(Object.keys(jsonData));
+    // console.log(Object.keys(jsonData).sort());
 }
 
 
 function next() {
-    
+    clearButtons();
+    //redundant but possible useful later
     var sortedKeys = Object.keys(jsonData).sort();
-    console.log(sortedKeys);
+    // console.log(sortedKeys);
     document.getElementById("name").innerHTML = "question " + jsonData[sortedKeys[index]].q;
     document.getElementById("age").innerHTML =  "type " + jsonData[sortedKeys[index]].type;
     if (jsonData[sortedKeys[index]].type == "mc"){
-        document.getElementById("email").innerHTML = "answers " + jsonData[sortedKeys[index]].a;
+        document.getElementById("email").innerHTML = "answers " + Object.keys(jsonData[sortedKeys[index]].a).length;
+        for (let i = 1; i < Object.keys(jsonData[sortedKeys[index]].a).length + 1; i++){
+            createButton(jsonData[sortedKeys[index]].a[i]);
+        }
     }else{
         document.getElementById("slider").style.display = "flex";
         document.getElementById("email").innerHTML = "r";
@@ -43,8 +50,21 @@ function next() {
     // alert(document.cookie);
     
     index++;
-    console.log(index + 'index');
+    console.log('Index ' + index);
     if (index >= Object.keys(jsonData).length) {
         index = 0;
     }
+}
+
+function createButton(value){
+    const template = document.getElementById("button-template");
+    const button = template.content.firstElementChild.cloneNode(true);
+    button.textContent = value;
+    document.getElementById("buttons").appendChild(button);
+    
+}
+
+function clearButtons(){
+    const buttonContainer = document.getElementById("buttons");
+    buttonContainer.innerHTML = "";
 }
