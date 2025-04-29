@@ -4,3 +4,6 @@
     align-items: center;
     display:none;
 }
+.quiz-button{
+    border:dashed;
+}
