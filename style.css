@@ -1,5 +1,4 @@
-.slider{
-    display: flex;
+#slider{
     justify-content: center;
     align-items: center;
     display:none;

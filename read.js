@@ -44,10 +44,13 @@ function next() {
         }
     }else{
         document.getElementById("slider").style.display = "flex";
+        console.log("done");
         document.getElementById("email").innerHTML = "r";
     }
-    // document.cookie = "username="+jsonData[sortedKeys[index]].name+"; expires= 18 Dec 2025 UTC"; 
+    // document.cookie = index+"="+jsonData[sortedKeys[index]].q+"; expires= 18 Dec 2025 UTC";
+    document.cookie = index+"="+jsonData[sortedKeys[index]].q+";";
     // alert(document.cookie);
+    console.log(document.cookie)
     
     index++;
     console.log('Index ' + index);
@@ -67,4 +70,6 @@ function createButton(value){
 function clearButtons(){
     const buttonContainer = document.getElementById("buttons");
     buttonContainer.innerHTML = "";
+    const sliderContainer = document.getElementById("slider");
+    sliderContainer.style.display = "none";
 }
