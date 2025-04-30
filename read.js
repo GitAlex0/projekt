@@ -1,6 +1,3 @@
-// Assuming the JSON file is named 'data.json' and located in the same directory as the HTML file
-
-// Fetch the JSON data and apply it to a div
 let jsonData;
 var index = 0;
 let randomizedKeys;
@@ -12,7 +9,7 @@ async function fetchData() {
             throw new Error('Network response was not ok ' + response.statusText);
         }
         jsonData = await response.json();
-        fu(); // Call fu() after jsonData is populated
+        fu();
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
     }
