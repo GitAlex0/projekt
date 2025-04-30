@@ -8,7 +8,16 @@
       "3": "Not great",
       "4": "Really bad"
     },
-    "s": "wellness"
+    "skill": {
+      "1": {
+        "name": "wellness",
+        "weight": 50
+      },
+      "2": {
+        "name": "wellbeing",
+        "weight": 30
+      }
+    }
   },
   "2": {
     "q": "What is your favorite color?",
@@ -19,7 +28,12 @@
       "3": "Green",
       "4": "Yellow"
     },
-    "s": "colour"
+    "skill": {
+      "1": {
+        "name": "colour",
+        "weight": 100
+      }
+    }
   },
   "3": {
     "q": "What is your favorite season?",
@@ -27,9 +41,15 @@
     "a": {
       "1": "Spring",
       "2": "Summer",
-      "3": "Autumn"
+      "3": "Autumn",
+      "4": "Winter"
     },
-    "s": "season"
+    "skill": {
+      "1": {
+        "name": "season",
+        "weight": 90
+      }
+    }
   },
   "4": {
     "q": "How much do you agree?",
@@ -38,6 +58,11 @@
       "min": 0,
       "max": 100
     },
-    "s": "rate"
+    "skill": {
+      "1": {
+        "name": "rate",
+        "weight": 50
+      }
+    }
   }
 }
