@@ -98,6 +98,6 @@ function updateProgressBar(progress){
     console.log(progress);
     bar = document.getElementById("progress");
     bar.value = progress;
-    document.getElementById("pLabel").value = progress;
+    document.getElementById("pLabel").textContent = progress;
 
 }
