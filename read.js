@@ -1,6 +1,8 @@
 let jsonData;
 var index = 0;
+let randomize = true;
 let randomizedKeys;
+let pubProgress;
 
 async function fetchData() {
     try {
@@ -23,16 +25,25 @@ function fu() {
     console.log(jsonData);
     console.log(Object.keys(jsonData).length);
     console.log('Successfully loaded data');
-    randomizedKeys = shuffleKeys(Object.keys(jsonData));
+    randomizedKeys = randomize ? shuffleKeys(Object.keys(jsonData)) : Object.keys(jsonData);
 }
 
 
 function next() {
     clearButtons();
     populateQuiz(jsonData[randomizedKeys[index]]);
-    index++;
+    
     console.log('Index ' + index);
+    let progress = index + 1;
+    progress = progress / Object.keys(jsonData).length * 100
+    pubProgress = progress;
+    console.log(progress + "%");
+    updateProgressBar(progress);
+
+    
+    index++;
     if (index >= Object.keys(jsonData).length) {
+        console.log("0");
         index = 0;
         //Sollte stattdessen zur Ergebnis Seite gehen
     }
@@ -81,4 +92,12 @@ function shuffleKeys(keys){
         [keys[i], keys[j]] = [keys[j], keys[i]];
     }
     return keys;
+}
+
+function updateProgressBar(progress){
+    console.log(progress);
+    bar = document.getElementById("progress");
+    bar.value = progress;
+    document.getElementById("pLabel").value = progress;
+
 }
