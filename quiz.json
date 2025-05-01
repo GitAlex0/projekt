@@ -63,6 +63,40 @@
         "name": "rate",
         "weight": 50
       }
+    },
+    "next": "1"
+  },
+  "5": {
+    "q": "What is your favorite hobby?",
+    "type": "mc",
+    "a": {
+      "1": "Reading",
+      "2": "Sports",
+      "3": "Gaming",
+      "4": "Traveling"
+    },
+    "skill": {
+      "1": {
+        "name": "hobby",
+        "weight": 70
+      }
     }
+  },
+  "6": {
+    "q": "What is your dream destination?",
+    "type": "mc",
+    "a": {
+      "1": "Paris",
+      "2": "Tokyo",
+      "3": "New York",
+      "4": "Sydney"
+    },
+    "skill": {
+      "1": {
+        "name": "travel",
+        "weight": 80
+      }
+    },
+    "next": "5"
   }
 }
