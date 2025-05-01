@@ -36,6 +36,7 @@ function next() {
     console.log('Index ' + index);
     let progress = index + 1;
     progress = progress / Object.keys(jsonData).length * 100
+    progress = Math.round(progress);
     pubProgress = progress;
     console.log(progress + "%");
     updateProgressBar(progress);
@@ -98,6 +99,6 @@ function updateProgressBar(progress){
     console.log(progress);
     bar = document.getElementById("progress");
     bar.value = progress;
-    document.getElementById("pLabel").textContent = progress;
+    document.getElementById("pLabel").textContent = progress + " %";
 
 }
