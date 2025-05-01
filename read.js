@@ -25,7 +25,7 @@ function fu() {
     console.log(jsonData);
     console.log(Object.keys(jsonData).length);
     console.log('Successfully loaded data');
-    randomizedKeys = randomize ? shuffleKeys(Object.keys(jsonData)) : Object.keys(jsonData);
+    randomizedKeys = randomize ? generateQuestionOrder(Object.keys(jsonData), findOrder(Object.keys(jsonData))) : Object.keys(jsonData);
 }
 
 
@@ -94,6 +94,42 @@ function shuffleKeys(keys){
     }
     return keys;
 }
+
+function findOrder(keys){
+    const fixedOrder = {};
+    for (let i = 0; i < keys.length; i++){
+        if(jsonData[keys[i]].next){
+            let key = keys[i];
+            let value = jsonData[keys[i]].next;
+            fixedOrder[key] = value;
+        }
+    }
+    
+    return fixedOrder;
+}
+
+function generateQuestionOrder(keys, fixedOrder) {
+    const addedKeys = new Set();
+
+    const remainingKeys = keys.filter(key => !Object.values(fixedOrder).includes(key));
+    const randomizedKeys = shuffleKeys(remainingKeys);
+
+    const finalOrder = [];
+    randomizedKeys.forEach(key => {
+        if (!addedKeys.has(key)) {
+            finalOrder.push(key);
+            addedKeys.add(key);
+        }
+
+        if (fixedOrder[key] && !addedKeys.has(fixedOrder[key])) {
+            finalOrder.push(fixedOrder[key]);
+            addedKeys.add(fixedOrder[key]);
+        }
+    });
+
+    return finalOrder;
+}
+
 
 function updateProgressBar(progress){
     console.log(progress);
