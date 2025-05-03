@@ -18,18 +18,28 @@ async function fetchData() {
 }
 
 fetchData();
-
 // umbennen, Namensbedeutung unbekannt
 function fu() {
   console.log(jsonData);
   console.log(Object.keys(jsonData).length);
   console.log("Successfully loaded data");
-  randomizedKeys = randomize
-    ? generateQuestionOrder(
-        Object.keys(jsonData),
-        findOrder(Object.keys(jsonData))
-      )
-    : Object.keys(jsonData);
+  randomizedKeys = randomize ? retrieveOrder() : Object.keys(jsonData);
+  
+  console.log(randomizedKeys);
+}
+
+function retrieveOrder(){
+    const storedOrder = localStorage.getItem("randomizedKeys");
+    console.log(storedOrder)
+    if(storedOrder){
+        console.log("localStorage");
+        return JSON.parse(storedOrder);
+    } else{
+      console.log("Fresh")
+      result = generateQuestionOrder(Object.keys(jsonData), findOrder(Object.keys(jsonData)))
+      localStorage.setItem("randomizedKeys", JSON.stringify(result))
+      return result;
+    }
 }
 
 function next() {
