@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <script src="read.js"></script>
@@ -8,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h2>Text</h2>
     example
@@ -22,31 +24,32 @@
         <button class="quiz-button">Button</button>
     </template>
     <div id="buttons">
-        
+
     </div>
     <div id="value">value</div>
     <div id="slider-container">
         <input type="range" min="0" max="100" value="10" step="25" id="slider" list="ticks">
         <datalist id="ticks">
-            <option value = "0"></option>
-            <option value = "25"></option>
-            <option value = "50"></option>
-            <option value = "75"></option>
-            <option value = "100"></option>
+            <option value="0"></option>
+            <option value="25"></option>
+            <option value="50"></option>
+            <option value="75"></option>
+            <option value="100"></option>
         </datalist>
     </div>
     <script>
         var slider = document.getElementById("slider");
         var output = document.getElementById("value");
         output.innerHTML = slider.value;
-        
-        slider.oninput = function() {
-          output.innerHTML = this.value;
-        }
-        </script>
-        <label for="progress" id="pLabel"> 0 % </label>
-        <progress id="progress" max="100" value="0">
 
-        </progress>
+        slider.oninput = function () {
+            output.innerHTML = this.value;
+        }
+    </script>
+    <label for="progress" id="pLabel"> 0 % </label>
+    <progress id="progress" max="100" value="0">
+
+    </progress>
 </body>
+
 </html>
