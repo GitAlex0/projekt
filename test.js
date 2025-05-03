@@ -1,3 +1,4 @@
+let ids;
 const exampleData = {
     1: { q: "How are you", type: "mc", a: { 1: "Great", 2: "Fine", 3: "Not great", 4: "Really bad" }, s: "wellness" },
     2: { q: "What is your favorite color?", type: "mc", a: { 1: "Red", 2: "Blue", 3: "Green", 4: "Yellow" }, s: "colour",next:"3" },
@@ -55,4 +56,14 @@ function generateQuestionOrder(keys, fixedOrder) {
 
     return finalOrder;
 }
-console.log(generateQuestionOrder(Object.keys(exampleData),findOrder(Object.keys(exampleData))));
+
+function resolveIds(){
+    ids = JSON.parse(localStorage.getItem("answers"))
+    console.log(ids);
+    for (let i = 0; i < Object.keys(ids).length; i++){
+        console.log(i);
+        question = jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].q
+        answer = jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].a[ids[Object.keys(ids)[i]]];
+        console.log("Q: " + question + " A: " + answer)
+    }
+}
