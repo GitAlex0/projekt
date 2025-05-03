@@ -1,6 +1,6 @@
 let jsonData;
 var index = 0;
-let randomize = true;
+let randomize = false;
 let randomizedKeys;
 let pubProgress;
 
@@ -40,23 +40,6 @@ function retrieveOrder(){
       localStorage.setItem("randomizedKeys", JSON.stringify(result))
       return result;
     }
-}
-
-function populateQuiz(question) {
-  document.getElementById("name").innerHTML = "question " + question.q;
-  document.getElementById("age").innerHTML = "type " + question.type;
-
-  if (question.type == "mc") {
-    document.getElementById("email").innerHTML =
-      "answers " + Object.keys(question.a).length;
-    for (let i = 1; i < Object.keys(question.a).length + 1; i++) {
-      createButton(question.a[i]);
-    }
-  } else {
-    document.getElementById("slider-container").style.display = "flex";
-    console.log("done");
-    document.getElementById("email").innerHTML = "r";
-  }
 }
 
 //nicht implementiert
@@ -109,5 +92,3 @@ function generateQuestionOrder(keys, fixedOrder) {
 
   return finalOrder;
 }
-
-
