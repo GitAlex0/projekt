@@ -62,8 +62,14 @@ function resolveIds(){
     console.log(ids);
     for (let i = 0; i < Object.keys(ids).length; i++){
         console.log(i);
-        question = jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].q
-        answer = jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].a[ids[Object.keys(ids)[i]]];
-        console.log("Q: " + question + " A: " + answer)
+        if(jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].type == "mc"){
+            question = jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].q
+            answer = jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].a[ids[Object.keys(ids)[i]]];
+            console.log("Q: " + question + " A: " + answer)
+        }else{
+            question = jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].q
+            approval = ids[parseInt(i) + 1]
+            console.log("Q: " + question + " Approval: " + approval);
+        }
     }
 }

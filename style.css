@@ -6,3 +6,7 @@
 .quiz-button{
     border:dashed;
 }
+
+#selected{
+    background-color:rgb(192, 37, 37);
+}
