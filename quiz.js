@@ -10,7 +10,7 @@ function next() {
   pubProgress = progress;
   console.log(progress + "%");
   updateProgressBar(progress);
-
+  setCookieIndex(index);
   index++;
   if (index >= Object.keys(jsonData).length) {
     console.log("0 reset");

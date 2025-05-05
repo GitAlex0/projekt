@@ -24,8 +24,25 @@ function fu() {
   console.log(Object.keys(jsonData).length);
   console.log("Successfully loaded data");
   randomizedKeys = randomize ? retrieveOrder() : Object.keys(jsonData);
-  
+  index = getCookieIndex()
   console.log(randomizedKeys);
+}
+
+function getCookieIndex(){
+  cookie = document.cookie;
+  console.log(cookie)
+  let cookieIndex = cookie.match(/index=(\d+)/)
+  if(cookieIndex){
+      console.log('found: ' + cookieIndex[1])
+      return parseInt(cookieIndex[1])
+  }else{return 0}
+}
+
+function setCookieIndex(cookieIndex){
+  date = new Date();
+  date.setDate(date.getDate() + 7);
+  date = date.toUTCString();
+  document.cookie = "index=" + cookieIndex + "; expires=" + date + ";path=/"
 }
 
 function retrieveOrder(){
