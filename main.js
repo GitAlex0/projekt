@@ -42,12 +42,6 @@ function retrieveOrder(){
     }
 }
 
-//nicht implementiert
-function saveCookie() {
-  document.cookie = index + "=" + jsonData[sortedKeys[index]].q + ";";
-  console.log(document.cookie);
-}
-
 function shuffleKeys(keys) {
   for (let i = keys.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
