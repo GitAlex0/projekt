@@ -33,6 +33,7 @@ function populateQuiz(question) {
   } else {
     let slider = document.getElementById("slider");
     slider.dataset.index = randomizedKeys[index];
+    console.log(jsonData[randomizedKeys[index]].q + 'slider')
     document.getElementById("slider-container").style.display = "flex";
     console.log("done");
     document.getElementById("email").innerHTML = "r";
