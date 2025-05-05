@@ -1,6 +1,6 @@
 let jsonData;
 var index = 0;
-let randomize = false;
+let randomize = true;
 let randomizedKeys;
 let pubProgress;
 
