@@ -28,11 +28,11 @@ function populateQuiz(question) {
     document.getElementById("email").innerHTML =
       "answers " + Object.keys(question.a).length;
     for (let i = 1; i < Object.keys(question.a).length + 1; i++) {
-      createButton(question.a[i], i, randomizedKeys[index]); // Pass the question key
+      createButton(question.a[i], i, randomizedKeys[index]);
     }
   } else {
     let slider = document.getElementById("slider");
-    slider.dataset.index = randomizedKeys[index]; // Use the question key
+    slider.dataset.index = randomizedKeys[index];
     document.getElementById("slider-container").style.display = "flex";
     console.log("done");
     document.getElementById("email").innerHTML = "r";
