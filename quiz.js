@@ -1,4 +1,4 @@
-let answers = {}
+let answers = {};
 function next() {
   clearButtons();
   populateQuiz(jsonData[randomizedKeys[index]]);
@@ -13,14 +13,14 @@ function next() {
 
   index++;
   if (index >= Object.keys(jsonData).length) {
-    console.log("0");
+    console.log("0 reset");
     index = 0;
     //Sollte stattdessen zur Ergebnis Seite gehen
   }
 }
 
 function populateQuiz(question) {
-    console.log(question);
+  console.log(question);
   document.getElementById("name").innerHTML = "question " + question.q;
   document.getElementById("age").innerHTML = "type " + question.type;
 
@@ -31,6 +31,8 @@ function populateQuiz(question) {
       createButton(question.a[i], i);
     }
   } else {
+    let slider = document.getElementById("slider");
+    slider.dataset.index = index;
     document.getElementById("slider-container").style.display = "flex";
     console.log("done");
     document.getElementById("email").innerHTML = "r";
@@ -41,7 +43,8 @@ function createButton(value, id) {
   const template = document.getElementById("button-template");
   const button = template.content.firstElementChild.cloneNode(true);
   button.textContent = value;
-  button.id = id;
+  button.dataset.id = id;
+  button.dataset.index = index;
   document.getElementById("buttons").appendChild(button);
 }
 
@@ -59,16 +62,36 @@ function updateProgressBar(progress) {
   document.getElementById("pLabel").textContent = progress + " %";
 }
 
-function answerButtonPress(id){
-    console.log(jsonData[index].q)
-    console.log(id);
-    console.log(jsonData[index].a[id])
-    saveAnswer(index, id)
+function inputSlider(slider) {
+  console.log(slider.value);
+  let output = document.getElementById("value");
+  let value = slider.value;
+  questionIndex = parseInt(slider.dataset.index) + 1
+  console.log("slider index above")
+  output.innerHTML = value;
+  saveAnswer(questionIndex, value)
 }
 
-function saveAnswer(questionId, answerId){
-    answers = JSON.parse(localStorage.getItem("answers")) || {}
-    answers[questionId] = answerId
-    localStorage.setItem("answers", JSON.stringify(answers))
-    console.log(answers);
+function answerButtonPress(button) {
+  buttonId = button.dataset.id;
+  questionIndex = button.dataset.index;
+  questionIndex = parseInt(questionIndex) + 1;
+  console.log(questionIndex + "buttonpress");
+  console.log(jsonData[questionIndex].q);
+  console.log(button.dataset.index);
+  console.log(jsonData[questionIndex].a[buttonId]);
+  saveAnswer(questionIndex, buttonId);
+
+  let other = document.getElementsByClassName("quiz-button");
+  Array.from(other).forEach((el) => {
+    el.removeAttribute("id");
+  });
+  button.setAttribute("id", "selected");
+}
+
+function saveAnswer(questionId, answerId) {
+  answers = JSON.parse(localStorage.getItem("answers")) || {};
+  answers[questionId] = answerId;
+  localStorage.setItem("answers", JSON.stringify(answers));
+  console.log(answers);
 }
