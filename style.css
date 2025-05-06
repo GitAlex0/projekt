@@ -1,3 +1,18 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Optional, um sicherzustellen, dass der Viewport vollständig genutzt wird */
+}
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Inhalt nach oben ausrichten */
+    align-items: center; /* Horizontal zentrieren */
+    height: 100vh;
+
+}
+
 #slider-container{
     justify-content: center;
     align-items: center;
@@ -9,4 +24,83 @@
 
 #selected{
     background-color:rgb(192, 37, 37);
+}
+
+.progress-container {
+position: relative; /* Ermöglicht die absolute Positionierung von pLabel */
+display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin-top: 1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    width: 98vw;
+    background-color: pink;
+    border-radius: 2vh;
+    height: 10vh;
+}
+
+/* Styling für die Fortschrittsleiste */
+.progress {
+    width: 80%; /* Breite der Fortschrittsleiste */
+    height: 4vh; /* Höhe der Fortschrittsleiste */
+    background-color: #e0e0e0; /* Hintergrundfarbe der Leiste */
+    border-radius: 2vh; /* Abgerundete Ecken */
+    overflow: hidden; /* Verhindert, dass der Fortschrittsbalken über die Ränder hinausgeht */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Schatten für die Leiste */
+position: relative; /* Referenz für den Text */
+}
+
+.progress::-webkit-progress-bar {
+    background-color: #e0e0e0; /* Hintergrund der Leiste */
+}
+
+.progress::-webkit-progress-value {
+    background-color: #76c7c0; /* Farbe des Fortschritts */
+    border-radius: 10px; /* Abgerundete Ecken für den Fortschritt */
+}
+
+.pLabel {
+    position: absolute; /* Positioniert den Text relativ zum Fortschrittsbalken */
+    top: 50%; /* Vertikale Mitte */
+    left: 50%; /* Horizontale Mitte */
+    transform: translate(-50%, -50%); /* Zentriert den Text */
+    color: black; /* Textfarbe */
+    font-weight: bold; /* Optional: Fettgedruckter Text */
+    pointer-events: none; /* Verhindert, dass der Text anklickbar ist */
+}
+
+
+.content-container {
+    display: flex;
+    flex-direction: column; /* Ordnet die Kinder-Elemente vertikal an */
+    justify-content: flex-start; /* Richtet die Inhalte am oberen Rand aus */
+    align-items: center; /* Zentriert die Inhalte horizontal */
+    width: 100%;
+    height: 100%;
+    padding-top: 10vh; /* Optional: Abstand vom oberen Rand */
+}
+
+.quiz-title {
+    background-color: #D0F1BF;
+    width: 80vw;
+    height: 25vh;
+    margin-bottom:5vh;
+    border-radius: 2vh; /* Abgerundete Ecken */
+    box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.277); /* Optional: Schatten für die Box */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 60px;
+}
+
+#name {
+    font-size: 3vh; /* Schriftgröße */
+    font-weight: bold; /* Fettgedruckter Text */
+    font-family: "Inter", sans-serif; /* Schriftart */
 }
