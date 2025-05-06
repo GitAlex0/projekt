@@ -13,18 +13,6 @@ html, body {
 
 }
 
-#slider-container{
-    justify-content: center;
-    align-items: center;
-    display:none;
-}
-.quiz-button{
-    border:dashed;
-}
-
-#selected{
-    background-color:rgb(192, 37, 37);
-}
 
 .progress-container {
 position: relative; /* Ermöglicht die absolute Positionierung von pLabel */
@@ -37,7 +25,7 @@ display: flex;
     margin-left: 1vh;
     margin-right: 1vh;
     width: 98vw;
-    background-color: pink;
+    background-color: #D9D9D9;
     border-radius: 2vh;
     height: 10vh;
 }
@@ -46,20 +34,20 @@ display: flex;
 .progress {
     width: 80%; /* Breite der Fortschrittsleiste */
     height: 4vh; /* Höhe der Fortschrittsleiste */
-    background-color: #e0e0e0; /* Hintergrundfarbe der Leiste */
+    background-color: #ffffff; /* Hintergrundfarbe der Leiste */
     border-radius: 2vh; /* Abgerundete Ecken */
     overflow: hidden; /* Verhindert, dass der Fortschrittsbalken über die Ränder hinausgeht */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Schatten für die Leiste */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.058); /* Optional: Schatten für die Leiste */
 position: relative; /* Referenz für den Text */
 }
 
 .progress::-webkit-progress-bar {
-    background-color: #e0e0e0; /* Hintergrund der Leiste */
+    background-color: #e3e3e3; /* Hintergrund der Leiste */
 }
 
 .progress::-webkit-progress-value {
-    background-color: #76c7c0; /* Farbe des Fortschritts */
-    border-radius: 10px; /* Abgerundete Ecken für den Fortschritt */
+    background-color: #96BE93; /* Farbe des Fortschritts */
+    border-radius: 2vh; /* Abgerundete Ecken für den Fortschritt */
 }
 
 .pLabel {
@@ -70,6 +58,7 @@ position: relative; /* Referenz für den Text */
     color: black; /* Textfarbe */
     font-weight: bold; /* Optional: Fettgedruckter Text */
     pointer-events: none; /* Verhindert, dass der Text anklickbar ist */
+    font-family: "Inter", sans-serif; /* Schriftart */
 }
 
 
@@ -79,16 +68,16 @@ position: relative; /* Referenz für den Text */
     justify-content: flex-start; /* Richtet die Inhalte am oberen Rand aus */
     align-items: center; /* Zentriert die Inhalte horizontal */
     width: 100%;
-    height: 100%;
+    height: 35vh; /* Abstand zum unteren Rand */
     padding-top: 10vh; /* Optional: Abstand vom oberen Rand */
 }
 
 .quiz-title {
     background-color: #D0F1BF;
     width: 80vw;
-    height: 25vh;
-    margin-bottom:5vh;
-    border-radius: 2vh; /* Abgerundete Ecken */
+    height: 20vh;
+  margin-bottom:5vh;
+border-radius: 2vh; /* Abgerundete Ecken */
     box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.277); /* Optional: Schatten für die Box */
     display: flex;
     justify-content: center;
@@ -102,3 +91,64 @@ position: relative; /* Referenz für den Text */
     font-weight: bold; /* Fettgedruckter Text */
     font-family: "Inter", sans-serif; /* Schriftart */
 }
+
+#slider-container{
+    justify-content: center;
+    align-items: center;
+    display:none;
+}
+.quiz-button{
+    border: none;
+    border-radius: 2vh; /* Abgerundete Ecken */
+    margin: 1vh;
+    padding: 0.8vh;
+    padding-left:6vh;
+    padding-right:6vh;
+    background-color: #B6D7B9;
+    box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.277); /* Optional: Schatten für die Box */
+}
+
+.quiz-button:hover {
+    background-color: #A0C8A0; /* Hintergrundfarbe bei Hover */
+    transition: box-shadow 0.1s, background-color 0.1s;
+}
+
+.quiz-button:active {
+    background-color: #8DAF8D; /* Hintergrundfarbe bei Klick */
+    box-shadow: 0.1vh 0.1vh 0.3vh rgba(0, 0, 0, 0.412); /* Optional: Schatten für die Box */
+    transform: translateY(2px); /* Optional: Leichte Verschiebung nach unten bei Klick */
+    transition: box-shadow 0.1s, background-color 0.1s, transform 0.1s; /* Animationseffekt für den Klick */
+}
+.quiz-button:focus {
+    outline: none; /* Entfernt den Standard-Fokusrahmen */
+    box-shadow: 0 0 0 2px #A0C8A0; /* Optional: Fokussierungseffekt */
+}
+
+#selected{
+    background-color:#758F73;
+    box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.559); /* Optional: Schatten für die Box */
+}
+
+#btn {
+    border: none;
+    border-radius: 2vh; /* Abgerundete Ecken */
+    margin: 1vh;
+    padding: 0.8vh;
+    padding-left:6vh;
+    padding-right:6vh;
+    background-color: #D0F1BF;
+    box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.277); /* Optional: Schatten für die Box */
+}
+
+#btn:hover {
+    background-color: #c4e3b5; /* Hintergrundfarbe bei Hover */
+    transition: box-shadow 0.1s, background-color 0.1s;
+}
+
+#btn:active {
+    background-color: #b1cab1; /* Hintergrundfarbe bei Klick */
+    box-shadow: 0.1vh 0.1vh 0.3vh rgba(0, 0, 0, 0.412); /* Optional: Schatten für die Box */
+    transform: translateY(2px); /* Optional: Leichte Verschiebung nach unten bei Klick */
+    transition: box-shadow 0.1s, background-color 0.1s, transform 0.1s; /* Animationseffekt für den Klick */
+}
+

@@ -29,16 +29,13 @@
             <div class="quiz-title">
                 <div id="name">name</div>
             </div>
-            <div id="age">age</div>
-            <div id="email">email</div>
-            <button id="btn" onclick="next()">Click Me</button>
             <template id="button-template">
                 <button class="quiz-button" onclick="answerButtonPress(this)">Button</button>
             </template>
             <div id="buttons">
 
             </div>
-        
+            
             <div id="slider-container">
             
                 <input type="range" min="0" max="100" value="50" step="25" id="slider" list="ticks" oninput="inputSlider(this)">
@@ -54,6 +51,7 @@
                 <button id="slider-submit">Save</button>
             </div>
         </div>
+        <button id="btn" onclick="next()">weiter &#8594;</button>
     </div>
 </body>
 
