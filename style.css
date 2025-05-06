@@ -95,9 +95,7 @@ position: relative; /* Referenz für den Text */
     align-items: center;
 }
 
-.title {
-    font-size: 60px;
-}
+
 
 #name {
     font-size: 3vh; /* Schriftgröße */
