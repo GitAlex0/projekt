@@ -1,5 +1,6 @@
 let answers = {};
 function next() {
+  console.log(document.cookie + "cookie");
   clearButtons();
   populateQuiz(jsonData[randomizedKeys[index]]);
 
@@ -34,6 +35,7 @@ function populateQuiz(question) {
     let slider = document.getElementById("slider");
     slider.dataset.index = randomizedKeys[index];
     console.log(jsonData[randomizedKeys[index]].q + 'slider')
+    if(localStorage.getItem("answers") !== null) {slider.setAttribute("value", JSON.parse(localStorage.getItem("answers"))[randomizedKeys[index]]) || slider.setAttribute("value", 0)}
     document.getElementById("slider-container").style.display = "flex";
     console.log("done");
     document.getElementById("email").innerHTML = "r";
