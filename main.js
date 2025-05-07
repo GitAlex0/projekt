@@ -26,6 +26,7 @@ function fu() {
   randomizedKeys = randomize ? retrieveOrder() : Object.keys(jsonData);
   index = getCookieIndex()
   console.log(randomizedKeys);
+  next()
 }
 
 function getCookieIndex(){

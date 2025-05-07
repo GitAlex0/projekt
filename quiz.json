@@ -8,16 +8,7 @@
       "3": "Not great",
       "4": "Really bad"
     },
-    "skill": {
-      "1": {
-        "name": "wellness",
-        "weight": 50
-      },
-      "2": {
-        "name": "wellbeing",
-        "weight": 30
-      }
-    }
+    "skill": "wellness"
   },
   "2": {
     "q": "What is your favorite color?",
@@ -28,12 +19,7 @@
       "3": "Green",
       "4": "Yellow"
     },
-    "skill": {
-      "1": {
-        "name": "colour",
-        "weight": 100
-      }
-    }
+    "skill": "colour"
   },
   "3": {
     "q": "What is your favorite season?",
@@ -44,12 +30,7 @@
       "3": "Autumn",
       "4": "Winter"
     },
-    "skill": {
-      "1": {
-        "name": "season",
-        "weight": 90
-      }
-    }
+    "skill": "season"
   },
   "4": {
     "q": "How much do you agree?",
@@ -58,12 +39,7 @@
       "min": 0,
       "max": 100
     },
-    "skill": {
-      "1": {
-        "name": "rate",
-        "weight": 50
-      }
-    },
+    "skill": "rate",
     "next": "1"
   },
   "5": {
@@ -75,12 +51,7 @@
       "3": "Gaming",
       "4": "Traveling"
     },
-    "skill": {
-      "1": {
-        "name": "hobby",
-        "weight": 70
-      }
-    }
+    "skill": "hobby"
   },
   "6": {
     "q": "What is your dream destination?",
@@ -91,12 +62,7 @@
       "3": "New York",
       "4": "Sydney"
     },
-    "skill": {
-      "1": {
-        "name": "travel",
-        "weight": 80
-      }
-    },
+    "skill": "travel",
     "next": "5"
   }
 }

@@ -73,3 +73,15 @@ function resolveIds(){
         }
     }
 }
+
+var start = Date.now();
+setInterval(function() {
+    var delta = Date.now() - start;
+    delta = Math.floor(delta/1000)
+    // console.log(delta);
+    
+    document.getElementById("pID").innerHTML = 30 -delta
+    document.getElementById("cD").max = 30
+    document.getElementById("cD").value = 30 -delta
+
+}, 100);

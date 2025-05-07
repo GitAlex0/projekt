@@ -86,7 +86,7 @@ border-radius: 2vh; /* Abgerundete Ecken */
 
 
 
-#name {
+#question {
     font-size: 3vh; /* Schriftgröße */
     font-weight: bold; /* Fettgedruckter Text */
     font-family: "Inter", sans-serif; /* Schriftart */
@@ -152,3 +152,6 @@ border-radius: 2vh; /* Abgerundete Ecken */
     transition: box-shadow 0.1s, background-color 0.1s, transform 0.1s; /* Animationseffekt für den Klick */
 }
 
+.cD{
+    display:none;
+}
