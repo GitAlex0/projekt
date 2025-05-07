@@ -1,5 +1,6 @@
 let answers = {};
 function next() {
+  console.log(document.cookie + "cookie");
   clearButtons();
   populateQuiz(jsonData[randomizedKeys[index]]);
 
@@ -10,7 +11,7 @@ function next() {
   pubProgress = progress;
   console.log(progress + "%");
   updateProgressBar(progress);
-
+  setCookieIndex(index);
   index++;
   if (index >= Object.keys(jsonData).length) {
     console.log("0 reset");
@@ -22,30 +23,39 @@ function next() {
 function populateQuiz(question) {
   console.log(question);
   document.getElementById("name").innerHTML = "question " + question.q;
-  document.getElementById("age").innerHTML = "type " + question.type;
+  //document.getElementById("age").innerHTML = "type " + question.type;
 
   if (question.type == "mc") {
-    document.getElementById("email").innerHTML =
-      "answers " + Object.keys(question.a).length;
+    //document.getElementById("email").innerHTML =
+      //"answers " + Object.keys(question.a).length;
     for (let i = 1; i < Object.keys(question.a).length + 1; i++) {
-      createButton(question.a[i], i);
+      createButton(question.a[i], i, randomizedKeys[index]);
     }
   } else {
     let slider = document.getElementById("slider");
-    slider.dataset.index = index;
+    slider.dataset.index = randomizedKeys[index];
+    console.log(jsonData[randomizedKeys[index]].q + 'slider')
+    if(localStorage.getItem("answers") !== null) {slider.setAttribute("value", JSON.parse(localStorage.getItem("answers"))[randomizedKeys[index]]) || slider.setAttribute("value", 0)}
     document.getElementById("slider-container").style.display = "flex";
     console.log("done");
-    document.getElementById("email").innerHTML = "r";
+    //document.getElementById("email").innerHTML = "r";
   }
 }
 
-function createButton(value, id) {
+function createButton(value, id, questionId) {
   const template = document.getElementById("button-template");
   const button = template.content.firstElementChild.cloneNode(true);
   button.textContent = value;
   button.dataset.id = id;
-  button.dataset.index = index;
+  button.dataset.questionId = questionId;
   document.getElementById("buttons").appendChild(button);
+
+  answers = JSON.parse(localStorage.getItem("answers")) || {};
+  selected = answers[questionId];
+  console.log(selected + 'selected' + questionId);
+  if (id == selected) {
+    button.setAttribute("id", "selected");
+  }
 }
 
 function clearButtons() {
@@ -56,7 +66,6 @@ function clearButtons() {
 }
 
 function updateProgressBar(progress) {
-  console.log(progress);
   bar = document.getElementById("progress");
   bar.value = progress;
   document.getElementById("pLabel").textContent = progress + " %";
@@ -66,7 +75,7 @@ function inputSlider(slider) {
   console.log(slider.value);
   let output = document.getElementById("value");
   let value = slider.value;
-  questionIndex = parseInt(slider.dataset.index) + 1
+  questionIndex = parseInt(slider.dataset.index)
   console.log("slider index above")
   output.innerHTML = value;
   saveAnswer(questionIndex, value)
@@ -74,13 +83,12 @@ function inputSlider(slider) {
 
 function answerButtonPress(button) {
   buttonId = button.dataset.id;
-  questionIndex = button.dataset.index;
-  questionIndex = parseInt(questionIndex) + 1;
-  console.log(questionIndex + "buttonpress");
-  console.log(jsonData[questionIndex].q);
-  console.log(button.dataset.index);
-  console.log(jsonData[questionIndex].a[buttonId]);
-  saveAnswer(questionIndex, buttonId);
+  questionId = button.dataset.questionId;
+  console.log(questionId + "buttonpress");
+  console.log(jsonData[questionId].q);
+  console.log(button.dataset.questionId);
+  console.log(jsonData[questionId].a[buttonId]);
+  saveAnswer(questionId, buttonId);
 
   let other = document.getElementsByClassName("quiz-button");
   Array.from(other).forEach((el) => {
