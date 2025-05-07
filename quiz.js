@@ -23,11 +23,11 @@ function next() {
 function populateQuiz(question) {
   console.log(question);
   document.getElementById("name").innerHTML = "question " + question.q;
-  document.getElementById("age").innerHTML = "type " + question.type;
+  //document.getElementById("age").innerHTML = "type " + question.type;
 
   if (question.type == "mc") {
-    document.getElementById("email").innerHTML =
-      "answers " + Object.keys(question.a).length;
+    //document.getElementById("email").innerHTML =
+      //"answers " + Object.keys(question.a).length;
     for (let i = 1; i < Object.keys(question.a).length + 1; i++) {
       createButton(question.a[i], i, randomizedKeys[index]);
     }
@@ -38,7 +38,7 @@ function populateQuiz(question) {
     if(localStorage.getItem("answers") !== null) {slider.setAttribute("value", JSON.parse(localStorage.getItem("answers"))[randomizedKeys[index]]) || slider.setAttribute("value", 0)}
     document.getElementById("slider-container").style.display = "flex";
     console.log("done");
-    document.getElementById("email").innerHTML = "r";
+    //document.getElementById("email").innerHTML = "r";
   }
 }
 

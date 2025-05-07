@@ -10,43 +10,49 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BO-TEST-O-Mat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h2>Text</h2>
-    example
-    <h1>Welcome to My Website</h1>
-    <p>This is a basic HTML template.</p>
-    <div id="name">name</div>
-    <div id="age">age</div>
-    <div id="email">email</div>
-    <button id="btn" onclick="next()">Click Me</button>
-    <template id="button-template">
-        <button class="quiz-button" onclick="answerButtonPress(this)">Button</button>
-    </template>
-    <div id="buttons">
-
-    </div>
     
-    <div id="slider-container">
-        
-        <input type="range" min="0" max="100" value="50" step="25" id="slider" list="ticks" oninput="inputSlider(this)">
-        <datalist id="ticks">
-            <option value="0"></option>
-            <option value="25"></option>
-            <option value="50"></option>
-            <option value="75"></option>
-            <option value="100"></option>
-        </datalist>
-        <div id="value">value</div>
-        <!-- Button sinnlos, aber vielleicht gewünscht aus UI Perspektive, gerne stylen, keine Funktion -->
-        <button id="slider-submit">Save</button>
-    </div>
-    <label for="progress" id="pLabel"> 0 % </label>
-    <progress id="progress" max="100" value="0">
+    <div class="main-container">
+        <div class="progress-container">
+            <progress id="progress" max="100" value="0" class="progress">
 
-    </progress>
+            </progress>
+            <label for="progress" id="pLabel" class="pLabel"> 0 % </label>
+        </div>
+        <div class="content-container">
+            <div class="quiz-title">
+                <div id="name">name</div>
+            </div>
+            <template id="button-template">
+                <button class="quiz-button" onclick="answerButtonPress(this)">Button</button>
+            </template>
+            <div id="buttons">
+
+            </div>
+            
+            <div id="slider-container">
+            
+                <input type="range" min="0" max="100" value="50" step="25" id="slider" list="ticks" oninput="inputSlider(this)">
+                <datalist id="ticks">
+                    <option value="0"></option>
+                    <option value="25"></option>
+                    <option value="50"></option>
+                    <option value="75"></option>
+                    <option value="100"></option>
+                </datalist>
+                <div id="value">value</div>
+                <!-- Button sinnlos, aber vielleicht gewünscht aus UI Perspektive, gerne stylen, keine Funktion -->
+                <button id="slider-submit">Save</button>
+            </div>
+        </div>
+        <button id="btn" onclick="next()">weiter &#8594;</button>
+    </div>
 </body>
 
 </html>
