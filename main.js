@@ -18,7 +18,7 @@ async function fetchData() {
 }
 
 fetchData();
-// umbennen, Namensbedeutung unbekannt
+// umbennen, Namensbedeutung unbekannt 
 function fu() {
   console.log(jsonData);
   console.log(Object.keys(jsonData).length);
