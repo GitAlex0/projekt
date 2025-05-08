@@ -210,7 +210,7 @@ position: relative; /* Referenz für den Text */
     background-color: #D0F1BF;
     box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.277); /* Optional: Schatten für die Box */
     color: black; /* Textfarbe */
-    font-weight: bold; /* Fettgedruckter Text */
+    font-style:italic;
     font-family: "Inter", sans-serif; /* Schriftart */
     cursor: pointer; /* Zeigt an, dass es klickbar ist */
     font-size: 2vh; /* Schriftgröße */
