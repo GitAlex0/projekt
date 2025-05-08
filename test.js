@@ -66,6 +66,16 @@ function resolveIds(){
             question = jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].q
             answer = jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].a[ids[Object.keys(ids)[i]]];
             console.log("Q: " + question + " A: " + answer)
+            // let time;
+            // if(jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].timed){
+            //     console.log(i);
+            //     time = JSON.parse(localStorage.getItem("times"))[Object.keys(jsonData)[i]];
+                
+            //     console.log("Time taken: " + time)
+            // }
+
+
+            
         }else{
             question = jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].q
             approval = ids[parseInt(i) + 1]

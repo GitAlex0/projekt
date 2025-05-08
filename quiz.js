@@ -36,6 +36,12 @@ function populateQuiz(question) {
     document.getElementById("slider-container").style.display = "flex";
     console.log("done");
   }
+
+  if(question.timed){
+    console.log("timed question")
+    console.log(keepTime(randomizedKeys[index]))
+
+  }
 }
 
 function createButton(value, id, questionId) {
@@ -78,24 +84,61 @@ function inputSlider(slider) {
 }
 
 function answerButtonPress(button) {
+  let time;
   buttonId = button.dataset.id;
   questionId = button.dataset.questionId;
   console.log(questionId + "buttonpress");
   console.log(jsonData[questionId].q);
   console.log(button.dataset.questionId);
   console.log(jsonData[questionId].a[buttonId]);
-  saveAnswer(questionId, buttonId);
+  timed = jsonData[questionId].timed
+  if(timed){
+    console.log("timed button press")
+    
+    time = keepTime(questionId)
+    console.log(time + "pressed")
+  }
+
+  saveAnswer(questionId, buttonId, time);
 
   let other = document.getElementsByClassName("quiz-button");
   Array.from(other).forEach((el) => {
     el.removeAttribute("id");
+    if(timed){ el.setAttribute("disabled", true)}
   });
   button.setAttribute("id", "selected");
 }
 
-function saveAnswer(questionId, answerId) {
+function saveAnswer(questionId, answerId, time=false) {
   answers = JSON.parse(localStorage.getItem("answers")) || {};
   answers[questionId] = answerId;
   localStorage.setItem("answers", JSON.stringify(answers));
   console.log(answers);
+
+  if(time){
+  console.log(time)
+  times = JSON.parse(localStorage.getItem("times")) || {}
+  times[questionId] = time
+  localStorage.setItem("times", JSON.stringify(times));
+  console.log(times);
+}
+}
+
+function keepTime(timeID, force = false){
+  cookie = document.cookie
+  regex = new RegExp(`${timeID}=(\\d+)`)
+  let match = cookie.match(regex)
+  if(match && !force){
+    time = Date.now() - match[1]
+    time = time /1000
+    document.cookie = timeID + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+    return time;
+  }else{
+    date = new Date();
+    date.setDate(date.getDate() + 7);
+    date = date.toUTCString();
+    newCookie = timeID + "=" + Date.now() + "; expires=" + date
+    document.cookie = newCookie;
+    return true;
+  }
 }

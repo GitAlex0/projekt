@@ -51,7 +51,8 @@
       "3": "Gaming",
       "4": "Traveling"
     },
-    "skill": "hobby"
+    "skill": "hobby",
+    "timed": true
   },
   "6": {
     "q": "What is your dream destination?",
