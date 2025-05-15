@@ -1,7 +1,9 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%; /* Optional, um sicherzustellen, dass der Viewport vollständig genutzt wird */
+    height: 100%;
+    overflow: hidden; /* Verhindert Scrollen */
+    touch-action: pan-x pan-y;
 }
 
 .main-container{
@@ -26,18 +28,18 @@ display: flex;
     margin-right: 1vh;
     width: 98vw;
     background-color: #D9D9D9;
-    border-radius: 2vh;
+    border-radius: 4vh;
     height: 10vh;
 }
 
 /* Styling für die Fortschrittsleiste */
 .progress {
-    width: 80%; /* Breite der Fortschrittsleiste */
+    width: 95%; /* Breite der Fortschrittsleiste */
     height: 4vh; /* Höhe der Fortschrittsleiste */
     background-color: #ffffff; /* Hintergrundfarbe der Leiste */
     border-radius: 2vh; /* Abgerundete Ecken */
     overflow: hidden; /* Verhindert, dass der Fortschrittsbalken über die Ränder hinausgeht */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.058); /* Optional: Schatten für die Leiste */
+    box-shadow: 0 0 1vh 1vh rgba(0, 0, 0, 0.125); /* Optional: Schatten für die Leiste */
 position: relative; /* Referenz für den Text */
 }
 
@@ -68,17 +70,17 @@ position: relative; /* Referenz für den Text */
     justify-content: flex-start; /* Richtet die Inhalte am oberen Rand aus */
     align-items: center; /* Zentriert die Inhalte horizontal */
     width: 100%;
-    height: 35vh; /* Abstand zum unteren Rand */
-    padding-top: 10vh; /* Optional: Abstand vom oberen Rand */
+    height: 60vh; /* Abstand zum unteren Rand */
+    padding-top: 7vh; /* Optional: Abstand vom oberen Rand */
 }
 
 .quiz-title {
     background-color: #D0F1BF;
-    width: 80vw;
-    height: 20vh;
-  margin-bottom:5vh;
-border-radius: 2vh; /* Abgerundete Ecken */
-    box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.277); /* Optional: Schatten für die Box */
+    width: 85vw;
+    height: 30vh;
+    margin-bottom:5vh;
+    border-radius: 4vh; /* Abgerundete Ecken */
+    box-shadow: 0.5vh 0.5vh 0.5vh rgba(0, 0, 0, 0.277); /* Optional: Schatten für die Box */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,7 +89,7 @@ border-radius: 2vh; /* Abgerundete Ecken */
 
 
 #question {
-    font-size: 3vh; /* Schriftgröße */
+    font-size: 5vh; /* Schriftgröße */
     font-weight: bold; /* Fettgedruckter Text */
     font-family: "Inter", sans-serif; /* Schriftart */
 }
@@ -95,17 +97,86 @@ border-radius: 2vh; /* Abgerundete Ecken */
 #slider-container{
     justify-content: center;
     align-items: center;
-    display:none;
+    display:flex;
+    flex-direction: column; /* Ordnet die Kinder-Elemente vertikal an */
+    width: 80%; /* Breite des Containers */ 
+    /* fürs debuggen gerne wieder aktivieren
+    background-color: #f0f0f0;  
+    border-radius: 10px;  
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+    */
 }
+
+.slider-labels {
+    display: flex;
+    flex-direction: row; /* Ordnet die Kinder-Elemente horizontal an */
+    justify-content: space-between; /* Zentriert den Text horizontal */
+    align-items: center; /* Zentriert den Text vertikal */
+    width: 100%; /* Breite des Containers */
+    margin-bottom: 1vh;;
+}
+
+.slider-label-text {
+    font-size: 2vh; /* Schriftgröße */
+    font-style: italic;;
+    font-family: "Inter", sans-serif; /* Schriftart */
+    color: black; /* Textfarbe */
+    width: 15%; /* Breite der Labels */
+    text-align: center; /* Zentriert den Text */
+}
+
+.slider-bar {
+    -webkit-appearance: none; /* Entfernt die Standard-Stile des Sliders */
+    width: 90%; /* Breite des Sliders */
+    height: 3vh; /* Höhe des Sliders */
+    border-radius: 10px; /* Abgerundete Ecken */
+    outline: none; /* Entfernt den Fokusrahmen */
+    background-color: #B6D7B9;
+    border-radius: 2vh;
+}
+
+.slider-bar::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 7vh; /* Set a specific slider handle width */
+    height: 7vh; /* Slider handle height */
+    border-radius: 3.5vh;
+    background: #758F73; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border: solid 2px black;
+    box-shadow: 0.3vh 0.3vh 0.3vh rgba(0, 0, 0, 0.199);;
+  }
+
+.slider-marker {
+    display: flex; /* Flexbox für die Marker */
+    flex-direction: row;;
+    justify-content: space-between; /* Zentriert die Marker horizontal */
+    align-items: center; /* Zentriert die Marker vertikal */
+    width: 80%; /* Breite des Containers */
+    margin-top: 2vh; /* Abstand zum Slider */
+}
+
+.slider-marker-text {
+    font-weight: bold;
+    font-family: "Inter", sans-serif; /* Schriftart */
+    font-size: 1.5vh; /* Schriftgröße */
+}
+
 .quiz-button{
     border: none;
-    border-radius: 2vh; /* Abgerundete Ecken */
+    border-radius: 3vh; /* Abgerundete Ecken */
     margin: 1vh;
-    padding: 0.8vh;
-    padding-left:6vh;
-    padding-right:6vh;
+    padding: 1.5vh;
+    padding-left:10vh;
+    padding-right:10vh;
+    margin-top: 5vh;;
     background-color: #B6D7B9;
     box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.277); /* Optional: Schatten für die Box */
+    font-size: 2vh; /* Schriftgröße */
+    color: black; /* Textfarbe */
+    font-weight: bold; /* Fettgedruckter Text */
+    font-family: "Inter", sans-serif; /* Schriftart */
+    cursor: pointer; /* Zeigt an, dass es klickbar ist */
 }
 
 .quiz-button:hover {
@@ -131,13 +202,18 @@ border-radius: 2vh; /* Abgerundete Ecken */
 
 #btn {
     border: none;
-    border-radius: 2vh; /* Abgerundete Ecken */
+    border-radius: 3vh; /* Abgerundete Ecken */
     margin: 1vh;
-    padding: 0.8vh;
-    padding-left:6vh;
-    padding-right:6vh;
+    padding: 1.5vh;
+    padding-left:10vh;
+    padding-right:10vh;
     background-color: #D0F1BF;
     box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.277); /* Optional: Schatten für die Box */
+    color: black; /* Textfarbe */
+    font-style:italic;
+    font-family: "Inter", sans-serif; /* Schriftart */
+    cursor: pointer; /* Zeigt an, dass es klickbar ist */
+    font-size: 2vh; /* Schriftgröße */
 }
 
 #btn:hover {
@@ -172,4 +248,7 @@ border-radius: 2vh; /* Abgerundete Ecken */
     align-items: center;
     gap: 2vh;
     position:absolute;
+}
+p {
+    display: inline-block; /* Inline-Block-Element */
 }
