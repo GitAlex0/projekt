@@ -126,6 +126,7 @@ position: relative; /* Referenz für den Text */
 }
 
 .slider-bar {
+    appearance:none;
     -webkit-appearance: none; /* Entfernt die Standard-Stile des Sliders */
     width: 90%; /* Breite des Sliders */
     height: 3vh; /* Höhe des Sliders */
@@ -200,7 +201,7 @@ position: relative; /* Referenz für den Text */
     box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.559); /* Optional: Schatten für die Box */
 }
 
-#btn {
+.btn {
     border: none;
     border-radius: 3vh; /* Abgerundete Ecken */
     margin: 1vh;
@@ -216,12 +217,12 @@ position: relative; /* Referenz für den Text */
     font-size: 2vh; /* Schriftgröße */
 }
 
-#btn:hover {
+.btn:hover {
     background-color: #c4e3b5; /* Hintergrundfarbe bei Hover */
     transition: box-shadow 0.1s, background-color 0.1s;
 }
 
-#btn:active {
+.btn:active {
     background-color: #b1cab1; /* Hintergrundfarbe bei Klick */
     box-shadow: 0.1vh 0.1vh 0.3vh rgba(0, 0, 0, 0.412); /* Optional: Schatten für die Box */
     transform: translateY(2px); /* Optional: Leichte Verschiebung nach unten bei Klick */
@@ -251,4 +252,8 @@ position: relative; /* Referenz für den Text */
 }
 p {
     display: inline-block; /* Inline-Block-Element */
+}
+
+#resultBtn{
+    display:none;
 }

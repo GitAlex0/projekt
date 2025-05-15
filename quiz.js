@@ -16,7 +16,8 @@ function next() {
   if (index >= Object.keys(jsonData).length) {
     console.log("0 reset");
     index = 0;
-    //Sollte stattdessen zur Ergebnis Seite gehen
+    document.getElementById("nextBtn").style.display="none"
+    document.getElementById("resultBtn").style.display="flex"
   }
 }
 

@@ -21,6 +21,7 @@ fetchData();
 // umbennen, Namensbedeutung unbekannt 
 function fu() {
   console.log(jsonData);
+  saveJSONData();
   console.log(Object.keys(jsonData).length);
   console.log("Successfully loaded data");
   randomizedKeys = randomize ? retrieveOrder() : Object.keys(jsonData);
@@ -103,4 +104,8 @@ function generateQuestionOrder(keys, fixedOrder) {
   });
 
   return finalOrder;
+}
+
+function saveJSONData(){
+  localStorage.setItem("jsonData", JSON.stringify(jsonData))
 }

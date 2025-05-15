@@ -59,23 +59,16 @@ function generateQuestionOrder(keys, fixedOrder) {
 
 function resolveIds(){
     ids = JSON.parse(localStorage.getItem("answers"))
-    console.log(ids);
     for (let i = 0; i < Object.keys(ids).length; i++){
-        console.log(i);
         if(jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].type == "mc"){
             question = jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].q
             answer = jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].a[ids[Object.keys(ids)[i]]];
             console.log("Q: " + question + " A: " + answer)
-            // let time;
-            // if(jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].timed){
-            //     console.log(i);
-            //     time = JSON.parse(localStorage.getItem("times"))[Object.keys(jsonData)[i]];
-                
-            //     console.log("Time taken: " + time)
-            // }
-
-
-            
+            let time;
+            if(jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].timed){
+                time = JSON.parse(localStorage.getItem("times"))[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]]
+                console.log("Time taken: " + time)
+            }
         }else{
             question = jsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].q
             approval = ids[parseInt(i) + 1]
