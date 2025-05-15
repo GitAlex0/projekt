@@ -38,9 +38,16 @@ function populateQuiz(question) {
   }
 
   if(question.timed){
+    let stopwatchContainer = document.getElementById("timed")
+    let lockContainer = document.getElementById("lock")
+    stopwatchContainer.style.display = "flex"
+    lockContainer.style.display = "flex"
+
     console.log("timed question")
     console.log(keepTime(randomizedKeys[index]))
-
+  }else{
+    let lockOpenContainer = document.getElementById("lock-open")
+    lockOpenContainer.style.display = "flex"
   }
 }
 
@@ -65,6 +72,12 @@ function clearButtons() {
   buttonContainer.innerHTML = "";
   const sliderContainer = document.getElementById("slider-container");
   sliderContainer.style.display = "none";
+  const stopwatchContainer = document.getElementById("timed");
+  stopwatchContainer.style.display = "none"
+  let lockContainer = document.getElementById("lock")
+  lockContainer.style.display = "none"
+  let lockOpenContainer = document.getElementById("lock-open")
+  lockOpenContainer.style.display = "none"
 }
 
 function updateProgressBar(progress) {
@@ -135,7 +148,10 @@ function keepTime(timeID, force = false){
     return time;
   }else{
     date = new Date();
+    //7 Tage Limit  
     date.setDate(date.getDate() + 7);
+    //10 Minuten Limit
+    // date.setTime(date.getTime() + 10 * 60 * 1000);
     date = date.toUTCString();
     newCookie = timeID + "=" + Date.now() + "; expires=" + date
     document.cookie = newCookie;

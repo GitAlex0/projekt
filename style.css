@@ -155,3 +155,21 @@ border-radius: 2vh; /* Abgerundete Ecken */
 .cD{
     display:none;
 }
+
+.icon{
+    display:none
+}
+
+.quiz-title {
+    position: relative;
+}
+
+.icons {
+    top: 1vh;
+    left: 1vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2vh;
+    position:absolute;
+}

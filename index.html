@@ -12,7 +12,7 @@
 
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
     <title>BO-TEST-O-Mat</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,19 @@
         </div>
         <div class="content-container">
             <div class="quiz-title">
-                <div id="question">name</div>
+                <div class="icons">
+                    <div class="icon" id="timed">
+                        <embed src="./assets/stopwatch.svg" type="image/svg+xml" width="40" height="40">
+                    </div>
+                    <div class="icon" id="lock">
+                        <embed src="./assets/lock.svg" type="image/svg+xml" width="40" height="40">
+                    </div>
+                    <div class="icon" id="lock-open">
+                        <embed src="./assets/lock-open.svg" type="image/svg+xml" width="40" height="40">
+                    </div>
+                </div>
+                
+                <div id="question"></div>
             </div>
             <template id="button-template">
                 <button class="quiz-button" onclick="answerButtonPress(this)">Button</button>
