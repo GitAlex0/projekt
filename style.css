@@ -64,7 +64,7 @@ position: relative; /* Referenz für den Text */
 }
 
 .progress-text {
-    
+
 }
 
 .pLabel {
@@ -237,7 +237,7 @@ position: relative; /* Referenz für den Text */
     transition: box-shadow 0.1s, background-color 0.1s, transform 0.1s; /* Animationseffekt für den Klick */
 }
 
-.cD{
+{
     display:none;
 }
 
