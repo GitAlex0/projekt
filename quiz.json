@@ -19,6 +19,7 @@
       "3": "Green",
       "4": "Yellow"
     },
+    "c": 2,
     "skill": "colour"
   },
   "3": {
@@ -30,6 +31,7 @@
       "3": "Autumn",
       "4": "Winter"
     },
+    "c": 1,
     "skill": "season"
   },
   "4": {
@@ -51,7 +53,7 @@
       "3": "Gaming",
       "4": "Traveling"
     },
-    "skill": "hobby",
+    "skill": "season",
     "timed": true
   },
   "6": {
