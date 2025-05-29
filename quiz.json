@@ -32,7 +32,8 @@
       "4": "Winter"
     },
     "c": 1,
-    "skill": "season"
+    "skill": "season",
+    "timed": true
   },
   "4": {
     "q": "How much do you agree?",
@@ -63,7 +64,8 @@
       "1": "Paris",
       "2": "Tokyo",
       "3": "New York",
-      "4": "Sydney"
+      "4": "Sydney",
+      "5": "Hessen"
     },
     "skill": "travel",
     "next": "5"
