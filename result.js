@@ -39,30 +39,41 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function checkAnswers(){
     ids = JSON.parse(localStorage.getItem("answers"))
+    times = JSON.parse(localStorage.getItem("times"))
     for (let i = 0; i < Object.keys(ids).length; i++){
         console.log(i);
         skill = ljsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].skill
         questionType = ljsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].type
         correctAnswerId = ljsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].c
-
+        timed = ljsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].timed
         //mc & c
         if(questionType == "mc" && correctAnswerId){
             console.log("mc-c")
             givenAnswerId =  ids[Object.keys(ids)[i]];
+            
             if(givenAnswerId == correctAnswerId){
-                console.log("great job")
-                givePoints(skill, 100)
+                if(timed){
+                    time = times[Object.keys(times)[i]]
+                    console.log(time)
+                }else{
+                    console.log("great job")
+                    givePoints(skill, 100)
+                }
             }else{
                 console.log("WRONG")
                 //no points
             }
         }
+        //mc & nc
         if(questionType == "mc" && !correctAnswerId){
-            givenAnswerId =  ids[Object.keys(ids)[i]];
-            console.log(givenAnswerId)
             console.log("mc-nc")
-            console.log(skill)
+            givenAnswerId =  ids[Object.keys(ids)[i]];
+            length = Object.keys(ljsonData[Object.keys(JSON.parse(localStorage.getItem("answers")))[i]].a).length
+            points = Math.floor((givenAnswerId - 1) / (length - 1)*100)
+            console.log("skill: " + skill + " givenAnswerId: " + givenAnswerId + " length: " + length + " points: " + points)
+            givePoints(skill, points);
         }
+        //r
         if(questionType == "r"){
             console.log("r")
             rating = ids[Object.keys(ids)[i]]
@@ -86,8 +97,7 @@ function countQuestions(){
 function givePoints(skill, points){
     sC = countQuestions();
     if(sC[skill]){
-        console.log("true" + skill);
         rP=points/sC[skill]
-        console.log(rP)
+        console.log("\"" + skill + "\"-Points given: "+ rP)
     }
 }
