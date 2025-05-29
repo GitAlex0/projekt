@@ -52,7 +52,7 @@ position: relative; /* Referenz für den Text */
     border-radius: 2vh; /* Abgerundete Ecken für den Fortschritt */
 }
 
-.pLabel {
+.progress-text-container {
     position: absolute; /* Positioniert den Text relativ zum Fortschrittsbalken */
     top: 50%; /* Vertikale Mitte */
     left: 50%; /* Horizontale Mitte */
@@ -61,6 +61,14 @@ position: relative; /* Referenz für den Text */
     font-weight: bold; /* Optional: Fettgedruckter Text */
     pointer-events: none; /* Verhindert, dass der Text anklickbar ist */
     font-family: "Inter", sans-serif; /* Schriftart */
+}
+
+.progress-text {
+
+}
+
+.pLabel {
+
 }
 
 
@@ -229,7 +237,7 @@ position: relative; /* Referenz für den Text */
     transition: box-shadow 0.1s, background-color 0.1s, transform 0.1s; /* Animationseffekt für den Klick */
 }
 
-.cD{
+{
     display:none;
 }
 
