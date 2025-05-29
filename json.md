@@ -12,7 +12,7 @@
 | ~~**r**~~        | ~~*Object*~~    | ~~*(Nur bei `"r"` Typ)* Objekt mit min. und max. Slider:<br>• `min` *Int*: minimaler Wert<br>• `max` *Int*: maximaler Wert~~  <br>**Nicht implementiert, wahrscheinlich kein Bedarf! <br> Wird in Zukunft entfernt**|
 | **skill**    | *String*    | Skill / Fähigkeit, die mit der Frage eruiert werden soll                                     |
 | **next**     | *String*    | *(Optional)* Die Fragen-ID, die auf diese Frage folgen soll                                  |
-| **timed**    | *Boolean*   | *(Optional)* `true` zeigt an, ob Zeit bei Frage erfasst werden soll. Bei `false` weglassen   |
+| **timed**    | *Object*   | *(Optional)* `max` in Sekunden, maximale Zeit für Höchstpunktzahl <br> `zero` in Sekunden, Zeit nach der 0 Punkte vergeben werden|
 
 ---
 
@@ -32,5 +32,5 @@
     timed: true
 }
 
-0: { q: "", type: "", a: { 1: "", 2: "", 3: "", 4: "", 5: "" }, c: 1, skill: "", next:"", timed: true}
+0: { q: "", type: "", a: { 1: "", 2: "", 3: "", 4: "", 5: "" }, c: 1, skill: "", next:"", timed: {max: , zero: }}
 ```

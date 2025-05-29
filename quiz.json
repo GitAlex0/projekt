@@ -20,7 +20,11 @@
       "4": "Yellow"
     },
     "c": 2,
-    "skill": "colour"
+    "skill": "colour",
+    "timed": {
+      "max": 30,
+      "zero": 60
+    }
   },
   "3": {
     "q": "What is your favorite season?",
@@ -33,7 +37,10 @@
     },
     "c": 1,
     "skill": "season",
-    "timed": true
+    "timed": {
+      "max": 10,
+      "zero": 40
+    }
   },
   "4": {
     "q": "How much do you agree?",
@@ -54,8 +61,7 @@
       "3": "Gaming",
       "4": "Traveling"
     },
-    "skill": "season",
-    "timed": true
+    "skill": "season"
   },
   "6": {
     "q": "What is your dream destination?",
