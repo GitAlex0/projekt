@@ -11,15 +11,15 @@ const quizData = {
     6: { q: "What is your dream destination?", type: "mc", a: { 1: "Paris", 2: "Tokyo", 3: "New York", 4: "Sydney", 5: "Hessen"}, skill: "travel", next:"5"}
 };
 
-
+//Object { wellness: 1, colour: 1, season: 2, rate: 1, travel: 1 }
 
 const skillData = {
-    1: { q: "How are you", type: "mc", a: { 1: "Great", 2: "Fine", 3: "Not great", 4: "Really bad" }, skill: "wellness" },
-    2: { q: "What is your favorite color?", type: "mc", a: { 1: "Red", 2: "Blue", 3: "Green", 4: "Yellow" }, skill: "colour"},
-    3: { q: "What is your favorite season?", type: "mc", a: { 1: "Spring", 2: "Summer", 3: "Autumn", 4: "Winter" }, skill: "season" },
-    4: { q: "How much do you agree?", type: "r", r: { min: 0, max:100 }, skill: "rate", next:"1"},
-    5: { q: "What is your favorite hobby?", type: "mc", a: { 1: "Reading", 2: "Sports", 3: "Gaming", 4: "Traveling" }, skill: "hobby", timed:true},
-    6: { q: "What is your dream destination?", type: "mc", a: { 1: "Paris", 2: "Tokyo", 3: "New York", 4: "Sydney" }, skill: "travel", next:"5"}
+    job1: { wellness: 1, colour: 4 },
+    job2: { season: 3, wellness: 2 },
+    job3: { colour: 5, rate: 1 },
+    job4: { season: 2, rate: 4 },
+    job5: { travel: 3, season: 5 },
+    job6: { colour: 2, travel: 1 }
 };
 
 function createJSON(data, name){
@@ -39,12 +39,14 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-rl.question('(Re-)generate a JSON File: \n 1: Quiz-JSON \n \x1b[9m2: Skill-JSON\x1b[0m\n', (answer) => {
+//strikethrough: \x1b[9m
+//reset: \x1b[0m
+rl.question('(Re-)generate a JSON File: \n 1: Quiz-JSON \n 2: Skill-JSON\n', (answer) => {
     if (answer === '1') {
         createJSON(quizData, "quiz");
     } else if (answer === '2') {
-        // createJSON(skillData, "skills");
-        console.log("Folgt...")
+        createJSON(skillData, "skills");
+        // console.log("Folgt...")
     } else {
         console.log('Unknown command.');
     }

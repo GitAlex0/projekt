@@ -1,6 +1,28 @@
 let result = "";
 let ljsonData;
 // const skillCounts = {};
+let skillData;
+let minMatch = 50;
+
+async function fetchSkillData() {
+  try {
+    const response = await fetch("skills.json");
+    if (!response.ok) {
+      throw new Error("Network response was not ok " + response.statusText);
+    }
+    skillData = await response.json();
+    loadJSONData();
+    checkAnswers();
+  } catch (error) {
+    console.error("There was a problem with the fetch operation:", error);
+  }
+}
+
+fetchSkillData();
+
+function runAfterFetchSkillData(){
+    console.log(skillData);
+}
 
 function loadJSONData(){
     ljsonData = JSON.parse(localStorage.getItem("jsonData"))
@@ -33,7 +55,7 @@ function resolveIds(){
 }
 document.addEventListener("DOMContentLoaded", function() {
     loadJSONData();
-    resolveIds();
+    // resolveIds();
 });
 
 
@@ -44,6 +66,8 @@ function mapTimePoints(val, max, zero){
 }
 
 function checkAnswers(){
+    localStorage.setItem("points", JSON.stringify({}));
+
     ids = JSON.parse(localStorage.getItem("answers"))
     times = JSON.parse(localStorage.getItem("times"))
     for (let i = 0; i < Object.keys(ids).length; i++){
@@ -92,6 +116,7 @@ function checkAnswers(){
         }
         console.log('-'.repeat(10));
     }
+    calculateJobs()
 }
 
 function countQuestions(){
@@ -118,4 +143,85 @@ function givePoints(skill, points){
 function printPoints(){
     p = localStorage.getItem("points") || JSON.stringify({})
     document.getElementById("points").innerHTML = p
+    j = localStorage.getItem("jobScore") || JSON.stringify({})
+    document.getElementById("jobScore").innerHTML = j
+}
+
+function calculateJobs(){
+    pointsO = JSON.parse(localStorage.getItem("points")) || {}
+    jobScore = {}
+    jobTopSkills = {}
+
+    for(const job of Object.keys(skillData)){
+        const jobSkills = skillData[job];
+        let score = 0;
+        let maxScore = 0;
+        let skillScores = [];
+
+        for(const skill of Object.keys(jobSkills)){
+            const weight = jobSkills[skill];
+            const userPoints = pointsO[skill] || 0;
+            score += userPoints * weight;
+            maxScore += 100 * weight;
+            const skillPercent = (userPoints / 100) * 100;
+            skillScores.push({ skill, score: Math.round(skillPercent) });
+        }
+        jobScore[job] = maxScore > 0 ? (score / maxScore) * 100 : 0;
+
+        skillScores.sort((a, b) => b.score - a.score);
+        jobTopSkills[job] = skillScores.slice(0, 3);
+    }
+    localStorage.setItem("jobScore", JSON.stringify(jobScore));
+    localStorage.setItem("jobTopSkills", JSON.stringify(jobTopSkills));
+    console.log(jobScore)
+    console.log(jobTopSkills)
+    populateResults()
+}
+
+function populateResults(){
+    jobScore = JSON.parse(localStorage.getItem("jobScore")) || {}
+    jobTopSkills = JSON.parse(localStorage.getItem("jobTopSkills")) || {}
+
+    const sortedJobs = Object.keys(jobScore).sort((a, b) => jobScore[b] - jobScore[a]);
+
+    for(const job of sortedJobs){
+        console.log("Job: " + job + ", Score: " + jobScore[job] + ", Top Scores: " + JSON.stringify(jobTopSkills[job]));
+        if(jobScore[job] >= minMatch){
+            makeResultCard(job ,Math.floor(jobScore[job]), jobTopSkills[job])
+        }
+        console.log('-'.repeat(10));
+    }
+}
+
+function makeResultCard(job="none", score=0, skills){
+    const template = document.getElementById("result-template");
+    const card = template.content.cloneNode(true);
+    const container = card.querySelector("div");
+
+    const title = container.querySelector("p");
+
+    const jobBar = container.querySelectorAll("progress")[0]
+    const jobLabel = container.querySelectorAll("label")[0]
+    jobBar.value = Math.floor(score);
+    jobLabel.textContent = jobBar.value + " %"
+
+    for(i=0; i<skills.length; i++){
+        console.log(skills[i].skill + skills[i].score);
+        let skillBar = container.querySelectorAll(".attributeBar")[i]
+        let skillLabel = container.querySelectorAll(".attributeLabel")[i]
+        let skillNameLabel = container.querySelectorAll(".attributeNameLabel")[i]
+
+        skillBar.style.display='inline'
+        skillLabel.style.display='inline'
+        skillNameLabel.style.display='inline'
+
+        skillBar.value = skills[i].score
+        skillLabel.textContent = skillBar.value + " %"
+        skillNameLabel.textContent = skills[i].skill
+    }
+    title.textContent = job
+
+
+
+    document.getElementById("results").appendChild(card)
 }

@@ -5,12 +5,44 @@
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
     <!-- <script src="main.js"></script> -->
     <meta charset="UTF-8" />
-    <title>result
-    </title>
+    <title>&#x2606;result&#x2606;</title>
+    <link rel="stylesheet" href="result.css">
 </head>
-<body style="background-color: black; color:white">
+<body style="background-color: white; color:black">
     <div id="result">dividiv</div>
-    <button onclick="localStorage.removeItem('points'); printPoints()">reset points</button>
+    <div id="jobScore">dividiv</div>
+    <button onclick="localStorage.removeItem('points');localStorage.removeItem('jobScore'); printPoints()">reset points</button>
+    <button onclick="makeResultCard()">mRC()</button>
     <div id="points">i bin a div</div>
+
+    <template id="result-template">
+        <div style="outline:solid; padding:10px; margin:20px">
+            <p class="jobName">Job-Name</p>
+            
+            <progress max="100" value="0" class="scoreBar"></progress>
+            <label class="scoreLabel"> 0 % </label>
+
+            <button onclick="this.nextElementSibling.style.display = window.getComputedStyle(this.nextElementSibling).display === 'none' ? 'block' : 'none';" class="toggleButton">toggle</button>
+
+            <div class="attributes">
+                <br><br>
+                    <progress max="100" value="0" class="attributeBar"></progress>
+                    <label class="attributeLabel"> 0 % </label>
+                    <label class="attributeNameLabel"> name </label>
+                <br>
+                    <progress max="100" value="0" class="attributeBar"></progress>
+                    <label class="attributeLabel"> 0 % </label>
+                    <label class="attributeNameLabel"> name </label>
+                <br>
+                    <progress max="100" value="0" class="attributeBar"></progress>
+                    <label class="attributeLabel"> 0 % </label>
+                    <label class="attributeNameLabel"> name </label>
+            </div>
+        </div>
+        
+    </template>
+    <div id="results"><!-- Hier wird das Template eingefügt --></div>
+
+    
 </body>
 </html>

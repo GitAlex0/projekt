@@ -1,0 +1,26 @@
+{
+  "job1": {
+    "wellness": 1,
+    "colour": 4
+  },
+  "job2": {
+    "season": 3,
+    "wellness": 2
+  },
+  "job3": {
+    "colour": 5,
+    "rate": 1
+  },
+  "job4": {
+    "season": 2,
+    "rate": 4
+  },
+  "job5": {
+    "travel": 3,
+    "season": 5
+  },
+  "job6": {
+    "rate": 2,
+    "travel": 1
+  }
+}
