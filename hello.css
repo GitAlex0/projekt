@@ -188,3 +188,14 @@ li {
   transform: translateY(2px); /* Optional: Leichte Verschiebung nach unten bei Klick */
   transition: box-shadow 0.1s, background-color 0.1s, transform 0.1s; /* Animationseffekt für den Klick */
 }
+
+del {
+  text-decoration: line-through;
+  background-color: #fbb;
+  color: #555;
+}
+
+ins {
+  text-decoration: none;
+  background-color: #d4fcbc;
+}
