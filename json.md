@@ -1,6 +1,22 @@
-# JSON Datei Aufbau
+# Dokumentation JSON-Dateien
+Zum erstellen:
+- Daten in `create.js` in `quizData` oder `skillData` eingeben
+- Befehl in Terminal ausführen:
+    ```console
+    node create.js
+    ```
+## Inhaltsverzeichnis
 
-## Felder
+- [quiz.json Aufbau](#quizjson-aufbau)
+    - [Felder](#felder)
+    - [Beispiel Frage](#beispiel-frage)
+- [skills.json Aufbau](#skillsjson-aufbau)
+    - [Felder](#felder-1)
+    - [Beispiel](#beispiel-beruf)
+
+## quiz.json Aufbau
+
+### Felder
 
 | Feld         | Typ         | Beschreibung                                                                                   |
 |--------------|-------------|-----------------------------------------------------------------------------------------------|
@@ -16,9 +32,9 @@
 
 ---
 
-## Beispiel Frage
+### Beispiel Frage
 
-```json
+```js
 5: {
     q: "What is your favorite hobby?",
     type: "mc",
@@ -33,4 +49,26 @@
 }
 
 0: { q: "", type: "", a: { 1: "", 2: "", 3: "", 4: "", 5: "" }, c: 1, skill: "", next:"", timed: {max: , zero: }}
+```
+
+
+
+
+## skills.json Aufbau
+
+### Felder
+
+| Feld         | Typ         | Beschreibung                                                                                   |
+|--------------|-------------|-----------------------------------------------------------------------------------------------|
+| **job1, job2, ...** | *Object*   | Name des Beruf(sfelds)                                                                 |
+| **skill1, skill2**        | *Int*    | Gewichtung des jeweiligen Berufs, sollte ein  niedriger einstelliger Wert sein *(1-5)*                                                                                        |
+
+### Beispiel Beruf
+```js
+job1: {
+    skill1: 1,
+    skill2: 4,
+}
+
+job1: { skill1: 1, skill2: 4 },
 ```
