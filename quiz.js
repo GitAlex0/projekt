@@ -1,4 +1,26 @@
 let answers = {};
+document.addEventListener('DOMContentLoaded', function() {
+    var bar = new ProgressBar.Line('#progress-bar', {
+        strokeWidth: 8,
+        color: '#96BE93',
+        trailColor: '#e3e3e3',
+        trailWidth: 8,
+        easing: 'easeInOut',
+        svgStyle: {width: '100%', height: '100%', borderRadius: '2vh', display: 'block'},
+        text: { autoStyleContainer: false },
+        from: { color: '#96BE93' },
+        to: { color: '#96BE93' },
+        step: (state, bar) => {
+            let percent = Math.round(bar.value() * 100);
+            document.getElementById('pLabel').textContent = percent + ' %';
+        }
+    });
+    window.setProgress = function(percent) {
+        bar.animate(percent / 100);
+    };
+
+    setProgress(0);
+});
 function next() {
   console.log(document.cookie + "cookie");
   clearButtons();
@@ -10,7 +32,7 @@ function next() {
   progress = Math.round(progress);
   pubProgress = progress;
   console.log(progress + "%");
-  updateProgressBar(progress);
+  setProgress(progress);
   setCookieIndex(index);
   index++;
   if (index >= Object.keys(jsonData).length) {
@@ -79,12 +101,6 @@ function clearButtons() {
   lockContainer.style.display = "none"
   let lockOpenContainer = document.getElementById("lock-open")
   lockOpenContainer.style.display = "none"
-}
-
-function updateProgressBar(progress) {
-  bar = document.getElementById("progress");
-  bar.value = progress;
-  document.getElementById("pLabel").textContent = progress + " %";
 }
 
 function inputSlider(slider) {
