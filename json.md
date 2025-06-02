@@ -61,7 +61,7 @@ Zum erstellen:
 | Feld         | Typ         | Beschreibung                                                                                   |
 |--------------|-------------|-----------------------------------------------------------------------------------------------|
 | **job1, job2, ...** | *Object*   | Name des Beruf(sfelds)                                                                 |
-| **skill1, skill2**        | *Int*    | Gewichtung des jeweiligen Berufs, sollte ein  niedriger einstelliger Wert sein *(1-5)*                                                                                        |
+| **skill1, skill2**        | *Int*    | Gewichtung des jeweiligen Attributs, sollte ein  niedriger einstelliger Wert sein *(1-5)*                                                                                        |
 
 ### Beispiel Beruf
 ```js
