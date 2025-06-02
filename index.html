@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
+    <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/1.1.1/dist/progressbar.js"></script>
     <script src="test.js"></script>
     <script src="quiz.js"></script>
     <script src="main.js"></script>
@@ -24,12 +25,10 @@
     
     <div class="main-container">
         <div class="progress-container">
-            <progress id="progress" max="100" value="0" class="progress">
-
-            </progress>
+            <div id="progress-bar" class="progress"></div>
             <div class="progress-text-container">
                 <p class="progress-text">BO-Test-O-Mat Fortschritt:</p>
-                <label for="progress" id="pLabel" class="pLabel"> 0 % </label>
+                <label id="pLabel" class="pLabel">0 %</label>
             </div>
         </div>
         
