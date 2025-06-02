@@ -103,12 +103,6 @@ function clearButtons() {
   lockOpenContainer.style.display = "none"
 }
 
-function updateProgressBar(progress) {
-  bar = document.getElementById("progress");
-  bar.value = progress;
-  document.getElementById("pLabel").textContent = progress + " %";
-}
-
 function inputSlider(slider) {
   console.log(slider.value);
   let output = document.getElementById("value");
