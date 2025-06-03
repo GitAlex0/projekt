@@ -282,3 +282,16 @@ body {
     cursor: pointer; /* Zeigt an, dass es klickbar ist */
     font-size: 2vh; /* Schriftgröße */
 }
+
+.attributes {
+    opacity: 0;
+    max-height: 0;
+    transition: opacity 0.3s easeInOut, max-height 0.3s easeInOut;
+    overflow: hidden;
+    display: block;
+}
+
+.attributes.visible {
+    opacity: 1;
+    max-height: 1000px;
+}

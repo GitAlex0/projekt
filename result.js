@@ -237,3 +237,7 @@ function makeResultCard(job="none", score=0, skills, index){
 
     document.getElementById("results").appendChild(card)
 }
+function toggleAttributes(button) {
+    const attributesDiv = button.nextElementSibling;
+    attributesDiv.classList.toggle('visible');
+}
