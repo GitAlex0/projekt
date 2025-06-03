@@ -169,6 +169,10 @@ body {
     display: inline-block;
 }
 
+.jobRanking{
+    background-color: orange;
+}
+
 .jobNameGesamt {
     display: flex;
     align-items: center;

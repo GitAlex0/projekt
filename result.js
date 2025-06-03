@@ -183,25 +183,37 @@ function populateResults(){
     jobTopSkills = JSON.parse(localStorage.getItem("jobTopSkills")) || {}
 
     const sortedJobs = Object.keys(jobScore).sort((a, b) => jobScore[b] - jobScore[a]);
-
+    let jobIndex = 1;
     for(const job of sortedJobs){
         console.log("Job: " + job + ", Score: " + jobScore[job] + ", Top Scores: " + JSON.stringify(jobTopSkills[job]));
+        
         if(jobScore[job] >= minMatch){
-            makeResultCard(job ,Math.floor(jobScore[job]), jobTopSkills[job])
+            console.log(job ,Math.floor(jobScore[job]), jobTopSkills[job], jobIndex)
+
+            makeResultCard(job ,Math.floor(jobScore[job]), jobTopSkills[job], jobIndex)
+            jobIndex++;
         }
         console.log('-'.repeat(10));
     }
 }
+function makeTempCard(){
+    skills = [{"skill":"colour","score":Math.floor(Math.random()*100)},{"skill":"rate","score":Math.floor(Math.random()*100)}]
+    makeResultCard("Toller Job", Math.floor(Math.random()*100), skills, Math.floor((Math.random()*10)+1))
+}
 
-function makeResultCard(job="none", score=0, skills){
+function makeResultCard(job="none", score=0, skills, index){
+    console.log(index + "This is the mRC Index")
     const template = document.getElementById("result-template");
     const card = template.content.cloneNode(true);
-    const container = card.querySelector("div");
 
-    const title = container.querySelector("p");
+    const container = card.querySelector(".result-box");
+    const title = container.querySelector(".jobName");
+    const jobRank = container.querySelector(".jobRanking");
 
-    const jobBar = container.querySelectorAll("progress")[0]
-    const jobLabel = container.querySelectorAll("label")[0]
+    jobRank.textContent = index + `.\xa0`;
+
+    const jobBar = container.querySelectorAll(".scoreBar")[0]
+    const jobLabel = container.querySelectorAll(".scoreLabel")[0]
     jobBar.value = Math.floor(score);
     jobLabel.textContent = jobBar.value + " %"
 
