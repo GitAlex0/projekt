@@ -237,6 +237,21 @@ function makeResultCard(job="none", score=0, skills, index){
 
     document.getElementById("results").appendChild(card)
 }
+
+function downloadPDF() {
+    // Select the results section you want to export
+    var element = document.getElementById('results');
+    // Optional: customize options for A4, margins, etc.
+    var opt = {
+        margin:       0.5,
+        filename:     'BO-Test-O-Mat-Ergebnisse.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'cm', format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
+}
+
 function toggleAttributes(button) {
     const attributesDiv = button.nextElementSibling;
     attributesDiv.classList.toggle('visible');
