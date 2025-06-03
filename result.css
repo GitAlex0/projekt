@@ -1,14 +1,280 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif; /* Schriftart */
+  background-color: #F5F5F5; /* Hintergrundfarbe */
+}
+
+
+.progress-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin-top: 1vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  margin-bottom: 5vh;;
+  width: 98vw;
+  background-color: #D9D9D9;
+  border-radius: 4vh;
+  height: 10vh;
+}
+
+
+.progress-text-container {
+  display: flex;
+  white-space: nowrap;
+  width: 100%;
+  height: clamp(3em, 10vw, 6em);
+  overflow: hidden;
+  color: black; /* Textfarbe */
+  font-weight: bold; /* Optional: Fettgedruckter Text */
+  pointer-events: none; /* Verhindert, dass der Text anklickbar ist */
+  font-family: "Inter", sans-serif; /* Schriftart */
+}
+
+.progress-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4vh;
+  font-weight: 700;
+  z-index: 1;
+  text-align: center;
+  animation: marquee 7s infinite linear;
+  padding: 0 4.25em;
+  animation: loopText 10s infinite linear;  
+}
+
+@keyframes loopText {
+
+  from {
+      transform: translateX(0);
+   }
+
+  to {
+      transform: translateX(-100%);
+   }
+
+}
+
+.ueberschrift1{
+    text-align: center;
+    font-size: 5vh;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    text-decoration: underline;
+    margin-top: 8vh;
+    margin-bottom: 2vh;
+}
+
+.ueberschrift2{
+    text-align: center;
+    font-size: 3vh;
+    font-family: "Inter", sans-serif;
+    margin: 0vh 10vw 6vh 10vw;
+}
+
 .attributes{
     display:none;
 }
 
+
+.attributeBarContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
 .attributeBar {
     display: none;
+    width: 95%;
+    height: 3vh;
+    margin: 1vh auto;
+    border-radius: 2vh;
+    overflow: hidden;
+    box-shadow: 0 0 1vh 1vh rgba(0, 0, 0, 0.125);
+}
+
+.attributeBar::-webkit-progress-value {
+    background-color: #14213D; /* Dunkelblau wie im Screenshot */
+    border-radius: 2vh;
+}
+
+.attributeBar::-webkit-progress-bar {
+    background-color: #D9D9D9; /* Hellgrau wie im Screenshot */
+    border-radius: 2vh;
 }
 
 .attributeLabel{
     display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    margin-left: 3vw;
+    font-size: 2vh;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
 }
 .attributeNameLabel{
     display: none;
+    margin-left: 3vw;
+    font-size: 2vh;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+}
+
+.attributesIntroduction {
+    font-family: "Inter", sans-serif; 
+    font-size: 4vh;
+    font-weight: 700;
+    margin-left: 3vw;
+    margin-top: 0px;
+}
+
+.result-box {
+    width: 98vw;
+    margin: auto;
+    position: relative;
+    /* border: solid 1px; */
+    background-color: #FFE5C9;
+    margin-bottom: 2vh;
+    border-radius: 3vh;
+    padding-bottom: 0.5vh;
+    box-shadow: 5px 5px 5px rgba(90, 90, 90, 0.144);
+}
+
+.jobRanking {
+    font-size: 4.5vh;
+    font-weight: 700; 
+    font-family: "Inter", sans-serif; 
+    text-align: center;
+    margin: 0px;
+    display: inline-block;
+}
+
+.jobName {
+    font-size: 4.5vh;
+    font-weight: 700; 
+    font-family: "Inter", sans-serif; 
+    text-align: center;
+    margin: 0px;
+    display: inline-block;
+}
+
+.jobNameGesamt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    height: 10vh;
+}
+
+.jobDescription {
+    font-size: 2.3vh;
+    font-family: "Inter", sans-serif; 
+    text-align: center;
+    margin: 0px;
+    font-weight: 500;
+    margin-bottom: 2vh;
+}
+
+.scoreBar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 3vh;
+}
+.scoreBar {
+    width: 95%;
+    height: 4vh;
+    border-radius: 2vh;
+    overflow: hidden;
+    box-shadow: 0 0 1vh 1vh rgba(0, 0, 0, 0.125);
+    position: relative;
+}
+
+.scoreBar::-webkit-progress-value {
+    background-color: #14213D; /* Dunkelblau wie im Screenshot */
+    border-radius: 2vh;
+}
+
+.scoreBar::-webkit-progress-bar {
+    background-color: #D9D9D9; /* Hellgrau wie im Screenshot */
+    border-radius: 2vh;
+}
+
+.scoreLabelDiv {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    pointer-events: none;
+    font-family: "Inter", sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.togglebuttondiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 8vh;
+
+}
+
+.toggleButton {
+    display: block;
+    margin: 3vh auto 3vh auto; /* oben etwas Abstand, dann zentriert */
+    padding-left: 10vw;
+    padding-right: 10vw;
+    background-color: #FFE5C9;
+    border: none;
+    color: black;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+}
+
+.ueberschrift3{
+    text-align: center;
+    font-size: 5vh;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    margin-top: 8vh;
+    margin-bottom: 2vh;
+}
+
+.ueberschrift4{
+    text-align: center;
+    font-size: 2.5vh;
+    font-family: "Inter", sans-serif;
+    margin: 0vh 10vw 6vh 10vw;
+}
+
+.downloadButton {
+    border: none;
+    border-radius: 3vh; /* Abgerundete Ecken */
+    margin: 1vh;
+    padding: 1.5vh;
+    padding-left:10vh;
+    padding-right:10vh;
+    background-color: #D0F1BF;
+    box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.277); /* Optional: Schatten für die Box */
+    color: black; /* Textfarbe */
+    font-style:italic;
+    font-family: "Inter", sans-serif; /* Schriftart */
+    cursor: pointer; /* Zeigt an, dass es klickbar ist */
+    font-size: 2vh; /* Schriftgröße */
 }
