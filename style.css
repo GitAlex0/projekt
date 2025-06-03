@@ -202,6 +202,13 @@ html, body {
     box-shadow: 0 0 0 2px #A0C8A0; /* Optional: Fokussierungseffekt */
 }
 
+.quiz-button:disabled{
+    background-color: #D0F1BF;
+    color: #A0C8A0;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
 #selected{
     background-color:#758F73;
     box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.559); /* Optional: Schatten für die Box */

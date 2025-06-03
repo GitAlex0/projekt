@@ -67,7 +67,7 @@ function populateQuiz(question) {
     lockContainer.style.display = "flex"
 
     console.log("timed question")
-    console.log(keepTime(randomizedKeys[index]))
+    console.log(keepTime(randomizedKeys[index], true))
   }else{
     let lockOpenContainer = document.getElementById("lock-open")
     lockOpenContainer.style.display = "flex"
@@ -125,7 +125,7 @@ function answerButtonPress(button) {
   if(timed){
     console.log("timed button press")
     
-    time = keepTime(questionId)
+    time = keepTime(questionId, false)
     console.log(time + "pressed")
   }
 
@@ -154,16 +154,12 @@ function saveAnswer(questionId, answerId, time=false) {
 }
 }
 
-function keepTime(timeID, force = false){
+function keepTime(timeID, start=true){
   cookie = document.cookie
   regex = new RegExp(`${timeID}=(\\d+)`)
   let match = cookie.match(regex)
-  if(match && !force){
-    time = Date.now() - match[1]
-    time = time /1000
-    document.cookie = timeID + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC"
-    return time;
-  }else{
+  // console.log(timeID + start + match)
+  if(!match && start){
     date = new Date();
     //7 Tage Limit  
     date.setDate(date.getDate() + 7);
@@ -172,6 +168,17 @@ function keepTime(timeID, force = false){
     date = date.toUTCString();
     newCookie = timeID + "=" + Date.now() + "; expires=" + date
     document.cookie = newCookie;
-    return true;
+    return "Timer started"
+  }else if(match && !start){
+    time = Date.now() - match[1]
+    time = time /1000
+    document.cookie = timeID + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+    return time;
+  }else if(match && start){
+    return "Timer already running, continue..."
+  }else{
+    return "keepTime Error, no Match found"
   }
 }
+
+

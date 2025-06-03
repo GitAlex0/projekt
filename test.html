@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Browser Size: </h1>
+    <p id="dimensions"></p>
+    <script>
+    function updateDimensions() {
+        document.getElementById('dimensions').textContent =
+            'Width: ' + window.innerWidth + 'px, Height: ' + window.innerHeight + 'px';
+    }
+    window.addEventListener('resize', updateDimensions);
+    updateDimensions();
+    </script>
+</body>
+</html>
