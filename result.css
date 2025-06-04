@@ -264,7 +264,7 @@ body {
     text-align: center;
     font-size: 2.5vh;
     font-family: "Inter", sans-serif;
-    margin: 0vh 10vw 6vh 10vw;
+    margin: 0vh 10vw 3vh 10vw;
 }
 
 .downloadButton {
@@ -274,14 +274,50 @@ body {
     padding: 1.5vh;
     padding-left:10vh;
     padding-right:10vh;
-    background-color: #D0F1BF;
+    background-color: #14213D;
     box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.277); /* Optional: Schatten für die Box */
-    color: black; /* Textfarbe */
+    color: white; /* Textfarbe */
     font-style:italic;
     font-family: "Inter", sans-serif; /* Schriftart */
     cursor: pointer; /* Zeigt an, dass es klickbar ist */
     font-size: 2vh; /* Schriftgröße */
+    margin-bottom: 3vh;
 }
+
+.downloadButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+}
+
+.divider {
+    width: 85%;
+    height: 0.2vh;
+    background-color: black; /* Hellgrau */
+    margin: 2vh auto; /* Zentriert und mit Abstand oben und unten */
+}
+
+.footnotes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footnoteText {
+    margin: 1.5vh 8vw 1.5vh 8vw;
+    font-size: 2vh;
+    text-align: center;
+}
+
+.link{
+    text-decoration: none; /* Entfernt die Unterstreichung */
+    color: black; /* Textfarbe */
+    font-family: "Inter", sans-serif; /* Schriftart */
+    font-weight: 700; /* Optional: Schriftgewicht */
+}
+
 
 .attributes {
     opacity: 0;
