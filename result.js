@@ -175,6 +175,7 @@ function calculateJobs(){
     localStorage.setItem("jobTopSkills", JSON.stringify(jobTopSkills));
     console.log(jobScore)
     console.log(jobTopSkills)
+    saveData(pointsO, jobScore, jobTopSkills);
     populateResults()
 }
 
@@ -255,4 +256,10 @@ function downloadPDF() {
 function toggleAttributes(button) {
     const attributesDiv = button.nextElementSibling;
     attributesDiv.classList.toggle('visible');
+}
+
+function saveData(points, jobScore, jobTopSkills){
+    ids = JSON.parse(localStorage.getItem("answers"))
+
+    saveDataToDB(ids, points, jobScore, jobTopSkills)
 }
