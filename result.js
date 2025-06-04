@@ -257,6 +257,12 @@ function toggleAttributes(button) {
     const attributesDiv = button.nextElementSibling;
     attributesDiv.classList.toggle('visible');
 }
+function toggleAll(){
+    let buttons = document.getElementsByClassName("toggleButton")
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].nextElementSibling.classList.add('visible');
+    }
+}
 
 function saveData(points, jobScore, jobTopSkills){
     ids = JSON.parse(localStorage.getItem("answers"))
