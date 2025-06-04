@@ -22,10 +22,9 @@ Zum erstellen:
 |--------------|-------------|-----------------------------------------------------------------------------------------------|
 | **1, 2, ...** | *Int*      | Fragen-ID, einzigartig, immer hochzählen                                                     |
 | **q**        | *String*    | Frage                                                                                        |
-| **type**     | *String*    | Fragentyp:<br>• `"mc"`: Multiple Choice<br>• `"r"`: Slider<br>• `"i"`: Input-Feld                |
+| **type**     | *String*    | Fragentyp:<br>• `"mc"`: Multiple Choice<br>• `"r"`: Slider<br>• *`"i"`: Input-Feld* **Folgt...**                |
 | **a**        | *Object*    | *(Nur bei `"mc"` Typ)* Objekt, das alle Antwortmöglichkeiten enthält <br> Aktuelles Limit: `5`, Design muss optimiert werden für mehr Fragen                         |
 | **c**        | *Int*       | *(Optional, bei `"mc"` Typ)* Die korrekte Antwort                                            |
-| ~~**r**~~        | ~~*Object*~~    | ~~*(Nur bei `"r"` Typ)* Objekt mit min. und max. Slider:<br>• `min` *Int*: minimaler Wert<br>• `max` *Int*: maximaler Wert~~  <br>**Nicht implementiert, wahrscheinlich kein Bedarf! <br> Wird in Zukunft entfernt**|
 | **skill**    | *String*    | Skill / Fähigkeit, die mit der Frage eruiert werden soll                                     |
 | **next**     | *String*    | *(Optional)* Die Fragen-ID, die auf diese Frage folgen soll                                  |
 | **timed**    | *Object*   | *(Optional)* `max` in Sekunden, maximale Zeit für Höchstpunktzahl <br> `zero` in Sekunden, Zeit nach der 0 Punkte vergeben werden|
