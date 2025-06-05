@@ -23,7 +23,7 @@
     
 </head>
 
-<body>
+<body onload="keepTime(0)">
     <button class="debug-buttons" onclick="window.location.href='hello.html'">hello.html</button>
     <button class="debug-buttons" onclick="window.location.href='index.html'">index.html</button>
     <button class="debug-buttons" onclick="window.location.href='result.html'">result.html</button>
@@ -88,7 +88,7 @@
             </div>
         </div>
         <button class="btn" id="nextBtn" onclick="next()">weiter &#8594;</button>
-        <button class="btn" id="resultBtn" onclick="window.location.href = 'result.html'">ergebnisse &#8594;</button>
+        <button class="btn" id="resultBtn" onclick="keepTime(0, false);window.location.href = 'result.html'">ergebnisse &#8594;</button>
 
         <button class="debug-buttons" onclick="document.cookie = 'index=; expires=Thu, 01 Jan 1970 00:00:00 UTC'">delete index cookie</button>
         <button class="debug-buttons" onclick="localStorage.clear()">delete data</button>

@@ -201,10 +201,17 @@ function keepTime(timeID, start=true){
     document.cookie = newCookie;
     return "Timer started"
   }else if(match && !start){
+    if(!timeID == 0){
     time = Date.now() - match[1]
     time = time /1000
     document.cookie = timeID + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC"
     return time;
+    }else{
+    time = Date.now() - match[1]
+    time = time /1000
+    document.cookie = timeID + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+    localStorage.setItem("totalTime", time)
+    }
   }else if(match && start){
     return "Timer already running, continue..."
   }else{
