@@ -8,7 +8,9 @@ const quizData = {
     3: { q: "What is your favorite season?", type: "mc", a: { 1: "Spring", 2: "Summer", 3: "Autumn", 4: "Winter" }, c: 1, skill: "season", timed:{max: 10, zero: 40} },
     4: { q: "How much do you agree?", type: "r", r: { min: 0, max:100 }, skill: "rate", next:"1"},
     5: { q: "What is your favorite hobby?", type: "i", c: 24, skill: "season"},
-    6: { q: "What is your dream destination?", type: "mc", a: { 1: "Paris", 2: "Tokyo", 3: "New York", 4: "Sydney", 5: "Hessen"}, skill: "travel", next:"5"}
+    6: { q: "What is your dream destination?", type: "mc", a: { 1: "Paris", 2: "Tokyo", 3: "New York", 4: "Sydney", 5: "Hessen"}, skill: "travel", next:"5"},
+    7: { q: "Kannst du Stress?", type: "mc", a: { 1: "Nein", 2: "Eher nein", 3: "So lala", 4: "Eher ja", 5: "Ja"}, skill: "stress", next:"8"},
+    8: { q: "BEWEIS ES, DIE ZEIT LÄUFT: <br> WIE GEHT DIE ZAHLENFOLGE WEITER? <br>6 - 5 - 4 - 3 - 2 - ?", type: "i", c: 1, skill: "stress", timed:{max: 30, zero: 60}},
 };
 
 //Object { wellness: 1, colour: 1, season: 2, rate: 1, travel: 1 }
