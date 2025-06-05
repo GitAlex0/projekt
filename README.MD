@@ -34,6 +34,7 @@ Zum erstellen:
 | **skill**    | *String*    | Immer                                                        | Skill / Fähigkeit, die mit der Frage eruiert werden soll                                     |
 | **next**     | *String*    | Optional                                                     |  Die Fragen-ID, die auf diese Frage folgen soll                                  |
 | **timed**    | *Object*    | Optional                                                     |  `max` in Sekunden, maximale Zeit für Höchstpunktzahl <br> `zero` in Sekunden, Zeit nach der 0 Punkte vergeben werden |
+| **math**    | *Boolean*    | Optional                                                     |  Wenn `true`, wird LaTex in der Frage formattiert, verwendet die [`MathJax`-Bibliothek](https://www.mathjax.org/)|
 
 ---
 

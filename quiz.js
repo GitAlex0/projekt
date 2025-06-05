@@ -79,6 +79,11 @@ function populateQuiz(question) {
     let lockOpenContainer = document.getElementById("lock-open")
     lockOpenContainer.style.display = "flex"
   }
+  if(question.math){
+    if (window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise([document.getElementById('question')]);
+}
+  }
 }
 
 function createButton(value, id, questionId) {

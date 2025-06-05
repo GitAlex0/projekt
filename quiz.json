@@ -94,5 +94,11 @@
       "zero": 60
     }
   },
+  "9": {
+    "q": "Rechne: \\( x^2 + y^2 = z^2 \\)",
+    "type": "i",
+    "c": 24,
+    "skill": "season",
+    "math": true
   }
 }
