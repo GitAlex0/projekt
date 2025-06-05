@@ -199,3 +199,9 @@ ins {
   text-decoration: none;
   background-color: #d4fcbc;
 }
+.debug-buttons {
+    display: none !important;
+}
+.debug-buttons.show-debug {
+    display: inline-block !important;
+}

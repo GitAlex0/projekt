@@ -51,11 +51,18 @@ function populateQuiz(question) {
     for (let i = 1; i < Object.keys(question.a).length + 1; i++) {
       createButton(question.a[i], i, randomizedKeys[index]);
     }
+  }else if(question.type == "i"){
+    let input = document.getElementById("number")
+    input.dataset.index = randomizedKeys[index];
+    console.log(jsonData[randomizedKeys[index]].q + 'number Input')
+    if(localStorage.getItem("answers") !== null) {input.setAttribute("value", JSON.parse(localStorage.getItem("answers"))[randomizedKeys[index]]) || input.setAttribute("value", 50)}
+    document.getElementById("input-container").style.display = "flex";
+    console.log("done")
   } else {
     let slider = document.getElementById("slider");
     slider.dataset.index = randomizedKeys[index];
     console.log(jsonData[randomizedKeys[index]].q + 'slider')
-    if(localStorage.getItem("answers") !== null) {slider.setAttribute("value", JSON.parse(localStorage.getItem("answers"))[randomizedKeys[index]]) || slider.setAttribute("value", 0)}
+    if(localStorage.getItem("answers") !== null) {slider.setAttribute("value", JSON.parse(localStorage.getItem("answers"))[randomizedKeys[index]]) || slider.setAttribute("value", 50)}
     document.getElementById("slider-container").style.display = "flex";
     console.log("done");
   }
@@ -71,6 +78,11 @@ function populateQuiz(question) {
   }else{
     let lockOpenContainer = document.getElementById("lock-open")
     lockOpenContainer.style.display = "flex"
+  }
+  if(question.math){
+    if (window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise([document.getElementById('question')]);
+}
   }
 }
 
@@ -95,21 +107,35 @@ function clearButtons() {
   buttonContainer.innerHTML = "";
   const sliderContainer = document.getElementById("slider-container");
   sliderContainer.style.display = "none";
+  const inputContainer = document.getElementById("input-container");
+  inputContainer.style.display = "none";
   const stopwatchContainer = document.getElementById("timed");
-  stopwatchContainer.style.display = "none"
+  stopwatchContainer.style.display = "none" 
   let lockContainer = document.getElementById("lock")
   lockContainer.style.display = "none"
   let lockOpenContainer = document.getElementById("lock-open")
   lockOpenContainer.style.display = "none"
 }
 
+function numberInput(input){
+  if(input.value){
+  
+  console.log(input.value)
+  
+  let value = input.value
+  questionIndex = parseInt(input.dataset.index)
+  console.log("numberInput index above")
+  saveAnswer(questionIndex, value)
+  }else{
+    console.log("fehler")
+  }
+}
+
 function inputSlider(slider) {
   console.log(slider.value);
-  let output = document.getElementById("value");
   let value = slider.value;
   questionIndex = parseInt(slider.dataset.index)
   console.log("slider index above")
-  output.innerHTML = value;
   saveAnswer(questionIndex, value)
 }
 
@@ -170,10 +196,17 @@ function keepTime(timeID, start=true){
     document.cookie = newCookie;
     return "Timer started"
   }else if(match && !start){
+    if(!timeID == 0){
     time = Date.now() - match[1]
     time = time /1000
     document.cookie = timeID + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC"
     return time;
+    }else{
+    time = Date.now() - match[1]
+    time = time /1000
+    document.cookie = timeID + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+    localStorage.setItem("totalTime", time)
+    }
   }else if(match && start){
     return "Timer already running, continue..."
   }else{

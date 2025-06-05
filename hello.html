@@ -7,18 +7,21 @@
 
 
     <link rel="stylesheet" href="hello.css">
-
+    <script src="debug.js" defer></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
     <title>BO-TEST-O-Mat</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <button class="debug-buttons" onclick="window.location.href='hello.html'">hello.html</button>
+    <button class="debug-buttons" onclick="window.location.href='index.html'">index.html</button>
+    <button class="debug-buttons" onclick="window.location.href='result.html'">result.html</button>
   <div class="main-container">
     <div class="progress-container">
       <section class="progress-text-container">
@@ -41,8 +44,8 @@
       <div class="box">
         <h2>Dauer und Ablauf</h2>
         <ul>
-          <li>Der Test besteht aus 22 Fragen</li>
-          <li>Du brauchst ungefähr 30 Minuten</li>
+          <li>Der Test besteht aus <h1>22</h1> Fragen</li>
+          <li>Du brauchst ungefähr <h1>30</h1> Minuten</li>
           <li>
             Beantworte die Fragen spontan und gerne am Rand des Antwortspektrums –
             nur so bekommst du aussagekräftige Ergebnisse
@@ -61,9 +64,9 @@
     </section>
 
     <p class="privacy">
-      Deine Antworten werden <i>wahrscheinlich</i> <strong>vertraulich behandelt</strong> und
-      <strong>nicht</strong> <i>nur</i> <strong>personenbezogen gespeichert</strong> – der Test ist
-      <strong>anonym</strong> <i>(für den Nutzer)</i> und entspricht <del>den aktuellen Datenschutzrichtlinien (DSGVO).</del> <ins>unserem eigenen Ermessen.</ins>
+      Deine Antworten werden <strong>vertraulich behandelt</strong> und
+      <strong>nicht</strong> <strong>personenbezogen gespeichert</strong> – der Test ist
+      <strong>anonym</strong> und <strong>nicht</strong> auf dich zurückführbar.
     </p>
 
     <a href="index.html" class="btn">Starten →</a>

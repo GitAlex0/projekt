@@ -20,11 +20,16 @@ async function read() {
 }
 
 async function deleteRow() {
-    const { error } = await supabase
-    .from('bo-db')
-    .delete()
-    .eq()
-          
+    const { data, error } = await supabase
+  .from('bo-db')
+  .delete()
+  .contains('answers', { mycoolvalue: 1 });
+
+if (error) {
+  console.error('Error deleting rows:', error);
+} else {
+  console.log('Deleted rows:', data);
+}
 }
 
 

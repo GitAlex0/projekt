@@ -1,3 +1,9 @@
+# Debug-Knöpfe
+- ```?d=1``` zum aktivieren am Ende anfügen <br> *(test-o-mat.me/result.html?d=1)*
+<br><br>
+- ```?d=0``` zum deaktivieren am Ende anfügen <br> *(test-o-mat.me/result.html?d=0)*
+Zustand bleibt bis Änderung erhalten
+
 # Dokumentation JSON-Dateien
 Zum erstellen:
 - Daten in `create.js` in `quizData` oder `skillData` eingeben
@@ -18,17 +24,17 @@ Zum erstellen:
 
 ### Felder
 
-| Feld         | Typ         | Beschreibung                                                                                   |
-|--------------|-------------|-----------------------------------------------------------------------------------------------|
-| **1, 2, ...** | *Int*      | Fragen-ID, einzigartig, immer hochzählen                                                     |
-| **q**        | *String*    | Frage                                                                                        |
-| **type**     | *String*    | Fragentyp:<br>• `"mc"`: Multiple Choice<br>• `"r"`: Slider                                   |
-| **a**        | *Object*    | *(Nur bei `"mc"` Typ)* Objekt, das alle Antwortmöglichkeiten enthält <br> Aktuelles Limit: `5`, Design muss optimiert werden für mehr Fragen                         |
-| **c**        | *Int*       | *(Optional, bei `"mc"` Typ)* Die korrekte Antwort                                            |
-| ~~**r**~~        | ~~*Object*~~    | ~~*(Nur bei `"r"` Typ)* Objekt mit min. und max. Slider:<br>• `min` *Int*: minimaler Wert<br>• `max` *Int*: maximaler Wert~~  <br>**Nicht implementiert, wahrscheinlich kein Bedarf! <br> Wird in Zukunft entfernt**|
-| **skill**    | *String*    | Skill / Fähigkeit, die mit der Frage eruiert werden soll                                     |
-| **next**     | *String*    | *(Optional)* Die Fragen-ID, die auf diese Frage folgen soll                                  |
-| **timed**    | *Object*   | *(Optional)* `max` in Sekunden, maximale Zeit für Höchstpunktzahl <br> `zero` in Sekunden, Zeit nach der 0 Punkte vergeben werden|
+| Feld         | Typ         | Erforderlich?                                 | Beschreibung                                                                                   |
+|--------------|-------------|---------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| **1, 2, ...** | *Int*      | Immer                                                        | Fragen-ID, einzigartig, immer hochzählen                                                     |
+| **q**        | *String*    | Immer                                                        | Frage                                                                                       |
+| **type**     | *String*    | Immer                                                        | Fragentyp:<br>• `"mc"`: Multiple Choice<br>• `"r"`: Slider<br>• *`"i"`: Input-Feld* |
+| **a**        | *Object*    | Nur bei `"mc"` Typ                                           |  Objekt, das alle Antwortmöglichkeiten enthält <br> Aktuelles Limit: `5`, Design muss optimiert werden für mehr Fragen |
+| **c**        | *Int*       | Bei `"i"` Typ erforderlich, bei `"mc"` optional              | Die korrekte Antwort    |
+| **skill**    | *String*    | Immer                                                        | Skill / Fähigkeit, die mit der Frage eruiert werden soll                                     |
+| **next**     | *String*    | Optional                                                     |  Die Fragen-ID, die auf diese Frage folgen soll                                  |
+| **timed**    | *Object*    | Optional                                                     |  `max` in Sekunden, maximale Zeit für Höchstpunktzahl <br> `zero` in Sekunden, Zeit nach der 0 Punkte vergeben werden |
+| **math**    | *Boolean*    | Optional                                                     |  Wenn `true`, wird LaTex in der Frage formattiert, verwendet die [`MathJax`-Bibliothek](https://www.mathjax.org/)|
 
 ---
 

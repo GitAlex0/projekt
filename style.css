@@ -262,3 +262,9 @@ p {
 #resultBtn{
     display:none;
 }
+.debug-buttons {
+    display: none !important;
+}
+.debug-buttons.show-debug {
+    display: inline-block !important;
+}

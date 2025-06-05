@@ -88,6 +88,12 @@ const quizData = {
     65: { q: "TEST UNTER DRUCK DENKEN: Die Erde hat 7 Kontinente. Welcher Knopf ist mit den richtigen Anfangsbuchstaben beschriftet?", type: "mc", a: { 1: "A,A,A,E,N,R,S,", 2: "A,A,A,E,N,N,S", 3: "A,A,A,A,E,N,S", 4: "A,A,A,A,A,E,S" }, c: 3, skill: "druckDenken", timed:{max: 20, zero: 45} },
 
     66: { q: "Kannst du Blut sehen?", type: "mc", a: { 1: "Nein", 2: "Ja" }, c: 2, skill: "blutSehen" },
+
+    67: { q: "What is your favorite hobby?", type: "i", c: 24, skill: "season"},
+    68: { q: "What is your dream destination?", type: "mc", a: { 1: "Paris", 2: "Tokyo", 3: "New York", 4: "Sydney", 5: "Hessen"}, skill: "travel", next:"67"},
+    69: { q: "Kannst du Stress?", type: "mc", a: { 1: "Nein", 2: "Eher nein", 3: "So lala", 4: "Eher ja", 5: "Ja"}, skill: "stress", next:"70"},
+    70: { q: "BEWEIS ES, DIE ZEIT LÄUFT: <br> WIE GEHT DIE ZAHLENFOLGE WEITER? <br>6 - 5 - 4 - 3 - 2 - ?", type: "i", c: 1, skill: "stress", timed:{max: 30, zero: 60}},
+    71: { q: "Rechne: \\( x^2 + y^2 = z^2 \\)", type: "i", c: 24, skill: "season", math:true}
 };
 
 //Object { wellness: 1, colour: 1, season: 2, rate: 1, travel: 1 }
