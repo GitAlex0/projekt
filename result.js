@@ -114,6 +114,15 @@ function checkAnswers(){
             rating = ids[Object.keys(ids)[i]]
             givePoints(skill, rating)
         }
+
+        if(questionType == "i"){
+            console.log("Type: i")
+            givenAnswerId = ids[Object.keys(ids)[i]]
+            if(givenAnswerId == correctAnswerId){
+                givePoints(skill, 100)
+            }else{console.log("WRONG")}
+        }
+
         console.log('-'.repeat(10));
     }
     calculateJobs()

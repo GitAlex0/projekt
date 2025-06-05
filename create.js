@@ -7,7 +7,7 @@ const quizData = {
     2: { q: "What is your favorite color?", type: "mc", a: { 1: "Red", 2: "Blue", 3: "Green", 4: "Yellow" }, c: 2, skill: "colour", timed:{max: 30, zero: 60}},
     3: { q: "What is your favorite season?", type: "mc", a: { 1: "Spring", 2: "Summer", 3: "Autumn", 4: "Winter" }, c: 1, skill: "season", timed:{max: 10, zero: 40} },
     4: { q: "How much do you agree?", type: "r", r: { min: 0, max:100 }, skill: "rate", next:"1"},
-    5: { q: "What is your favorite hobby?", type: "mc", a: { 1: "Reading", 2: "Sports", 3: "Gaming", 4: "Traveling" }, skill: "season"},
+    5: { q: "What is your favorite hobby?", type: "i", c: 24, skill: "season"},
     6: { q: "What is your dream destination?", type: "mc", a: { 1: "Paris", 2: "Tokyo", 3: "New York", 4: "Sydney", 5: "Hessen"}, skill: "travel", next:"5"}
 };
 

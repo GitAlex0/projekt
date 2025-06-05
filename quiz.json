@@ -54,13 +54,8 @@
   },
   "5": {
     "q": "What is your favorite hobby?",
-    "type": "mc",
-    "a": {
-      "1": "Reading",
-      "2": "Sports",
-      "3": "Gaming",
-      "4": "Traveling"
-    },
+    "type": "i",
+    "c": 24,
     "skill": "season"
   },
   "6": {

@@ -51,11 +51,18 @@ function populateQuiz(question) {
     for (let i = 1; i < Object.keys(question.a).length + 1; i++) {
       createButton(question.a[i], i, randomizedKeys[index]);
     }
+  }else if(question.type == "i"){
+    let input = document.getElementById("number")
+    input.dataset.index = randomizedKeys[index];
+    console.log(jsonData[randomizedKeys[index]].q + 'number Input')
+    if(localStorage.getItem("answers") !== null) {input.setAttribute("value", JSON.parse(localStorage.getItem("answers"))[randomizedKeys[index]]) || input.setAttribute("value", 50)}
+    document.getElementById("input-container").style.display = "flex";
+    console.log("done")
   } else {
     let slider = document.getElementById("slider");
     slider.dataset.index = randomizedKeys[index];
     console.log(jsonData[randomizedKeys[index]].q + 'slider')
-    if(localStorage.getItem("answers") !== null) {slider.setAttribute("value", JSON.parse(localStorage.getItem("answers"))[randomizedKeys[index]]) || slider.setAttribute("value", 0)}
+    if(localStorage.getItem("answers") !== null) {slider.setAttribute("value", JSON.parse(localStorage.getItem("answers"))[randomizedKeys[index]]) || slider.setAttribute("value", 50)}
     document.getElementById("slider-container").style.display = "flex";
     console.log("done");
   }
@@ -95,12 +102,31 @@ function clearButtons() {
   buttonContainer.innerHTML = "";
   const sliderContainer = document.getElementById("slider-container");
   sliderContainer.style.display = "none";
+  const inputContainer = document.getElementById("input-container");
+  inputContainer.style.display = "none";
   const stopwatchContainer = document.getElementById("timed");
-  stopwatchContainer.style.display = "none"
+  stopwatchContainer.style.display = "none" 
   let lockContainer = document.getElementById("lock")
   lockContainer.style.display = "none"
   let lockOpenContainer = document.getElementById("lock-open")
   lockOpenContainer.style.display = "none"
+}
+
+function numberInput(input){
+  let output = document.getElementById("displayVal")
+  if(input.value){
+  
+  console.log(input.value)
+  
+  let value = input.value
+  questionIndex = parseInt(input.dataset.index)
+  console.log("numberInput index above")
+  output.innerHTML = value;
+  saveAnswer(questionIndex, value)
+  }else{
+    console.log("fehler")
+    output.innerHTML = "Ungültige Eingabe"
+  }
 }
 
 function inputSlider(slider) {

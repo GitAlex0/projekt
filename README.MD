@@ -24,16 +24,16 @@ Zum erstellen:
 
 ### Felder
 
-| Feld         | Typ         | Beschreibung                                                                                   |
-|--------------|-------------|-----------------------------------------------------------------------------------------------|
-| **1, 2, ...** | *Int*      | Fragen-ID, einzigartig, immer hochzählen                                                     |
-| **q**        | *String*    | Frage                                                                                        |
-| **type**     | *String*    | Fragentyp:<br>• `"mc"`: Multiple Choice<br>• `"r"`: Slider<br>• *`"i"`: Input-Feld* **Folgt...**                |
-| **a**        | *Object*    | *(Nur bei `"mc"` Typ)* Objekt, das alle Antwortmöglichkeiten enthält <br> Aktuelles Limit: `5`, Design muss optimiert werden für mehr Fragen                         |
-| **c**        | *Int*       | *(Optional, bei `"mc"` Typ)* Die korrekte Antwort                                            |
-| **skill**    | *String*    | Skill / Fähigkeit, die mit der Frage eruiert werden soll                                     |
-| **next**     | *String*    | *(Optional)* Die Fragen-ID, die auf diese Frage folgen soll                                  |
-| **timed**    | *Object*   | *(Optional)* `max` in Sekunden, maximale Zeit für Höchstpunktzahl <br> `zero` in Sekunden, Zeit nach der 0 Punkte vergeben werden|
+| Feld         | Typ         | Erforderlich?                                 | Beschreibung                                                                                   |
+|--------------|-------------|---------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| **1, 2, ...** | *Int*      | Immer                                                        | Fragen-ID, einzigartig, immer hochzählen                                                     |
+| **q**        | *String*    | Immer                                                        | Frage                                                                                       |
+| **type**     | *String*    | Immer                                                        | Fragentyp:<br>• `"mc"`: Multiple Choice<br>• `"r"`: Slider<br>• *`"i"`: Input-Feld* |
+| **a**        | *Object*    | Nur bei `"mc"` Typ                                           |  Objekt, das alle Antwortmöglichkeiten enthält <br> Aktuelles Limit: `5`, Design muss optimiert werden für mehr Fragen |
+| **c**        | *Int*       | Bei `"i"` Typ erforderlich, bei `"mc"` optional              | Die korrekte Antwort    |
+| **skill**    | *String*    | Immer                                                        | Skill / Fähigkeit, die mit der Frage eruiert werden soll                                     |
+| **next**     | *String*    | Optional                                                     |  Die Fragen-ID, die auf diese Frage folgen soll                                  |
+| **timed**    | *Object*    | Optional                                                     |  `max` in Sekunden, maximale Zeit für Höchstpunktzahl <br> `zero` in Sekunden, Zeit nach der 0 Punkte vergeben werden |
 
 ---
 
