@@ -1,3 +1,9 @@
+# Debug-Knöpfe
+- ```?d=1``` zum aktivieren am Ende anfügen <br> *(test-o-mat.me/result.html?d=1)*
+<br><br>
+- ```?d=0``` zum deaktivieren am Ende anfügen <br> *(test-o-mat.me/result.html?d=0)*
+Zustand bleibt bis Änderung erhalten
+
 # Dokumentation JSON-Dateien
 Zum erstellen:
 - Daten in `create.js` in `quizData` oder `skillData` eingeben

@@ -327,3 +327,9 @@ body {
     opacity: 1;
     max-height: 1000px;
 }
+.debug-buttons {
+    display: none !important;
+}
+.debug-buttons.show-debug {
+    display: inline-block !important;
+}

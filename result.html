@@ -4,6 +4,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="db.js"></script>
     <script src="result.js"></script>
+    <script src="debug.js" defer></script>
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
     <!-- <script src="main.js"></script> -->
     <meta charset="UTF-8" />
@@ -14,6 +15,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 <body style="background-color: white; color:black">
+    <button class="debug-buttons" onclick="window.location.href='hello.html'">hello.html</button>
+    <button class="debug-buttons" onclick="window.location.href='index.html'">index.html</button>
+    <button class="debug-buttons" onclick="window.location.href='result.html'">result.html</button>
     <div style="display: none;">
         <div id="result">dividiv</div>
         <div id="jobScore">dividiv</div>
@@ -32,7 +36,7 @@
 
     <p class="ueberschrift1">Deine Ergebnisse sind da!</p>
     <p class="ueberschrift2">Anhand deiner Antworten haben wir <b>Berufsfelder</b> ermittelt, die gut zu deinen Interessen und Stärken passen.</p>
-    <button style="margin-left:20vw;font-size:30px" onclick="makeTempCard()">Beispiel Boxen (drück mich um tolle Boxen zum Testen zu generieren. <br>PS: Die Werte sind zufällig generiert und bedeuten nichts)</button>
+    <button class="debug-buttons" style="margin-left:20vw;font-size:30px" onclick="makeTempCard()">Beispiel Boxen (drück mich um tolle Boxen zum Testen zu generieren. <br>PS: Die Werte sind zufällig generiert und bedeuten nichts)</button>
     <template id="result-template">
         <div class="result-box">
             <div class="jobNameGesamt">
