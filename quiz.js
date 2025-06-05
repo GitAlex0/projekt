@@ -118,7 +118,6 @@ function clearButtons() {
 }
 
 function numberInput(input){
-  let output = document.getElementById("displayVal")
   if(input.value){
   
   console.log(input.value)
@@ -126,21 +125,17 @@ function numberInput(input){
   let value = input.value
   questionIndex = parseInt(input.dataset.index)
   console.log("numberInput index above")
-  output.innerHTML = value;
   saveAnswer(questionIndex, value)
   }else{
     console.log("fehler")
-    output.innerHTML = "Ungültige Eingabe"
   }
 }
 
 function inputSlider(slider) {
   console.log(slider.value);
-  let output = document.getElementById("value");
   let value = slider.value;
   questionIndex = parseInt(slider.dataset.index)
   console.log("slider index above")
-  output.innerHTML = value;
   saveAnswer(questionIndex, value)
 }
 
