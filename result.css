@@ -316,16 +316,16 @@ body {
 
 
 .attributes {
-    opacity: 0;
     max-height: 0;
-    transition: opacity 0.3s easeInOut, max-height 0.3s easeInOut;
+    opacity: 0;
     overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(.77,0,.18,1), opacity 0.3s;
     display: block;
 }
 
 .attributes.visible {
-    opacity: 1;
     max-height: 1000px;
+    opacity: 1;
 }
 .debug-buttons {
     display: none !important;

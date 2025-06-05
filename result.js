@@ -212,7 +212,6 @@ function makeTempCard(){
 }
 
 function makeResultCard(job="none", score=0, skills, index){
-    console.log(index + "This is the mRC Index")
     const template = document.getElementById("result-template");
     const card = template.content.cloneNode(true);
 
@@ -222,30 +221,69 @@ function makeResultCard(job="none", score=0, skills, index){
 
     jobRank.textContent = index + `.\xa0`;
 
-    const jobBar = container.querySelectorAll(".scoreBar")[0]
-    const jobLabel = container.querySelectorAll(".scoreLabel")[0]
-    jobBar.value = Math.floor(score);
-    jobLabel.textContent = jobBar.value + " %"
+    const jobBarDiv = container.querySelector(".scoreBar");
+    const jobLabel = container.querySelector(".scoreLabel");
+    const jobBar = new ProgressBar.Line(jobBarDiv, {
+        strokeWidth: 8,
+        color: '#14213D',
+        trailColor: '#e3e3e3',
+        trailWidth: 8,
+        easing: 'easeInOut',
+        duration: 800,
+        svgStyle: {width: '100%', height: '100%', borderRadius: '2vh', display: 'block'},
+        step: (state, bar) => {
+            const val = Math.round(bar.value() * 100);
+            jobLabel.textContent = val + " %";
+        }
+    });
+    jobBar.set(0);
 
-    for(i=0; i<skills.length; i++){
-        console.log(skills[i].skill + skills[i].score);
-        let skillBar = container.querySelectorAll(".attributeBar")[i]
-        let skillLabel = container.querySelectorAll(".attributeLabel")[i]
-        let skillNameLabel = container.querySelectorAll(".attributeNameLabel")[i]
+    const skillBars = container.querySelectorAll(".attributeBar");
+    const skillLabels = container.querySelectorAll(".attributeLabel");
+    const skillNameLabels = container.querySelectorAll(".attributeNameLabel");
+    const skillBarObjs = [];
 
-        skillBar.style.display='inline'
-        skillLabel.style.display='inline'
-        skillNameLabel.style.display='inline'
+    for(let i=0; i<skills.length; i++){
+        skillBars[i].style.display='inline';
+        skillLabels[i].style.display='inline';
+        skillNameLabels[i].style.display='inline';
 
-        skillBar.value = skills[i].score
-        skillLabel.textContent = skillBar.value + " %"
-        skillNameLabel.textContent = skills[i].skill
+        const skillBar = new ProgressBar.Line(skillBars[i], {
+            strokeWidth: 8,
+            color: '#14213D',
+            trailColor: '#e3e3e3',
+            trailWidth: 8,
+            easing: 'easeInOut',
+            duration: 800,
+            svgStyle: {width: '100%', height: '100%', borderRadius: '2vh', display: 'block'},
+            step: (state, bar) => {
+                const val = Math.round(bar.value() * 100);
+                skillLabels[i].textContent = val + " %";
+            }
+        });
+        skillBar.set(0);
+        skillBars[i]._progressbar = skillBar;
+        skillNameLabels[i].textContent = skills[i].skill;
+        skillBars[i].setAttribute('data-bar-value', skills[i].score / 100);
+        skillBarObjs.push({
+            bar: skillBar,
+            value: skills[i].score / 100
+        });
     }
-    title.textContent = job
+    title.textContent = job;
 
+    document.getElementById("results").appendChild(card);
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                jobBar.animate(score / 100);
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
 
+    observer.observe(container);
 
-    document.getElementById("results").appendChild(card)
 }
 
 function downloadPDF() {
@@ -265,6 +303,17 @@ function downloadPDF() {
 function toggleAttributes(button) {
     const attributesDiv = button.nextElementSibling;
     attributesDiv.classList.toggle('visible');
+
+    if (attributesDiv.classList.contains('visible')) {
+        const skillBars = attributesDiv.querySelectorAll('.attributeBar');
+        const skillLabels = attributesDiv.querySelectorAll('.attributeLabel');
+        skillBars.forEach((barDiv, i) => {
+            if (barDiv._progressbar) {
+                const value = parseFloat(barDiv.getAttribute('data-bar-value')) || 0;
+                barDiv._progressbar.animate(value);
+            }
+        });
+    }
 }
 function toggleAll(){
     let buttons = document.getElementsByClassName("toggleButton")
@@ -275,6 +324,7 @@ function toggleAll(){
 
 function saveData(points, jobScore, jobTopSkills){
     ids = JSON.parse(localStorage.getItem("answers"))
-
-    saveDataToDB(ids, points, jobScore, jobTopSkills)
+    time = JSON.parse(localStorage.getItem("totalTime"))
+    stats = {time: time}
+    saveDataToDB(ids, points, jobScore, jobTopSkills, stats)
 }
