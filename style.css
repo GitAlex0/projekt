@@ -38,7 +38,7 @@ html, body {
     height: 10vh;
 }
 
-#progress-bar {
+.progress-bar {
     width: 95%;
     height: 4vh;
     border-radius: 2vh;
@@ -48,8 +48,15 @@ html, body {
     
 }
 
+.progress-bar::-webkit-progress-value {
+    background-color: #14213D; /* Dunkelblau wie im Screenshot */
+    border-radius: 2vh;
+}
 
-
+.attributeBar::-webkit-progress-bar {
+    background-color: #D9D9D9; /* Hellgrau wie im Screenshot */
+    border-radius: 2vh;
+}
 
 .progress-text-container {
     position: absolute;
@@ -77,7 +84,7 @@ html, body {
 }
 
 .quiz-title {
-    background-color: #ffe1be;
+    background-color: #fde9cc;
     border: 1px solid #e7dccc;
     width: 85vw;
     height: 30vh;
@@ -174,7 +181,7 @@ html, body {
     padding-left:10vh;
     padding-right:10vh;
     margin-top: 5vh;;
-    background-color: #ffbe56;
+    background-color: #ffc362;
     box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.277); /* Optional: Schatten für die Box */
     font-size: 2vh; /* Schriftgröße */
     color: black; /* Textfarbe */
@@ -217,9 +224,9 @@ html, body {
     padding: 1.5vh;
     padding-left:12vh;
     padding-right:12vh;
-    background-color: #14213D;
+    background-color: #7a799a;
     box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.277); /* Optional: Schatten für die Box */
-    color: white; /* Textfarbe */
+    color: black; /* Textfarbe */
     font-style:italic;
     font-family: "Inter", sans-serif; /* Schriftart */
     cursor: pointer; /* Zeigt an, dass es klickbar ist */

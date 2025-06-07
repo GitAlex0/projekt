@@ -270,9 +270,9 @@ body {
     padding: 1.5vh;
     padding-left:10vh;
     padding-right:10vh;
-    background-color: #14213D;
+    background-color: #8484a3;
     box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.277); /* Optional: Schatten für die Box */
-    color: white; /* Textfarbe */
+    color: black; /* Textfarbe */
     font-style:italic;
     font-family: "Inter", sans-serif; /* Schriftart */
     cursor: pointer; /* Zeigt an, dass es klickbar ist */
