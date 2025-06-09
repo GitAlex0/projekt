@@ -38,13 +38,24 @@ html, body {
     height: 10vh;
 }
 
-#progress-bar {
+.progress-bar {
     width: 95%;
     height: 4vh;
     border-radius: 2vh;
     overflow: hidden;
     box-shadow: 0 0 1vh 1vh rgba(0, 0, 0, 0.125);
     position: relative;
+    
+}
+
+.progress-bar::-webkit-progress-value {
+    background-color: #14213D; /* Dunkelblau wie im Screenshot */
+    border-radius: 2vh;
+}
+
+.attributeBar::-webkit-progress-bar {
+    background-color: #D9D9D9; /* Hellgrau wie im Screenshot */
+    border-radius: 2vh;
 }
 
 .progress-text-container {
@@ -73,7 +84,8 @@ html, body {
 }
 
 .quiz-title {
-    background-color: #D0F1BF;
+    background-color: #fde9cc;
+    border: 1px solid #e7dccc;
     width: 85vw;
     height: 30vh;
     margin-bottom:5vh;
@@ -130,7 +142,7 @@ html, body {
     height: 3vh; /* Höhe des Sliders */
     border-radius: 10px; /* Abgerundete Ecken */
     outline: none; /* Entfernt den Fokusrahmen */
-    background-color: #B6D7B9;
+    background-color: #ffbe56;
     border-radius: 2vh;
 }
 
@@ -140,7 +152,7 @@ html, body {
     width: 7vh; /* Set a specific slider handle width */
     height: 7vh; /* Slider handle height */
     border-radius: 3.5vh;
-    background: #758F73; /* Green background */
+    background: #7a799a; /* Green background */
     cursor: pointer; /* Cursor on hover */
     border: solid 2px black;
     box-shadow: 0.3vh 0.3vh 0.3vh rgba(0, 0, 0, 0.199);;
@@ -169,7 +181,7 @@ html, body {
     padding-left:10vh;
     padding-right:10vh;
     margin-top: 5vh;;
-    background-color: #B6D7B9;
+    background-color: #ffc362;
     box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.277); /* Optional: Schatten für die Box */
     font-size: 2vh; /* Schriftgröße */
     color: black; /* Textfarbe */
@@ -178,32 +190,31 @@ html, body {
     cursor: pointer; /* Zeigt an, dass es klickbar ist */
 }
 
-.quiz-button:hover {
-    background-color: #A0C8A0; /* Hintergrundfarbe bei Hover */
-    transition: box-shadow 0.1s, background-color 0.1s;
-}
 
-.quiz-button:active {
-    background-color: #8DAF8D; /* Hintergrundfarbe bei Klick */
-    box-shadow: 0.1vh 0.1vh 0.3vh rgba(0, 0, 0, 0.412); /* Optional: Schatten für die Box */
-    transform: translateY(2px); /* Optional: Leichte Verschiebung nach unten bei Klick */
-    transition: box-shadow 0.1s, background-color 0.1s, transform 0.1s; /* Animationseffekt für den Klick */
-}
+
+/* .quiz-button:active {
+    background-color: #ff9d00; 
+    box-shadow: 0.1vh 0.1vh 0.3vh rgba(0, 0, 0, 0.412); 
+    transform: translateY(2px); 
+    transition: box-shadow 0.1s, background-color 0.1s, transform 0.1s; 
+} */
+
 .quiz-button:focus {
-    outline: none; /* Entfernt den Standard-Fokusrahmen */
-    box-shadow: 0 0 0 2px #A0C8A0; /* Optional: Fokussierungseffekt */
+    outline: none; 
+    box-shadow: 0 0 0 2px #ffeed4; 
 }
 
 .quiz-button:disabled{
-    background-color: #D0F1BF;
-    color: #A0C8A0;
+    background-color: #ffdfac;
+    color: #ffaf2f;
     cursor: not-allowed;
     box-shadow: none;
 }
 
 #selected{
-    background-color:#758F73;
-    box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.559); /* Optional: Schatten für die Box */
+    background-color:#ff9d00;
+    box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.559); 
+    color: black;;
 }
 
 .btn {
@@ -211,9 +222,9 @@ html, body {
     border-radius: 3vh; /* Abgerundete Ecken */
     margin: 1vh;
     padding: 1.5vh;
-    padding-left:10vh;
-    padding-right:10vh;
-    background-color: #D0F1BF;
+    padding-left:12vh;
+    padding-right:12vh;
+    background-color: #7a799a;
     box-shadow: 0.2vh 0.2vh 0.5vh rgba(0, 0, 0, 0.277); /* Optional: Schatten für die Box */
     color: black; /* Textfarbe */
     font-style:italic;
@@ -222,17 +233,7 @@ html, body {
     font-size: 2vh; /* Schriftgröße */
 }
 
-.btn:hover {
-    background-color: #c4e3b5; /* Hintergrundfarbe bei Hover */
-    transition: box-shadow 0.1s, background-color 0.1s;
-}
 
-.btn:active {
-    background-color: #b1cab1; /* Hintergrundfarbe bei Klick */
-    box-shadow: 0.1vh 0.1vh 0.3vh rgba(0, 0, 0, 0.412); /* Optional: Schatten für die Box */
-    transform: translateY(2px); /* Optional: Leichte Verschiebung nach unten bei Klick */
-    transition: box-shadow 0.1s, background-color 0.1s, transform 0.1s; /* Animationseffekt für den Klick */
-}
 
 .cD {
     display:none;
@@ -257,6 +258,26 @@ html, body {
 }
 p {
     display: inline-block; /* Inline-Block-Element */
+}
+
+.inputNumber {
+    width: 45vh; /* Breite des Eingabefelds */
+    height: 15vh; /* Höhe des Eingabefelds */
+    font-size: 2vh; /* Schriftgröße */
+    font-family: "Inter", sans-serif; /* Schriftart */
+    border-radius: 2vh; /* Abgerundete Ecken */
+    border: 1px solid #e7dccc; /* Rahmenfarbe */
+    padding: 0.5vh; /* Innenabstand */
+    color: black;
+    background-color: #ffe1be;
+    box-shadow: 2px 2px 4px 1px rgb(200, 200, 200);
+    text-align: center;;
+}
+
+.inputNumber::placeholder {
+    color: #736b5d; /* Placeholder-Farbe */
+    font-style: italic; /* Kursivschrift für den Placeholder */
+    text-align: center;;
 }
 
 #resultBtn{
