@@ -285,7 +285,7 @@
       "min": 0,
       "max": 100
     },
-    "skill": "fuerungsstaerke"
+    "skill": "fuehrungsstaerke"
   },
   "33": {
     "q": "Ich bin überzeugt, dass eine Gruppe mit mir an der Spitze gut funktioniert.",
@@ -294,7 +294,7 @@
       "min": 0,
       "max": 100
     },
-    "skill": "fuerungsstaerke"
+    "skill": "fuehrungsstaerke"
   },
   "34": {
     "q": "Ich finde es einfach, zwischen mehreren Optionen die beste zu wählen.",

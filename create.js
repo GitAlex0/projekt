@@ -43,8 +43,8 @@ const quizData = {
     30: { q: "Ich kann erkennen, wenn Kritik berechtigt ist.", type: "r", r: { min: 0, max:100 }, skill: "kritikfaehigkeit"},
     31: { q: "Ich bitte aktiv um Feedback, um mich weiterzuentwickeln.", type: "r", r: { min: 0, max:100 }, skill: "kritikfaehigkeit"},
 
-    32: { q: "In einer Gruppe übernehme ich gerne die Führung.", type: "r", r: { min: 0, max:100 }, skill: "fuerungsstaerke"},
-    33: { q: "Ich bin überzeugt, dass eine Gruppe mit mir an der Spitze gut funktioniert.", type: "r", r: { min: 0, max:100 }, skill: "fuerungsstaerke"},
+    32: { q: "In einer Gruppe übernehme ich gerne die Führung.", type: "r", r: { min: 0, max:100 }, skill: "fuehrungsstaerke"},
+    33: { q: "Ich bin überzeugt, dass eine Gruppe mit mir an der Spitze gut funktioniert.", type: "r", r: { min: 0, max:100 }, skill: "fuehrungsstaerke"},
 
     34: { q: "Ich finde es einfach, zwischen mehreren Optionen die beste zu wählen.", type: "r", r: { min: 0, max:100 }, skill: "entscheidungsfreude"},
     35: { q: "Ich treffe Entscheidungen, ohne lange grübeln zu müssen.", type: "r", r: { min: 0, max:100 }, skill: "entscheidungsfreude"},
@@ -119,7 +119,28 @@ const jobDescriptions = {
     medizin: { name: "Medizinische Berufe", description: "Arzt, Zahnarzt, Apotheker, Krankenpfleger, Physiotherapeut, Ergotherapeut, Hebamme, Diätassistent" },
     handwerk: { name: "Handwerkliche Berufe", description: "Schreiner, Maurer, Maler, Dachdecker, Tischler, Goldschmied, Schweißer, Feinmechaniker, Elektriker" },
     verwaltung: { name: "Verwaltung & Recht", description: "Jurist, Notar, Richter, Steuerberater" },
-    medien: { name: "Medienberufe", description: "Journalismus, PR, Soziale Medien, Werbung, Inhalts-Ersteller*in" }
+    medien: { name: "Medienberufe", description: "Journalismus, PR, Soziale Medien, Werbung, Inhalts-Ersteller*in" },
+    logischesVerstaendnis: { name: "Logisches Verständnis" },
+    mathematik: { name: "Mathematik" },
+    feinmotorik: { name: "Feinmotorik" },
+    analytischesDenken: { name: "Analytisches Denken" },
+    geduld: { name: "Geduld" },
+    disziplin: { name: "Disziplin" },
+    kreativitaet: { name: "Kreativität" },
+    empathie: { name: "Empathie" },
+    verantwortungsbewusstsein: { name: "Verantwortungsbewusstsein" },
+    handwerklichkeit: { name: "Handwerklichkeit" },
+    selbstbewusstsein: { name: "Selbstbewusstsein" },
+    kritikfaehigkeit: { name: "Kritikfähigkeit" },
+    mentaleBelastbarkeit: { name: "Mentale Belastbarkeit" },
+    koerperlicheBelastbarkeit: { name: "Körperliche Belastbarkeit" },
+    fuehrungsstaerke: { name: "Führungsstärke" },
+    entscheidungsfreude: { name: "Entscheidungsfreude" },
+    organisationsfaehigkeit: { name: "Organisationsfähigkeit" },
+    experimentierfreude: { name: "Experimentierfreude" },
+    druckDenken: { name: "Denken unter Druck" },
+    selbststaendigkeit: { name: "Selbstständigkeit" },
+    blutSehen: { name: "Blut sehen können" }
 };
 
 // Vorlage: logischesVerstaendnis: 1, mathematik: 1, feinmotorik: 1, analytischesDenken: 1, geduld: 1, disziplin: 1, kreativitaet: 1, empathie: 1, verantwortungsbewusstsein: 1, handwerklichkeit: 1, selbstbewusstsein: 1, kritikfaehigkeit: 1, mentaleBelastbarkeit: 1, koerperlicheBelastbarkeit: 1, fuehrungsstaerke: 1, entscheidungsfreude: 1, organisationsfaehigkeit: 1, experimentierfreude: 1, druckDenken: 1, selbststaendigkeit: 1

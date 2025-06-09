@@ -34,5 +34,68 @@
   "medien": {
     "name": "Medienberufe",
     "description": "Journalismus, PR, Soziale Medien, Werbung, Inhalts-Ersteller*in"
+  },
+  "logischesVerstaendnis": {
+    "name": "Logisches Verständnis"
+  },
+  "mathematik": {
+    "name": "Mathematik"
+  },
+  "feinmotorik": {
+    "name": "Feinmotorik"
+  },
+  "analytischesDenken": {
+    "name": "Analytisches Denken"
+  },
+  "geduld": {
+    "name": "Geduld"
+  },
+  "disziplin": {
+    "name": "Disziplin"
+  },
+  "kreativitaet": {
+    "name": "Kreativität"
+  },
+  "empathie": {
+    "name": "Empathie"
+  },
+  "verantwortungsbewusstsein": {
+    "name": "Verantwortungsbewusstsein"
+  },
+  "handwerklichkeit": {
+    "name": "Handwerklichkeit"
+  },
+  "selbstbewusstsein": {
+    "name": "Selbstbewusstsein"
+  },
+  "kritikfaehigkeit": {
+    "name": "Kritikfähigkeit"
+  },
+  "mentaleBelastbarkeit": {
+    "name": "Mentale Belastbarkeit"
+  },
+  "koerperlicheBelastbarkeit": {
+    "name": "Körperliche Belastbarkeit"
+  },
+  "fuehrungsstaerke": {
+    "name": "Führungsstärke"
+  },
+  "entscheidungsfreude": {
+    "name": "Entscheidungsfreude"
+  },
+  "organisationsfaehigkeit": {
+    "name": "Organisationsfähigkeit"
+  },
+  "experimentierfreude": {
+    "name": "Experimentierfreude"
+  },
+  "druckDenken": {
+    "name": "Denken unter Druck"
+  },
+  "selbststaendigkeit": {
+    "name": "Selbstständigkeit"
+  },
+  "blutSehen": {
+    "name": "Blut sehen können"
   }
 }
