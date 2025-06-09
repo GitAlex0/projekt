@@ -4,6 +4,10 @@ const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 
 async function saveDataToDB(answers={}, points={}, jobScore={}, jobTopSkills={}, stats={}){
+    //   if (window.location.href !== "https://test-o-mat.me") {
+    //     console.log("Not saving: not on https://test-o-mat.me");
+    //     return;
+    // }
     const { error } = await supabase
   .from('bo-db')
   .insert({ answers: answers, points: points, jobScore: jobScore, jobTopSkills: jobTopSkills, stats: stats})
