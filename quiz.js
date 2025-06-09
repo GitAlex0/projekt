@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setProgress(0);
 });
 function next() {
+  document.getElementById("nextBtn").disabled = true;
   console.log(document.cookie + "cookie");
   clearButtons();
   populateQuiz(jsonData[randomizedKeys[index]]);
@@ -49,6 +50,7 @@ function next() {
 }
 
 function populateQuiz(question) {
+  document.getElementById("nextBtn").disabled = true;
   console.log(question);
   document.getElementById("question").innerHTML = question.q;
 
@@ -131,6 +133,7 @@ function numberInput(input){
   }else{
     console.log("fehler")
   }
+  document.getElementById("nextBtn").disabled = false;
 }
 
 function inputSlider(slider) {
@@ -139,6 +142,7 @@ function inputSlider(slider) {
   questionIndex = parseInt(slider.dataset.index)
   console.log("slider index above")
   saveAnswer(questionIndex, value)
+  document.getElementById("nextBtn").disabled = false;
 }
 
 function answerButtonPress(button) {
@@ -165,6 +169,7 @@ function answerButtonPress(button) {
     if(timed){ el.setAttribute("disabled", true)}
   });
   button.setAttribute("id", "selected");
+  document.getElementById("nextBtn").disabled = false;
 }
 
 function saveAnswer(questionId, answerId, time=false) {

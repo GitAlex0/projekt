@@ -232,6 +232,13 @@ html, body {
     font-family: "Inter", sans-serif; /* Schriftart */
     cursor: pointer; /* Zeigt an, dass es klickbar ist */
     font-size: 2vh; /* Schriftgröße */
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.btn:disabled{
+    background-color: #bfbfcf;
+    color: #7a799a;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
 
