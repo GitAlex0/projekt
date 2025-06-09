@@ -4,67 +4,40 @@ const supabaseUrl = 'https://mkyhoyqtovtxxtydpgsb.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1reWhveXF0b3Z0eHh0eWRwZ3NiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkwNDM4ODYsImV4cCI6MjA2NDYxOTg4Nn0.Z72P5s69JUiOCZSBE39kS_BhjLPIaux44znvRU2APJo';
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-
-async function saveDataToDB(answers={}, points={}, jobScore={}, jobTopSkills={}, stats={}){
-    const { error } = await supabase
-  .from('bo-db')
-  .insert({ answers: answers, points: points, jobScore: jobScore, jobTopSkills: jobTopSkills, stats: stats})
-console.log("saved data to db")
-
+// Helper functions for cookies
+function setCookie(name, value, days = 365) {
+    const expires = new Date(Date.now() + days*24*60*60*1000).toUTCString();
+    document.cookie = `${name}=${value}; expires=${expires}; path=/`;
 }
-async function read() {
-    let { data, error } = await supabase
-        .from('test')
-        .select('*');
-    console.log(data);
+function getCookie(name) {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
 }
 
-async function deleteRow() {
-    const { data, error } = await supabase
-  .from('bo-db')
-  .delete()
-  .contains('test', true);
-
-if (error) {
-  console.error('Error deleting rows:', error);
-} else {
-  console.log('Deleted rows:', data);
-}
-}
-async function deleteRowsWithMyCoolValue() {
-    const { data, error } = await supabase
-        .from('bo-db')
-        .delete()
-        .contains('stats', 19.795);
-
-    if (error) {
-        console.error('Error deleting rows:', error);
-    } else {
-        console.log('Deleted rows:', data);
-    }
-}
-
+// Initialize onlyTestOMatRows from cookie if present
+let onlyTestOMatRows = getCookie('onlyTestOMatRows') === 'true';
 
 function prints(){
     console.log("ohimpriting")
 }
 
 async function getJobWithHighestAverageScore() {
-    // 1. Fetch all jobScore columns
     const { data, error } = await supabase
         .from('bo-db')
-        .select('jobScore');
+        .select('jobScore, stats');
 
     if (error) {
         console.error('Error fetching jobScores:', error);
         return;
     }
 
+    const filteredData = filterRowsByUrl(data);
+
     // 2. Aggregate scores
     const jobTotals = {};
     const jobCounts = {};
 
-    data.forEach(row => {
+    filteredData.forEach(row => {
         const jobScore = row.jobScore;
         if (jobScore) {
             Object.entries(jobScore).forEach(([job, score]) => {
@@ -101,17 +74,19 @@ async function getJobWithHighestAverageScore() {
 async function getJobAverages() {
     const { data, error } = await supabase
         .from('bo-db')
-        .select('jobScore');
+        .select('jobScore, stats');
 
     if (error) {
         console.error('Error fetching jobScores:', error);
         return;
     }
 
+    const filteredData = filterRowsByUrl(data);
+
     const jobTotals = {};
     const jobCounts = {};
 
-    data.forEach(row => {
+    filteredData.forEach(row => {
         const jobScore = row.jobScore;
         if (jobScore) {
             Object.entries(jobScore).forEach(([job, score]) => {
@@ -132,6 +107,51 @@ async function getJobAverages() {
 
     console.log('Average score for each job:', jobAverages);
     return jobAverages;
+}
+
+async function getSkillAverages() {
+    const { data, error } = await supabase
+        .from('bo-db')
+        .select('points, stats');
+
+    if (error) {
+        console.error('Error fetching points:', error);
+        return;
+    }
+
+    const filteredData = filterRowsByUrl(data);
+
+    const skillTotals = {};
+    const skillCounts = {};
+
+    filteredData.forEach(row => {
+        let points = row.points;
+        if (typeof points === "string") {
+            try {
+                points = JSON.parse(points);
+            } catch (e) {
+                points = {};
+            }
+        }
+        if (points) {
+            Object.entries(points).forEach(([skill, value]) => {
+                if (!skillTotals[skill]) {
+                    skillTotals[skill] = 0;
+                    skillCounts[skill] = 0;
+                }
+                skillTotals[skill] += value;
+                skillCounts[skill] += 1;
+            });
+        }
+    });
+
+    const skillAverages = {};
+    Object.keys(skillTotals).forEach(skill => {
+        skillAverages[skill] = skillTotals[skill] / skillCounts[skill];
+    });
+
+    console.log('Average value for each skill:', skillAverages);
+    return skillAverages;
 }
 
 async function showJobAveragesChart() {
@@ -172,50 +192,6 @@ async function showJobAveragesChart() {
     });
 }
 
-async function getSkillAverages() {
-    const { data, error } = await supabase
-        .from('bo-db')
-        .select('points');
-
-    if (error) {
-        console.error('Error fetching points:', error);
-        return;
-    }
-
-    const skillTotals = {};
-    const skillCounts = {};
-
-    data.forEach(row => {
-        let points = row.points;
-        // If points is a string, parse it
-        if (typeof points === "string") {
-            try {
-                points = JSON.parse(points);
-            } catch (e) {
-                points = {};
-            }
-        }
-        if (points) {
-            Object.entries(points).forEach(([skill, value]) => {
-                if (!skillTotals[skill]) {
-                    skillTotals[skill] = 0;
-                    skillCounts[skill] = 0;
-                }
-                skillTotals[skill] += value;
-                skillCounts[skill] += 1;
-            });
-        }
-    });
-
-    const skillAverages = {};
-    Object.keys(skillTotals).forEach(skill => {
-        skillAverages[skill] = skillTotals[skill] / skillCounts[skill];
-    });
-
-    console.log('Average value for each skill:', skillAverages);
-    return skillAverages;
-}
-
 async function showSkillAveragesChart() {
     const skillAverages = await getSkillAverages();
 
@@ -252,7 +228,6 @@ async function showSkillAveragesChart() {
 }
 
 async function showAverageTime() {
-    // 1. Fetch all stats columns
     const { data, error } = await supabase
         .from('bo-db')
         .select('stats');
@@ -262,9 +237,11 @@ async function showAverageTime() {
         return;
     }
 
+    const filteredData = filterRowsByUrl(data);
+
     // 2. Extract time values
     let times = [];
-    data.forEach(row => {
+    filteredData.forEach(row => {
         let stats = row.stats;
         // If stats is a string, parse it
         if (typeof stats === "string") {
@@ -299,8 +276,108 @@ async function showAverageTime() {
     el.textContent = `⏱ Durchschnittliche Zeit: ${formatTime(avg)}`;
 }
 
+async function deleteRowsWithEmptyPoints() {
+    // 1. Fetch all rows with uuid and points
+    const { data, error } = await supabase
+        .from('bo-db')
+        .select('uuid, points');
+
+    if (error) {
+        console.error('Error fetching rows:', error);
+        return;
+    }
+
+    // 2. Find rows where points is an empty object
+    const uuidsToDelete = data
+        .filter(row => {
+            // If points is a string, parse it
+            let points = row.points;
+            if (typeof points === "string") {
+                try {
+                    points = JSON.parse(points);
+                } catch (e) {
+                    points = {};
+                }
+            }
+            // Check if points is an empty object
+            return points && typeof points === "object" && Object.keys(points).length === 0;
+        })
+        .map(row => row.uuid);
+
+    if (uuidsToDelete.length === 0) {
+        console.log('No rows to delete.');
+        return;
+    }
+
+    // 3. Delete those rows
+    const { error: deleteError } = await supabase
+        .from('bo-db')
+        .delete()
+        .in('uuid', uuidsToDelete);
+
+    if (deleteError) {
+        console.error('Error deleting rows:', deleteError);
+    } else {
+        console.log('Deleted rows with uuids:', uuidsToDelete);
+    }
+}
+
+async function showTotalRowCount() {
+    const { data, count, error } = await supabase
+        .from('bo-db')
+        .select('stats', { count: 'exact' });
+
+    if (error) {
+        console.error('Error fetching row count:', error);
+        return;
+    }
+
+    const filteredData = filterRowsByUrl(data);
+    const filteredCount = filteredData.length;
+
+    let el = document.getElementById('totalRowCount');
+    if (!el) {
+        el = document.createElement('p');
+        el.id = 'totalRowCount';
+        document.body.insertBefore(el, document.body.firstChild);
+    }
+    el.textContent = `Teilnehmerzahl: ${filteredCount}`;
+}
+
+function filterRowsByUrl(data) {
+    if (!onlyTestOMatRows) return data;
+    return data.filter(row => {
+        let stats = row.stats;
+        if (typeof stats === "string") {
+            try { stats = JSON.parse(stats); } catch (e) { stats = {}; }
+        }
+        return stats && stats.url === "https://test-o-mat.me/result.html";
+    });
+}
+
+// Toggle creation
+function createToggle() {
+    let toggleDiv = document.createElement('div');
+    toggleDiv.style.margin = "1em 0";
+    toggleDiv.innerHTML = `
+        <label>
+            <input type="checkbox" id="toggleTestOMatRows" ${onlyTestOMatRows ? "checked" : ""}>
+            Nur Teilnehmer mit URL "https://test-o-mat.me/result.html" anzeigen
+        </label>
+    `;
+    document.body.insertBefore(toggleDiv, document.body.firstChild);
+
+    document.getElementById('toggleTestOMatRows').addEventListener('change', function() {
+        onlyTestOMatRows = this.checked;
+        setCookie('onlyTestOMatRows', onlyTestOMatRows);
+        location.reload(); // Refresh the page to apply the filter everywhere
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    createToggle();
     showJobAveragesChart();
     showAverageTime();
-    showSkillAveragesChart()
+    showSkillAveragesChart();
+    showTotalRowCount();
 });

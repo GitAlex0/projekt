@@ -522,6 +522,6 @@ function toggleAll(){
 function saveData(points, jobScore, jobTopSkills){
     ids = JSON.parse(localStorage.getItem("answers"))
     time = JSON.parse(localStorage.getItem("totalTime"))
-    stats = {time: time}
+    stats = {time: time, url: window.location.href}
     saveDataToDB(ids, points, jobScore, jobTopSkills, stats)
 }
