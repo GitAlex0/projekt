@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="saveToDb.js"></script>
+    <script src="result.js"></script>
+    <script src="debug.js" defer></script>
+    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+    <!-- <script src="main.js"></script> -->
+    <meta charset="UTF-8" />
+    <title>&#x2606;result&#x2606;</title>
+    <link rel="stylesheet" href="zusammengebastelt.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/1.1.1/dist/progressbar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body style="background-color: white; color:black">
+    
+    <div style="display: none;">
+        <div id="result">dividiv</div>
+        <div id="jobScore">dividiv</div>
+        <button onclick="localStorage.removeItem('points');localStorage.removeItem('jobScore'); printPoints()">reset points</button>
+        <button onclick="makeResultCard()">mRC()</button>
+        <div id="points">i bin a div</div>
+    </div>
+
+    <div class="header">
+        <img src="./assets/logo.svg" alt="Logo" class="logo">
+        <p class="ueberschrift1">Deine Ergebnisse:</p>
+    </div>
+
+    
+    
+    <button class="debug-buttons" style="margin-left:20vw;font-size:30px" onclick="makeTempCard()">Beispiel Boxen (drück mich um tolle Boxen zum Testen zu generieren. <br>PS: Die Werte sind zufällig generiert und bedeuten nichts)</button>
+    <div id="pdf-content">
+        <template id="result-template">
+            <div class="result-box">
+                <div class="jobNameGesamt">
+                    <div class="jobRanking">1.&nbsp;</div>
+                    <p class="jobName">Job-Name</p>
+                </div>
+                <p class="jobDescription">Ingenieurwesen, Maschinenbau, Elektrotechnik, IT, Mechatronik, Kfz-Technik, Architektur, Luft- und Raumfahrt</p>
+                <div class="scoreBar-container">
+                    <div class="scoreBar"></div>
+                    <div class="scoreLabelDiv">
+                        <p>Passend zu&nbsp;</p>
+                        <label class="scoreLabel"> 0 % </label>
+                    </div>
+                </div>
+                    <p class="attributesIntroduction">Deine passendsten Attribute:</p>
+                    <div class="attributeValue">
+                        <div class="attributeNameLabelContainer"><label class="attributeNameLabel"> name </label><p class="doppelpunkt">:</p></div>
+                        <div class="attributeBarContainer">
+                            <div class="attributeBar"></div>
+                            <label class="attributeLabel"> 0 % </label>
+                        </div>
+                    </div>
+                    <div class="attributeValue">
+                        <div class="attributeNameLabelContainer"><label class="attributeNameLabel"> name </label><p class="doppelpunkt">:</p></div>
+                        <div class="attributeBarContainer">
+                            <div class="attributeBar"></div>
+                            <label class="attributeLabel"> 0 % </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </template>
+        <div id="results"><!-- Hier wird das Template eingefügt --></div>
+    </div>
+
+    <!-- Nach den berechneten Berufen werden jetzt die einzelnen Attribute "solo" aufgelistet -->
+
+    <p class="ueberschrift2">Die einzelnen Attribute:</p>
+    <template id="attribute-template">
+    <div class="attributeValue">
+        <div class="attributeNameLabelContainer"><label class="attributeNameLabel"> name </label><p class="doppelpunkt">:</p></div>
+        <div class="attributeBarContainer">
+            <div class="attributeBar"></div>
+            <label class="attributeLabel"> 0 % </label>
+        </div>
+    </div>
+    </template>
+    <div id="ListAttributes"><!-- Hier wird das Template eingefügt --></div>
+
+    <div class="mt-6 text-center">
+      <button onclick="downloadLongPDF()" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Generate PDF</button>
+    </div>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+async function downloadLongPDF() {
+    const { jsPDF } = window.jspdf;
+    const element = document.getElementById("pdf-content");
+
+    const canvas = await html2canvas(element, {
+        scale: 2, // bessere Qualität
+        useCORS: true
+    });
+
+    const imgData = canvas.toDataURL("image/png");
+    const imgWidth = 210; // Breite in mm für A4
+    const pxPerMm = canvas.width / imgWidth;
+    const imgHeight = canvas.height / pxPerMm;
+
+    const pdf = new jsPDF({
+        orientation: "p",
+        unit: "mm",
+        format: [imgWidth, imgHeight]
+    });
+
+    pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+    pdf.save("lange-seite.pdf");
+}
+</script>
+
+</body>
+</html></svg></svg>

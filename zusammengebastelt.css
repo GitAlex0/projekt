@@ -1,0 +1,242 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif; /* Schriftart */
+  background-color: #F5F5F5; /* Hintergrundfarbe */
+}
+
+.header {
+    width: 100%;
+    /* height: 50vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    height: auto;
+    margin-top: 4vh;
+}
+
+.ueberschrift1{
+    text-align: center;
+    font-size: 5vh;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    text-decoration: underline;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+}
+
+.ueberschrift2{
+    font-weight: 700;;
+    font-size: 4vh;
+    font-family: "Inter", sans-serif;
+    margin: 0vh 5vw 6vh 5vw;
+}
+
+.attributes{
+    /* display:none; */
+}
+
+.attributeValue {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 5vh;
+}
+
+.attributeBarContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.attributeBar {
+    /* display: none; */
+    width: 95%;
+    height: 3vh;
+    margin: 1vh auto;
+    border-radius: 2vh;
+    overflow: hidden;
+    box-shadow: 0 0 1vh 1vh rgba(0, 0, 0, 0.125);
+}
+
+.attributeBar::-webkit-progress-value {
+    background-color: #14213D; /* Dunkelblau wie im Screenshot */
+    border-radius: 2vh;
+}
+
+.attributeBar::-webkit-progress-bar {
+    background-color: #D9D9D9; /* Hellgrau wie im Screenshot */
+    border-radius: 2vh;
+}
+
+.attributeLabel{
+    /* display: none; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    margin-left: 3vw;
+    font-size: 2vh;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+}
+
+.attributeNameLabelContainer {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.attributeNameLabel{
+    /* display: none; */
+    margin-left: 3vw;
+    font-size: 2vh;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+
+}
+
+.doppelpunkt {
+    font-size: 2vh;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+}
+
+.attributesIntroduction {
+    font-family: "Inter", sans-serif; 
+    font-size: 4vh;
+    font-weight: 700;
+    margin-left: 3vw;
+    margin-top: 5vh;
+}
+
+.result-box {
+    width: 98vw;
+    margin: auto;
+    position: relative;
+    /* border: solid 1px; */
+    background-color: #FFE5C9;
+    margin-bottom: 2vh;
+    border-radius: 3vh;
+    padding-bottom: 0.5vh;
+    box-shadow: 5px 5px 5px rgba(90, 90, 90, 0.144);
+}
+
+.jobRanking {
+    font-size: 4.5vh;
+    font-weight: 700; 
+    font-family: "Inter", sans-serif; 
+    text-align: center;
+    margin: 0px;
+    display: inline-block;
+}
+
+.jobName {
+    font-size: 4.5vh;
+    font-weight: 700; 
+    font-family: "Inter", sans-serif; 
+    text-align: center;
+    margin: 0px;
+    display: inline-block;
+}
+
+.jobNameGesamt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    height: 10vh;
+}
+
+.jobDescription {
+    font-size: 2.3vh;
+    font-family: "Inter", sans-serif; 
+    text-align: center;
+    margin: 0px;
+    font-weight: 500;
+    margin-bottom: 2vh;
+}
+
+.scoreBar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 3vh;
+}
+.scoreBar {
+    width: 95%;
+    height: 4vh;
+    border-radius: 2vh;
+    overflow: hidden;
+    box-shadow: 0 0 1vh 1vh rgba(0, 0, 0, 0.125);
+    position: relative;
+}
+
+.scoreBar::-webkit-progress-value {
+    background-color: #14213D; /* Dunkelblau wie im Screenshot */
+    border-radius: 2vh;
+}
+
+.scoreBar::-webkit-progress-bar {
+    background-color: #D9D9D9; /* Hellgrau wie im Screenshot */
+    border-radius: 2vh;
+}
+
+.scoreLabelDiv {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    pointer-events: none;
+    font-family: "Inter", sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .attributes {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(.77,0,.18,1), opacity 0.3s;
+    display: block;
+} */
+
+
+
+.attributes.visible {
+    max-height: 1000px;
+    opacity: 1;
+}
+.debug-buttons {
+    display: none !important;
+}
+.debug-buttons.show-debug {
+    display: inline-block !important;
+}
