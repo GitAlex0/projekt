@@ -1,0 +1,101 @@
+{
+  "technische": {
+    "name": "Technische Berufe",
+    "description": "Ingenieurwesen, Maschinenbau, Elektrotechnik, IT, Mechatronik, Kfz-Technik, Architektur, Luft- und Raumfahrt"
+  },
+  "kreative": {
+    "name": "Kreative Berufe",
+    "description": "Grafikdesign, Fotografie, Mode, Film & Medien, Marketing, Innenarchitektur, Game Design, Musik, Schauspiel, Schreiben"
+  },
+  "soziale": {
+    "name": "Soziale Berufe",
+    "description": "Lehrer, Sozialarbeiter, Erzieher, Psychologe, Pflegeberufe, Therapeut, Coach, Trainer"
+  },
+  "management": {
+    "name": "Management & Wirtschaft",
+    "description": "BWL, Unternehmensberatung, Finanzen, Controlling, Marketing, Personalwesen, Logistik, Vertrieb, E-Commerce"
+  },
+  "naturwissenschaftliche": {
+    "name": "Naturwissenschaftliche Berufe",
+    "description": "Biologie, Chemie, Physik, Pharmazie, Medizin, Umweltwissenschaften, Lebensmitteltechnik, Forensik"
+  },
+  "medizin": {
+    "name": "Medizinische Berufe",
+    "description": "Arzt, Zahnarzt, Apotheker, Krankenpfleger, Physiotherapeut, Ergotherapeut, Hebamme, Diätassistent"
+  },
+  "handwerk": {
+    "name": "Handwerkliche Berufe",
+    "description": "Schreiner, Maurer, Maler, Dachdecker, Tischler, Goldschmied, Schweißer, Feinmechaniker, Elektriker"
+  },
+  "verwaltung": {
+    "name": "Verwaltung & Recht",
+    "description": "Jurist, Notar, Richter, Steuerberater"
+  },
+  "medien": {
+    "name": "Medienberufe",
+    "description": "Journalismus, PR, Soziale Medien, Werbung, Inhalts-Ersteller*in"
+  },
+  "logischesVerstaendnis": {
+    "name": "Logisches Verständnis"
+  },
+  "mathematik": {
+    "name": "Mathematik"
+  },
+  "feinmotorik": {
+    "name": "Feinmotorik"
+  },
+  "analytischesDenken": {
+    "name": "Analytisches Denken"
+  },
+  "geduld": {
+    "name": "Geduld"
+  },
+  "disziplin": {
+    "name": "Disziplin"
+  },
+  "kreativitaet": {
+    "name": "Kreativität"
+  },
+  "empathie": {
+    "name": "Empathie"
+  },
+  "verantwortungsbewusstsein": {
+    "name": "Verantwortungsbewusstsein"
+  },
+  "handwerklichkeit": {
+    "name": "Handwerklichkeit"
+  },
+  "selbstbewusstsein": {
+    "name": "Selbstbewusstsein"
+  },
+  "kritikfaehigkeit": {
+    "name": "Kritikfähigkeit"
+  },
+  "mentaleBelastbarkeit": {
+    "name": "Mentale Belastbarkeit"
+  },
+  "koerperlicheBelastbarkeit": {
+    "name": "Körperliche Belastbarkeit"
+  },
+  "fuehrungsstaerke": {
+    "name": "Führungsstärke"
+  },
+  "entscheidungsfreude": {
+    "name": "Entscheidungsfreude"
+  },
+  "organisationsfaehigkeit": {
+    "name": "Organisationsfähigkeit"
+  },
+  "experimentierfreude": {
+    "name": "Experimentierfreude"
+  },
+  "druckDenken": {
+    "name": "Denken unter Druck"
+  },
+  "selbststaendigkeit": {
+    "name": "Selbstständigkeit"
+  },
+  "blutSehen": {
+    "name": "Blut sehen können"
+  }
+}

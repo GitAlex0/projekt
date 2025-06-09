@@ -117,7 +117,7 @@
     "skill": "empathie"
   },
   "14": {
-    "q": "In Konflikten suche ich aktiv nach Lösungen, die für alle Beteiligten akzeptabel sind.",
+    "q": "In Konflikten suche ich aktiv nach Lösungen, <br>die für alle Beteiligten akzeptabel sind.",
     "type": "r",
     "r": {
       "min": 0,
@@ -162,7 +162,7 @@
     "skill": "verantwortungsbewusstsein"
   },
   "19": {
-    "q": "Ich übernehme Verantwortung für meine Fehler, anstatt Ausreden zu suchen.",
+    "q": "Ich übernehme Verantwortung für meine Fehler, <br>anstatt Ausreden zu suchen.",
     "type": "r",
     "r": {
       "min": 0,
@@ -225,7 +225,7 @@
     "skill": "selbstbewusstsein"
   },
   "26": {
-    "q": "Ich lasse mich nicht leicht verunsichern.",
+    "q": "Ich lasse mich nur schwer verunsichern.",
     "type": "r",
     "r": {
       "min": 0,
@@ -285,7 +285,7 @@
       "min": 0,
       "max": 100
     },
-    "skill": "fuerungsstaerke"
+    "skill": "fuehrungsstaerke"
   },
   "33": {
     "q": "Ich bin überzeugt, dass eine Gruppe mit mir an der Spitze gut funktioniert.",
@@ -294,7 +294,7 @@
       "min": 0,
       "max": 100
     },
-    "skill": "fuerungsstaerke"
+    "skill": "fuehrungsstaerke"
   },
   "34": {
     "q": "Ich finde es einfach, zwischen mehreren Optionen die beste zu wählen.",
@@ -315,7 +315,7 @@
     "skill": "entscheidungsfreude"
   },
   "36": {
-    "q": "Ich finde es wichtig, schnell eine Wahl zu treffen, auch wenn es keine „perfekte“ Lösung gibt.",
+    "q": "Ich finde es wichtig, schnell eine Wahl zu treffen,<br> auch wenn es keine „perfekte“ Lösung gibt.",
     "type": "r",
     "r": {
       "min": 0,
@@ -351,7 +351,7 @@
     "skill": "organisationsfaehigkeit"
   },
   "40": {
-    "q": "Ich verpasse keine Termine und Fristen, weil ich diese zuverlässig im Blick behalte.",
+    "q": "Ich verpasse keine Termine und Fristen, <br>weil ich diese zuverlässig im Blick behalte.",
     "type": "r",
     "r": {
       "min": 0,
@@ -360,7 +360,7 @@
     "skill": "organisationsfaehigkeit"
   },
   "41": {
-    "q": "Ich probiere gerne neue Methoden aus, auch wenn der Erfolg ungewiss ist.",
+    "q": "Ich probiere gerne neue Methoden aus,<br> auch wenn der Erfolg ungewiss ist.",
     "type": "r",
     "r": {
       "min": 0,
@@ -369,7 +369,7 @@
     "skill": "experimentierfreude"
   },
   "42": {
-    "q": "Ich finde es aufregend, in einem Experiment Dinge zu verändern, um zu sehen, wie sich das Ergebnis verändert.",
+    "q": "Ich finde es aufregend, in einem Experiment Dinge zu verändern, <br>um zu sehen, wie sich das Ergebnis verändert.",
     "type": "r",
     "r": {
       "min": 0,
@@ -405,7 +405,7 @@
     "skill": "selbststaendigkeit"
   },
   "46": {
-    "q": "Ich fange Aufgaben selbstständig an, ohne darauf hingewiesen zu werden.",
+    "q": "Ich fange Aufgaben selbstständig an, <br>ohne darauf hingewiesen zu werden.",
     "type": "r",
     "r": {
       "min": 0,
@@ -432,7 +432,7 @@
     "skill": "selbststaendigkeit"
   },
   "49": {
-    "q": "Ein berühmter Detektiv untersucht einen Einbruch. Er befragt drei Verdächtige: Tom: \"Ich war die ganze Nacht zu Hause.\";Lisa: \"Ich habe Tom abends in einem Café gesehen.\";Chris: \"Lisa lügt!\";Der Detektiv weiß, dass nur eine Person die Wahrheit sagt. Wer ist der Einbrecher?",
+    "q": "<span style='font-size:2.5vh'>Ein berühmter Detektiv untersucht einen Einbruch. Er befragt drei Verdächtige:<br> Tom: \"Ich war die ganze Nacht zu Hause.\"<br>Lisa: \"Ich habe Tom abends in einem Café gesehen.\"<br>Chris: \"Lisa lügt!\"<br>Der Detektiv weiß, dass nur eine Person die Wahrheit sagt. <br><i>Wer ist der Einbrecher?</i></span>",
     "type": "mc",
     "a": {
       "1": "Tom",
@@ -443,7 +443,7 @@
     "skill": "logischesVerstaendnis"
   },
   "50": {
-    "q": "Ein wertvoller Diamant wurde aus einem Museum gestohlen. Die Polizei befragt drei Verdächtigen: Anna: „Ich habe den Diamanten nicht gestohlen!“; Ben: „Anna sagt die Wahrheit!“; Chris: „Ben lügt!“ Die Polizei weiß, dass nur eine dieser drei Personen die Wahrheit sagt. Wer hat den Diamanten gestohlen?",
+    "q": "<span style='font-size:2vh'>Ein wertvoller Diamant wurde aus einem Museum gestohlen. Die Polizei befragt drei Verdächtige:<br> Anna: „Ich habe den Diamanten nicht gestohlen!“<br> Ben: „Anna sagt die Wahrheit!“<br>   Chris: „Ben lügt!“ <br>Die Polizei weiß, dass nur eine dieser drei Personen die Wahrheit sagt. <br><i>Wer hat den Diamanten gestohlen?<i></span>",
     "type": "mc",
     "a": {
       "1": "Anna",
@@ -454,7 +454,7 @@
     "skill": "logischesVerstaendnis"
   },
   "51": {
-    "q": "Wie viele verschiedene Möglichkeiten gibt es, drei Bücher auf ein Regal zu stellen, wenn es fünf Bücher zur Auswahl gibt?",
+    "q": "<span style='font-size:3vh'>Wie viele verschiedene Möglichkeiten gibt es, drei Bücher auf ein Regal zu stellen, wenn es fünf Bücher zur Auswahl gibt?</span>",
     "type": "mc",
     "a": {
       "1": "72",
@@ -466,7 +466,7 @@
     "skill": "logischesVerstaendnis"
   },
   "52": {
-    "q": "Du hast 2 Fässer: Ein Fass fasst 5 Liter, das andere 3 Liter. Wie oft musst du ein Fass füllen, leeren oder umfüllen, um 4 Liter abmessen?",
+    "q": "<span style='font-size:3vh'>Du hast 2 Fässer: Ein Fass fasst 5 Liter, das andere 3 Liter.<br> Wie oft musst du ein Fass füllen, leeren oder umfüllen, um 4 Liter abmessen?</span>",
     "type": "mc",
     "a": {
       "1": "8",
@@ -478,7 +478,7 @@
     "skill": "logischesVerstaendnis"
   },
   "53": {
-    "q": "Ein Produkt kostet 150 Euro. Der Preis wird um 20 % reduziert. Wie viel kostet das Produkt nach der Reduktion?",
+    "q": "Ein Produkt kostet 150 Euro.<br> Der Preis wird um 20 % reduziert.<br><i> Wie viel kostet das Produkt nach der Reduktion?<i>",
     "type": "mc",
     "a": {
       "1": "115€",
@@ -490,7 +490,7 @@
     "skill": "mathematik"
   },
   "54": {
-    "q": "In einer Fabrik sind 4 Maschinen erforderlich, um 120 Stücke eines Produkts in 6 Stunden zu produzieren. Wie viele Maschinen sind erforderlich, um 315 Stücke in 9 Stunden zu produzieren?",
+    "q": "<span style='font-size:2.5vh'>In einer Fabrik sind 4 Maschinen erforderlich, um 120 Stücke eines Produkts in 6 Stunden zu produzieren.<br> Wie viele Maschinen sind erforderlich, um 315 Stücke in 9 Stunden zu produzieren?</span>",
     "type": "mc",
     "a": {
       "1": "6",
@@ -502,7 +502,7 @@
     "skill": "mathematik"
   },
   "55": {
-    "q": "Ein Unternehmen hat in den letzten 5 Jahren folgende Gewinne erzielt: 3.000 Euro, 4.500 Euro, 2.000 Euro, 5.500 Euro und 4.000 Euro. Was ist der Durchschnittsgewinn über diese 5 Jahre?",
+    "q": "<span style='font-size:3vh'>Ein Unternehmen hat in den letzten 5 Jahren folgende Gewinne erzielt:<br> 3.000 Euro, 4.500 Euro, 2.000 Euro, 5.500 Euro und 4.000 Euro.<br> Was ist der Durchschnittsgewinn über diese 5 Jahre?</span>",
     "type": "mc",
     "a": {
       "1": "3.800€",
@@ -514,7 +514,7 @@
     "skill": "mathematik"
   },
   "56": {
-    "q": "In einer Schule sind 800 Schüler eingeschrieben, davon sind 60 % Jungen. Wie viele Mädchen gibt es an der Schule?",
+    "q": "<span style='font-size:3vh'>In einer Schule sind 800 Schüler eingeschrieben, davon sind 60 % Jungen.<br> Wie viele Mädchen gibt es an der Schule?</span>",
     "type": "mc",
     "a": {
       "1": "300",
@@ -526,7 +526,7 @@
     "skill": "mathematik"
   },
   "57": {
-    "q": "Ich fühle mich schnell überfordert, wenn viel auf einmal passiert.",
+    "q": "Ich fühle mich schnell überfordert,<br> wenn viel auf einmal passiert.",
     "type": "mc",
     "a": {
       "1": "ja",
@@ -570,7 +570,7 @@
     "skill": "mentaleBelastbarkeit"
   },
   "61": {
-    "q": "Ich mache oft körperliche oder anstrengende Tätigkeiten in meinem Alltag oder meiner Freizeit (Sport, schwere Dinge tragen etc.)",
+    "q": "Ich mache oft körperliche oder anstrengende Tätigkeiten in meinem Alltag oder meiner Freizeit (Sport, schwere Dinge tragen, etc.)",
     "type": "mc",
     "a": {
       "1": "nein",
@@ -584,7 +584,7 @@
     "q": "Ich habe keine Probleme mit Arbeiten, bei denen ich viel stehen, laufen oder tragen muss.",
     "type": "mc",
     "a": {
-      "1": "viele Probleme",
+      "1": "viele",
       "2": "eher viele",
       "3": "eher wenige",
       "4": "keine Probleme"
