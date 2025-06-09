@@ -99,9 +99,10 @@ html, body {
 
 
 #question {
-    font-size: 5vh; /* Schriftgröße */
+    font-size: 4vh; /* Schriftgröße */
     font-weight: bold; /* Fettgedruckter Text */
     font-family: "Inter", sans-serif; /* Schriftart */
+    text-align:center
 }
 
 #slider-container{

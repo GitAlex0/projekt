@@ -2,6 +2,7 @@ let result = "";
 let ljsonData;
 // const skillCounts = {};
 let skillData;
+let descriptionData;
 let minMatch = 50;
 
 async function fetchSkillData() {
@@ -11,6 +12,19 @@ async function fetchSkillData() {
       throw new Error("Network response was not ok " + response.statusText);
     }
     skillData = await response.json();
+    fetchDescriptionData()
+  } catch (error) {
+    console.error("There was a problem with the fetch operation:", error);
+  }
+}
+
+async function fetchDescriptionData() {
+  try {
+    const response = await fetch("descriptions.json");
+    if (!response.ok) {
+      throw new Error("Network response was not ok " + response.statusText);
+    }
+    descriptionData = await response.json();
     loadJSONData();
     checkAnswers();
   } catch (error) {
@@ -218,6 +232,8 @@ function makeResultCard(job="none", score=0, skills, index){
     const container = card.querySelector(".result-box");
     const title = container.querySelector(".jobName");
     const jobRank = container.querySelector(".jobRanking");
+    const description = container.querySelector(".jobDescription")
+    description.textContent = descriptionData[job].description;
 
     jobRank.textContent = index + `.\xa0`;
 
@@ -275,7 +291,7 @@ function makeResultCard(job="none", score=0, skills, index){
             value: skills[i].score / 100
         });
     }
-    title.textContent = job;
+    title.textContent = descriptionData[job].name;
 
     document.getElementById("results").appendChild(card);
     const observer = new IntersectionObserver((entries, obs) => {
