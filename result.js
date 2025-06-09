@@ -3,7 +3,7 @@ let ljsonData;
 // const skillCounts = {};
 let skillData;
 let descriptionData;
-let minMatch = 50;
+let minMatch = 10;
 
 async function fetchSkillData() {
   try {
