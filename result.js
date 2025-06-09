@@ -234,6 +234,11 @@ function makeResultCard(job="none", score=0, skills, index){
         step: (state, bar) => {
             const val = Math.round(bar.value() * 100);
             jobLabel.textContent = val + " %";
+            if(bar.value()>0.5){
+              container.querySelector(".scoreLabelDiv").style.color = "#fff"
+            }else{
+                container.querySelector(".scoreLabelDiv").style.color = "#14213D"
+            }
         }
     });
     jobBar.set(0);

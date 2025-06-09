@@ -2,7 +2,7 @@ let answers = {};
 document.addEventListener('DOMContentLoaded', function() {
     var bar = new ProgressBar.Line('#progress-bar', {
         strokeWidth: 8,
-        color: '#96BE93',
+        color: '#14213D',
         trailColor: '#e3e3e3',
         trailWidth: 8,
         easing: 'easeInOut',
@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
         step: (state, bar) => {
             let percent = Math.round(bar.value() * 100);
             document.getElementById('pLabel').textContent = percent + ' %';
+            if(bar.value()>0.5){
+              document.getElementsByClassName("progress-text-container")[0].style.color = "#fff"
+            }else{
+              document.getElementsByClassName("progress-text-container")[0].style.color = "#14213D"
+            }
         }
     });
     window.setProgress = function(percent) {
