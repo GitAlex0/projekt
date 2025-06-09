@@ -26,7 +26,13 @@ async function fetchDescriptionData() {
     }
     descriptionData = await response.json();
     loadJSONData();
-    checkAnswers();
+    if (!isDrucken()) {
+        checkAnswers(); // Only run this on interactive pages!
+    }else{
+        populateResultsDrucken();
+        populateAttributesDrucken();
+    }
+    // On drucken.html, only the DOMContentLoaded hook will run the print-specific functions
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
   }
@@ -160,7 +166,7 @@ function givePoints(skill, points){
         pointsO[skill] = (pointsO[skill] || 0) + rP;
         localStorage.setItem("points", JSON.stringify(pointsO));
     }
-    printPoints()
+    // printPoints()
 }
 
 function printPoints(){
@@ -284,7 +290,7 @@ function makeResultCard(job="none", score=0, skills, index){
         });
         skillBar.set(0);
         skillBars[i]._progressbar = skillBar;
-        skillNameLabels[i].textContent = skills[i].skill;
+        skillNameLabels[i].textContent = descriptionData[skills[i].skill].name;
         skillBars[i].setAttribute('data-bar-value', skills[i].score / 100);
         skillBarObjs.push({
             bar: skillBar,
@@ -306,6 +312,176 @@ function makeResultCard(job="none", score=0, skills, index){
     observer.observe(container);
 
 }
+
+// Helper: Detect if we're on drucken.html
+function isDrucken() {
+    return window.location.pathname.endsWith("drucken.html");
+}
+
+// --- DRUCKEN.HTML SPECIFIC FUNCTIONS ---
+function makeDruckenResultCard(job = "none", score = 0, skills, index) {
+    const template = document.getElementById("result-template");
+    if (!template) return;
+    const card = template.content.cloneNode(true);
+
+    const container = card.querySelector(".result-box");
+    const title = container.querySelector(".jobName");
+    const jobRank = container.querySelector(".jobRanking");
+    const description = container.querySelector(".jobDescription");
+    const nameLabel = container.querySelector(".attributeNameLabel");
+    if (descriptionData && descriptionData[job]) {
+        description.textContent = descriptionData[job].description;
+        title.textContent = descriptionData[job].name;
+    } else {
+        description.textContent = "";
+        title.textContent = job;
+    }
+    jobRank.textContent = index + `.\xa0`;
+
+    // Score Bar
+    const jobBarDiv = container.querySelector(".scoreBar");
+    const jobLabelDiv = container.querySelector(".scoreLabelDiv");
+    let jobLabel = container.querySelector(".scoreLabel");
+    if (!jobLabel) {
+        jobLabel = document.createElement("span");
+        jobLabel.className = "scoreLabel";
+        jobLabelDiv.appendChild(jobLabel);
+    }
+    jobLabel.textContent = Math.round(score) + " %";
+    // Draw static bar (no animation for print)
+    if (typeof ProgressBar !== "undefined" && jobBarDiv) {
+        let bar = new ProgressBar.Line(jobBarDiv, {
+            strokeWidth: 8,
+            color: '#14213D',
+            trailColor: '#e3e3e3',
+            trailWidth: 8,
+            svgStyle: {width: '100%', height: '100%', borderRadius: '2vh', display: 'block'},
+            duration: 0
+        });
+        bar.set(score / 100);
+    }
+
+    // Skills/Attributes (if present in template)
+    const skillBars = container.querySelectorAll(".attributeBar");
+    const skillLabels = container.querySelectorAll(".attributeLabel");
+    const skillNameLabels = container.querySelectorAll(".attributeNameLabel");
+    for (let i = 0; i < skills.length; i++) {
+        if (skillBars[i]) {
+            skillBars[i].style.display = 'inline';
+            if (typeof ProgressBar !== "undefined") {
+                let bar = new ProgressBar.Line(skillBars[i], {
+                    strokeWidth: 8,
+                    color: '#14213D',
+                    trailColor: '#e3e3e3',
+                    trailWidth: 8,
+                    svgStyle: {width: '100%', height: '100%', borderRadius: '2vh', display: 'block'},
+                    duration: 0
+                });
+                bar.set(skills[i].score / 100);
+            }
+        }
+        if (skillLabels[i]) {
+            skillLabels[i].style.display = 'inline';
+            skillLabels[i].textContent = Math.round(skills[i].score) + " %";
+        }
+        if (skillNameLabels[i]) {
+            skillNameLabels[i].style.display = 'inline';
+            // Use styled name from descriptionData, fallback to key if missing
+            const skillKey = skills[i].skill;
+            if (descriptionData && descriptionData[skillKey] && descriptionData[skillKey].name) {
+                skillNameLabels[i].textContent = descriptionData[skillKey].name;
+            } else {
+                skillNameLabels[i].textContent = skillKey;
+            }
+        }
+    }
+
+    // Append to body (or a dedicated container if you add one)
+    let resultsDiv = document.getElementById("results");
+    if (!resultsDiv) {
+        resultsDiv = document.createElement("div");
+        resultsDiv.id = "results";
+        document.body.appendChild(resultsDiv);
+    }
+    resultsDiv.appendChild(card);
+}
+
+// --- OVERRIDE/HOOK FOR DRUCKEN ---
+function populateResultsDrucken() {
+    const jobScore = JSON.parse(localStorage.getItem("jobScore")) || {};
+    const jobTopSkills = JSON.parse(localStorage.getItem("jobTopSkills")) || {};
+    const sortedJobs = Object.keys(jobScore).sort((a, b) => jobScore[b] - jobScore[a]);
+    let jobIndex = 1;
+    for (const job of sortedJobs) {
+        if (jobScore[job] >= minMatch) {
+            makeDruckenResultCard(job, Math.floor(jobScore[job]), jobTopSkills[job], jobIndex);
+            jobIndex++;
+        }
+    }
+}
+
+function populateAttributesDrucken() {
+    // Lade die Attribute-Daten aus dem LocalStorage (hier: "points")
+    let attributeScores = JSON.parse(localStorage.getItem("points")) || {};
+
+    // In ein Array umwandeln und absteigend sortieren
+    let sortedAttributes = Object.entries(attributeScores)
+        .sort((a, b) => b[1] - a[1]);
+
+    const template = document.getElementById("attribute-template");
+    const listDiv = document.getElementById("ListAttributes");
+    if (!template || !listDiv) return;
+
+    // Vorherigen Inhalt löschen
+    listDiv.innerHTML = "";
+
+    sortedAttributes.forEach(([skillKey, score]) => {
+        console.log("skillKey:", skillKey);
+        console.log("descriptionData keys:", Object.keys(descriptionData));
+        console.log("descriptionData[skillKey]:", descriptionData[skillKey]);
+        const card = template.content.cloneNode(true);
+        const nameLabel = card.querySelector(".attributeNameLabel");
+        const scoreLabel = card.querySelector(".attributeLabel");
+        const barDiv = card.querySelector(".attributeBar");
+        console.log(skillKey)
+        console.log(descriptionData)
+        // Nutze den Namen direkt aus descriptionData, fallback auf skillKey
+        if (nameLabel) {
+            if (descriptionData && descriptionData[skillKey] && descriptionData[skillKey].name) {
+                nameLabel.textContent = descriptionData[skillKey].name;
+            } else {
+                nameLabel.textContent = skillKey;
+            }
+        }
+        if (scoreLabel) scoreLabel.textContent = Math.round(score) + " %";
+
+        // Statische ProgressBar für Druck
+        if (typeof ProgressBar !== "undefined" && barDiv) {
+            let bar = new ProgressBar.Line(barDiv, {
+                strokeWidth: 8,
+                color: '#14213D',
+                trailColor: '#e3e3e3',
+                trailWidth: 8,
+                svgStyle: {width: '100%', height: '100%', borderRadius: '2vh', display: 'block'},
+                duration: 0
+            });
+            bar.set(score / 100);
+        }
+
+        listDiv.appendChild(card);
+    });
+}
+
+// --- MAIN HOOK ---
+// document.addEventListener("DOMContentLoaded", function () {
+//     if (isDrucken()) {
+//         populateResultsDrucken();
+//         populateAttributesDrucken(); // <--- NEU: Attribute-Liste befüllen
+//     } else {
+//         loadJSONData();
+//         // resolveIds(); // Uncomment if needed
+//     }
+// });
 
 function downloadPDF() {
     // Select the results section you want to export
