@@ -75,9 +75,6 @@ function populateQuiz(question) {
 
     console.log("timed question")
     console.log(keepTime(randomizedKeys[index], true))
-  }else{
-    let lockOpenContainer = document.getElementById("lock-open")
-    lockOpenContainer.style.display = "flex"
   }
   if(question.math){
     if (window.MathJax && MathJax.typesetPromise) {
