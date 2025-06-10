@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/1.1.1/dist/progressbar.js"></script>
+    <script src="test.js"></script>
+    <script src="quiz.js"></script>
+    <script src="main.js"></script>
+    <script src="debug.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+    <title>BO-TEST-O-Mat</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    
+</head>
+
+<body onload="keepTime(0)">
+    <button class="debug-buttons" onclick="window.location.href='hello.html'">hello.html</button>
+    <button class="debug-buttons" onclick="window.location.href='index.html'">index.html</button>
+    <button class="debug-buttons" onclick="window.location.href='result.html'">result.html</button>
+    <div class="main-container">
+        <div class="progress-container">
+            <div id="progress-bar" class="progress-bar"></div>
+            <div class="progress-text-container">
+                <p class="progress-text">BO-Test-O-Mat Fortschritt:</p>
+                <label id="pLabel" class="pLabel">0 %</label>
+            </div>
+        </div>
+        
+        <div class="content-container">
+            <div class="quiz-title">
+                <div class="icons">
+                    <div class="icon" id="timed">
+                        <embed src="./assets/stopwatch.svg" type="image/svg+xml" width="40" height="40">
+                    </div>
+                    <div class="icon" id="lock">
+                        <embed src="./assets/lock.svg" type="image/svg+xml" width="40" height="40">
+                    </div>
+                    <div class="icon" id="lock-open">
+                        <embed src="./assets/lock-open.svg" type="image/svg+xml" width="40" height="40">
+                    </div>
+                </div>
+                
+                <div id="question"></div>
+            </div>
+            <template id="button-template">
+                <button class="quiz-button" onclick="answerButtonPress(this)">Button</button>
+            </template>
+            <div id="buttons">
+
+            </div>
+            
+            <div id="slider-container">
+                <div class="slider-labels">
+                <p class="slider-label-text">Stimme nicht zu</p>
+                <p class="slider-label-text">Neutral / Unentschieden</p>
+                <p class="slider-label-text">Stimme voll zu</p>
+                </div>
+                <input type="range" min="0" max="100" value="50" step="1" id="slider" list="ticks" class="slider-bar" oninput="inputSlider(this)">
+                <datalist id="ticks">
+                    <option value="0"></option>
+                    <option value="25"></option>
+                    <option value="50"></option>
+                    <option value="75"></option>
+                    <option value="100"></option>
+                </datalist>
+                <div class="slider-marker">
+                    <p class="slider-marker-text">&#124;</p>
+                    <p class="slider-marker-text">&#124;</p>
+                    <p class="slider-marker-text">&#124;</p>
+                    <p class="slider-marker-text">&#124;</p>
+                    <p class="slider-marker-text">&#124;</p>
+                </div>
+            </div>
+            <div id="input-container">
+                <input class="inputNumber" type="number" placeholder="Zum Antwort eingeben hier klicken" id="number" oninput="numberInput(this)">
+            </div>
+        </div>
+        <button class="btn" id="nextBtn" onclick="next()">weiter &#8594;</button>
+        <button class="btn" id="resultBtn" onclick="keepTime(0, false);window.location.href = 'result.html'">ergebnisse &#8594;</button>
+
+        <button class="debug-buttons" onclick="document.cookie = 'index=; expires=Thu, 01 Jan 1970 00:00:00 UTC'">delete index cookie</button>
+        <button class="debug-buttons" onclick="localStorage.clear()">delete data</button>
+    </div>
+    
+</body>
+
+</html>
