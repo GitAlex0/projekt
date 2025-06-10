@@ -62,14 +62,14 @@ function populateQuiz(question) {
     let input = document.getElementById("number")
     input.dataset.index = randomizedKeys[index];
     console.log(jsonData[randomizedKeys[index]].q + 'number Input')
-    if(localStorage.getItem("answers") !== null) {input.setAttribute("value", JSON.parse(localStorage.getItem("answers"))[randomizedKeys[index]]) || input.setAttribute("value", 50)}
+    if(localStorage.getItem("answers") !== null) {input.value = JSON.parse(localStorage.getItem("answers"))[randomizedKeys[index]] || ""}
     document.getElementById("input-container").style.display = "flex";
     console.log("done")
   } else {
     let slider = document.getElementById("slider");
     slider.dataset.index = randomizedKeys[index];
     console.log(jsonData[randomizedKeys[index]].q + 'slider')
-    if(localStorage.getItem("answers") !== null) {slider.setAttribute("value", JSON.parse(localStorage.getItem("answers"))[randomizedKeys[index]]) || slider.setAttribute("value", 50)}
+    if(localStorage.getItem("answers") !== null) {slider.value = JSON.parse(localStorage.getItem("answers"))[randomizedKeys[index]] || 50}
     document.getElementById("slider-container").style.display = "flex";
     console.log("done");
   }
