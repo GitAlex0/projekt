@@ -278,6 +278,7 @@ body {
     cursor: pointer; /* Zeigt an, dass es klickbar ist */
     font-size: 2vh; /* Schriftgröße */
     margin-bottom: 3vh;
+    text-decoration: none;;
 }
 
 .downloadButtonContainer {

@@ -88,7 +88,7 @@
     <div id="ListAttributes"><!-- Hier wird das Template eingefügt --></div>
 </div>
     <div class="mt-6 text-center">
-      <button onclick="downloadLongPDF()" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Generate PDF</button>
+      <button onclick="downloadLongPDF()" class="bg-blue-500 text-white px-4 py-2 rounded-lg" href="drucken.html">Generate PDF</button>
     </div>
     
     <script>
@@ -115,6 +115,11 @@ async function downloadLongPDF() {
     pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
     pdf.save("lange-seite.pdf");
 }
+
+// Funktion beim Laden der Seite ausführen
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(downloadLongPDF, 1000);
+});
 </script>
 
 </body>
