@@ -90,7 +90,7 @@ const quizData = {
     66: { q: "Kannst du Blut sehen?", type: "mc", a: { 1: "Nein", 2: "Ja" }, c: 2, skill: "blutSehen" },
 
     67: { q: "Zahlenfolgen: Finde die fehlende Zahl: 81-27-9-3-?", type: "i", c: 1, skill: "analytischesDenken"},
-    68: { q: "Zahlenfolgen: Finde die fehlende Zahl: 10-20-17-36-33-?", type: "i", c: 66, skill: "analytischesDenken"},
+    68: { q: "Zahlenfolgen: Finde die fehlende Zahl: 10-20-17-34-31-?", type: "i", c: 62, skill: "analytischesDenken"},
     69: { q: "Zahlenfolgen: Finde die fehlende Zahl: 1-1-2-3-5-8-?", type: "i", c: 13, skill: "analytischesDenken"},
     70: { q: "Zahlenfolgen: Finde die fehlende Zahl: 50-40-32-26-22-?", type: "i", c: 20, skill: "analytischesDenken"},
 
