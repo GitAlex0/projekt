@@ -315,6 +315,19 @@ body {
     font-weight: 700; /* Optional: Schriftgewicht */
 }
 
+.neustartButton {
+    border: none;
+    background-color: white;
+    text-decoration: none; /* Entfernt die Unterstreichung */
+    color: black; /* Textfarbe */
+    font-family: "Inter", sans-serif; /* Schriftart */
+    font-weight: 700; /* Optional: Schriftgewicht */
+    font-size: 2vh;
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: 3vh;
+}
+
 
 .attributes {
     max-height: 0;
