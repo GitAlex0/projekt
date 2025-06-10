@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="db.js"></script>
+    <script src="db2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      #charts-container {
+        display: flex;
+        gap: 2em;
+        align-items: flex-start;
+        justify-content: center;
+        }
+      #info-container {
+        display: flex;
+        gap: 2em;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div id="info-container">
+        <p id="totalRowCount"></p>
+        <p id="time"></p>
+    </div>
+    <div id="charts-container">
+        <canvas id="jobAveragesChart" width="600" height="400"></canvas>
+        <canvas id="skillAveragesChart" width="600" height="400"></canvas>
+    </div>
+</body>
+</html>

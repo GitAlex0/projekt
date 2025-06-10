@@ -267,7 +267,7 @@ async function showAverageTime() {
     }
 
     // 5. Show in the page
-    let el = document.getElementById('averageTime');
+    let el = document.getElementById('time');
     if (!el) {
         el = document.createElement('p');
         el.id = 'averageTime';
@@ -362,7 +362,7 @@ function createToggle() {
     toggleDiv.innerHTML = `
         <label>
             <input type="checkbox" id="toggleTestOMatRows" ${onlyTestOMatRows ? "checked" : ""}>
-            Nur Teilnehmer mit URL "https://test-o-mat.me/result.html" anzeigen
+            Daten Filtern
         </label>
     `;
     document.body.insertBefore(toggleDiv, document.body.firstChild);
