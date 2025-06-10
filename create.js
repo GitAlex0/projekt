@@ -89,11 +89,16 @@ const quizData = {
 
     66: { q: "Kannst du Blut sehen?", type: "mc", a: { 1: "Nein", 2: "Ja" }, c: 2, skill: "blutSehen" },
 
-    67: { q: "What is your favorite hobby?", type: "i", c: 24, skill: "season"},
-    68: { q: "What is your dream destination?", type: "mc", a: { 1: "Paris", 2: "Tokyo", 3: "New York", 4: "Sydney", 5: "Hessen"}, skill: "travel", next:"67"},
-    69: { q: "Kannst du Stress?", type: "mc", a: { 1: "Nein", 2: "Eher nein", 3: "So lala", 4: "Eher ja", 5: "Ja"}, skill: "stress", next:"70"},
-    70: { q: "BEWEIS ES, DIE ZEIT LÄUFT: <br> WIE GEHT DIE ZAHLENFOLGE WEITER? <br>6 - 5 - 4 - 3 - 2 - ?", type: "i", c: 1, skill: "stress", timed:{max: 30, zero: 60}},
-    71: { q: "Rechne: \\( x^2 + y^2 = z^2 \\)", type: "i", c: 24, skill: "season", math:true}
+    67: { q: "Zahlenfolgen: Finde die fehlende Zahl: 81-27-9-3-?", type: "i", c: 1, skill: "analytischesDenken"},
+    68: { q: "Zahlenfolgen: Finde die fehlende Zahl: 10-20-17-36-33-?", type: "i", c: 66, skill: "analytischesDenken"},
+    69: { q: "Zahlenfolgen: Finde die fehlende Zahl: 1-1-2-3-5-8-?", type: "i", c: 13, skill: "analytischesDenken"},
+    70: { q: "Zahlenfolgen: Finde die fehlende Zahl: 50-40-32-26-22-?", type: "i", c: 20, skill: "analytischesDenken"},
+
+    // 67: { q: "What is your favorite hobby?", type: "i", c: 24, skill: "season"},
+    // 68: { q: "What is your dream destination?", type: "mc", a: { 1: "Paris", 2: "Tokyo", 3: "New York", 4: "Sydney", 5: "Hessen"}, skill: "travel", next:"67"},
+    // 69: { q: "Kannst du Stress?", type: "mc", a: { 1: "Nein", 2: "Eher nein", 3: "So lala", 4: "Eher ja", 5: "Ja"}, skill: "stress", next:"70"},
+    // 70: { q: "BEWEIS ES, DIE ZEIT LÄUFT: <br> WIE GEHT DIE ZAHLENFOLGE WEITER? <br>6 - 5 - 4 - 3 - 2 - ?", type: "i", c: 1, skill: "stress", timed:{max: 30, zero: 60}},
+    // 71: { q: "Rechne: \\( x^2 + y^2 = z^2 \\)", type: "i", c: 24, skill: "season", math:true}
 };
 
 //Object { wellness: 1, colour: 1, season: 2, rate: 1, travel: 1 }
