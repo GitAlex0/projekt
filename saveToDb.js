@@ -3,14 +3,23 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 
-async function saveDataToDB(answers={}, points={}, jobScore={}, jobTopSkills={}, stats={}){
-    //   if (window.location.href !== "https://test-o-mat.me") {
-    //     console.log("Not saving: not on https://test-o-mat.me");
-    //     return;
-    // }
-    const { error } = await supabase
-  .from('bo-db')
-  .insert({ answers: answers, points: points, jobScore: jobScore, jobTopSkills: jobTopSkills, stats: stats})
-console.log("saved data to db")
+async function saveDataToDB(answers = {}, points = {}, jobScore = {}, jobTopSkills = {}, stats = {}) {
+  const cookieName = "dataUploaded";
+  // Check if cookie exists
+  if (document.cookie.split('; ').find(row => row.startsWith(cookieName + '='))) {
+    console.log("Data already uploaded, skipping.");
+    return;
+  }
 
+  const { error } = await supabase
+    .from('bo-db')
+    .insert({ answers, points, jobScore, jobTopSkills, stats });
+
+  if (!error) {
+    // Set cookie to mark data as uploaded (expires in 1 year)
+    document.cookie = `${cookieName}=true; path=/; max-age=${60 * 60 * 24 * 365}`;
+    console.log("Saved data to db and set cookie.");
+  } else {
+    console.error("Error saving data to db:", error);
+  }
 }
