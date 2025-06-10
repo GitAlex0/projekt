@@ -237,7 +237,7 @@ body {
 
 .toggleButton {
     display: block;
-    margin: 3vh auto 3vh auto; /* oben etwas Abstand, dann zentriert */
+    margin: 3vh auto 0vh auto; /* oben etwas Abstand, dann zentriert */
     padding-left: 10vw;
     padding-right: 10vw;
     background-color: #FFE5C9;
@@ -335,7 +335,7 @@ body {
     overflow: hidden;
     transition: max-height 0.3s cubic-bezier(.77,0,.18,1), opacity 0.3s;
     display: block;
-
+    margin-bottom: 2vh;
 }
 
 .attributes.visible {
