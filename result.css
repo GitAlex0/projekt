@@ -98,7 +98,7 @@ body {
     margin: 1vh auto;
     border-radius: 2vh;
     overflow: hidden;
-    box-shadow: 0 0 1vh 1vh rgba(0, 0, 0, 0.125);
+    box-shadow: 0 0 0.5vh 0.5vh rgba(0, 0, 0, 0.125);
 }
 
 .attributeBar::-webkit-progress-value {
@@ -335,6 +335,7 @@ body {
     overflow: hidden;
     transition: max-height 0.3s cubic-bezier(.77,0,.18,1), opacity 0.3s;
     display: block;
+
 }
 
 .attributes.visible {
