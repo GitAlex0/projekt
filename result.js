@@ -525,3 +525,18 @@ function saveData(points, jobScore, jobTopSkills){
     stats = {time: time, url: window.location.href}
     saveDataToDB(ids, points, jobScore, jobTopSkills, stats)
 }
+
+function restart() {
+    if (confirm("Möchtest du den Test wirklich neustarten? Alle Daten gehen dabei verloren!")) {
+        localStorage.clear();
+        if (document.cookie && document.cookie !== "") {
+            const cookies = document.cookie.split("; ");
+            for (let c of cookies) {
+                const eqPos = c.indexOf("=");
+                const name = eqPos > -1 ? c.substr(0, eqPos) : c;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+            }
+        }
+        window.location.href = "index.html";
+    }
+}
